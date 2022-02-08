@@ -1,6 +1,7 @@
 // Import the express in typescript file
 import express from 'express';
-
+import mongoose from 'mongoose';
+import { CounsellingService } from './models/counsellingService';
 // Initialize the express engine
 const app: express.Application = express();
 
@@ -30,7 +31,18 @@ app.get('/', (_req, _res) => {
 	_res.send(groceries);
 });
 
+app.get('/mongo', (_req, _res) => {
+  // create new counselling service model
+	_res.send(CounsellingService.build({serviceName: "UBC"}));
+});
+
 // Server setup
 app.listen(port, () => {
 	console.log(`TypeScript with Express http://localhost:${port}/`);
 });
+
+// connect to mdb
+mongoose.connect('mongodb://???',
+  () => {
+    console.log('connected to db')
+})
