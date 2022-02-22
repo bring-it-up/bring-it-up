@@ -41,8 +41,20 @@ app.listen(port, () => {
 	console.log(`TypeScript with Express http://localhost:${port}/`);
 });
 
+
+
+
+//
+require('dotenv').config()
+console.log(process.env)
+console.log(process.env.MONGO_DB_CONNECT_STR)
+
 // connect to mdb
-mongoose.connect('mongodb://???',
+let dbStr:string = process.env.MONGO_DB_CONNECT_STR as string;
+//const dbStr = process.env.MONGO_DB_CONNECT_STR;
+
+mongoose.connect( dbStr,
   () => {
+
     console.log('connected to db')
 })
