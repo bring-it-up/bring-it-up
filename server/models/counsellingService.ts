@@ -24,7 +24,54 @@ const CounsellingServiceSchema = new mongoose.Schema({
     location: {
         type: String,
         required: true
-    }
+    },
+    school: {
+        type: String,
+        required: true
+    },
+    organization: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    urgency: {
+        type: String,
+        enum: ['Urgent', 'Non-urgent', 'Urgent and Non-urgent'],
+        required: true
+    },
+    targetClients: {
+        type: [String],
+        default: undefined,
+        required: true
+    },
+    isAllDay: {
+        type: Boolean,
+        required: true
+    },
+    website: {
+        type: String,
+        required: true
+    },
+    specialty: {
+        type: [String],
+        default: undefined,
+        required: true
+    },
+    isOfferedOnline: {
+        type: Boolean,
+        required: true
+    },
+    delivery: {
+        type: [String],
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
 })
 
 // attach as static function of the schema
