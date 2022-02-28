@@ -1,7 +1,11 @@
 // Import the express in typescript file
 import express from 'express';
 import mongoose from 'mongoose';
-import { CounsellingService } from './models/counsellingService';
+import cors from 'cors';
+require('dotenv').config();
+
+import counsellingServiceRouter from './controllers/counsellingService.controller';
+
 // Initialize the express engine
 const app: express.Application = express();
 
@@ -9,49 +13,38 @@ const app: express.Application = express();
 const port: number = 4000;
 
 // setup cors to allow client http access
-const cors = require('cors');
 app.use(cors({
   origin: '*'
 }))
 
-// test data to serve
-const groceries = [
-  {
-    "id": "1",
-    "item": "Cauliflower"
-  },
-  {
-    "id": "2",
-    "item": "Eggs"
-  }
-]
+// Routes
 
 // Handling '/' Request
 app.get('/', (_req, _res) => {
+  // test data to serve
+  const groceries = [
+    {
+      "id": "1",
+      "item": "Cauliflower"
+    },
+    {
+      "id": "2",
+      "item": "Eggs"
+    }
+  ]
 	_res.send(groceries);
 });
 
-app.get('/mongo', (_req, _res) => {
-  // create new counselling service model
-	_res.send(CounsellingService.build({serviceName: "UBC"}));
-});
+app.use('/counselling-services', counsellingServiceRouter);
 
 // Server setup
 app.listen(port, () => {
 	console.log(`TypeScript with Express http://localhost:${port}/`);
 });
 
-
-
-
-//
-require('dotenv').config()
-console.log(process.env)
-console.log(process.env.MONGO_DB_CONNECT_STR)
-
 // connect to mdb
 let dbStr:string = process.env.MONGO_DB_CONNECT_STR as string;
-//const dbStr = process.env.MONGO_DB_CONNECT_STR;
+console.log(dbStr);
 
 mongoose.connect( dbStr,
   () => {
