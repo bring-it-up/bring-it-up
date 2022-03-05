@@ -1,0 +1,37 @@
+# scratch file with example calls to db apis using VS Code plugin REST Client
+
+GET http://localhost:4000/counsellingServices
+
+###
+GET http://localhost:4000/counsellingServices/6222ae68c10113e79aea0871
+
+###
+POST http://localhost:4000/counsellingServices
+Content-Type: application/json
+
+{
+    "serviceName": "testService",
+    "location": "Alabama",
+    "school": "UBC",
+    "organization": "testService organization",
+    "type": "testService type",
+    "urgency": "Non-urgent",
+    "targetClients": "testService targetClients",
+    "isAllDay": true,
+    "website": "testService.com",
+    "specialty": "testService specialty",
+    "isOfferedOnline": false,
+    "delivery": "testService delivery",
+    "description": "testService description wow what a wonderful day."
+}
+
+###
+DELETE http://localhost:4000/counsellingServices/6222ae68c10113e79aea0871
+
+###
+PATCH http://localhost:4000/counsellingServices/6222b39ce0af657cf2955e88
+Content-Type: application/json
+
+{
+    "serviceName": "New Name"
+}

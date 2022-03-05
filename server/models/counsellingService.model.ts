@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 // interface to reinforce types
 interface ICounsellingServiceSchema {
@@ -79,6 +79,4 @@ CounsellingServiceSchema.statics.build = (attr: ICounsellingServiceSchema) => {
     return new CounsellingService(attr)
 }
 
-const CounsellingService = mongoose.model<any, CounsellingServiceModelInterface>('CounsellingService', CounsellingServiceSchema)
-
-export {CounsellingService}
+export const CounsellingService = mongoose.model('CounsellingService', CounsellingServiceSchema)
