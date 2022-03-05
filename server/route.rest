@@ -33,5 +33,6 @@ PATCH http://localhost:4000/counsellingServices/6222b39ce0af657cf2955e88
 Content-Type: application/json
 
 {
-    "serviceName": "New Name"
+    "serviceName": "test name",
+    "isAllDay": false
 }

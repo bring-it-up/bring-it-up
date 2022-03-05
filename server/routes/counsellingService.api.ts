@@ -31,14 +31,11 @@ router.post('/', async (req, res) => {
   }
 })
 // update one (only info that is passed e.g. hours)
-router.patch('/:id', getService, async (req, res: any) => {
-  if (req.body.serviceName != null) {
-    res.service.serviceName = req.body.serviceName
-  }
+router.patch('/:id', async (req, res: any) => {
   try {
     // get update version of service if save success
-    const updatedService = await res.service.save()
-    res.json(updatedService)
+    await CounsellingService.findByIdAndUpdate(req.params.id, req.body)
+    res.json({ message: "Updated Service." })
   } catch (error: any) {
     res.status(400).json({ message: error.message })
   }

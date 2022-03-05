@@ -51,6 +51,6 @@ db.on('open', (error) => console.log('Connected to Database'));
 
 // let server accept json
 app.use(express.json())
-const councellingServicesRouter = require('./routes/rest-api.ts')
+const councellingServicesRouter = require('./routes/counsellingService.api.ts')
 // all url that starts with this route will use councellingServicesRouter
 app.use('/counsellingServices', councellingServicesRouter)
