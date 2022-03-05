@@ -15,4 +15,4 @@ to see the result, visit http://localhost:4000/. you should see some text on the
 ```npm start``` \
 see the client on http://localhost:3000/
 
-For testing the APIs: [REST Client for VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client), [Postman](https://www.postman.com/)
+Tools for API testing: [REST Client for VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client), [Postman](https://www.postman.com/)
