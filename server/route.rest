@@ -1,38 +1,42 @@
 # scratch file with example calls to db apis using VS Code plugin REST Client
 
-GET http://localhost:4000/counsellingServices
+GET http://localhost:4000/counselling-services
 
 ###
-GET http://localhost:4000/counsellingServices/6222ae68c10113e79aea0871
+GET http://localhost:4000/counselling-services/622b940195fc76787d2782e2
 
 ###
-POST http://localhost:4000/counsellingServices
+POST http://localhost:4000/counselling-services
 Content-Type: application/json
 
 {
-    "serviceName": "testService",
-    "location": "Alabama",
-    "school": "UBC",
-    "organization": "testService organization",
-    "type": "testService type",
+    "serviceName": "Wellness Together Canada Talk Service",
+    "location": "Not Specified",
+    "school": "None",
+    "organization": "Wellness Together Canada",
+    "type": "Phone Counselling",
     "urgency": "Non-urgent",
-    "targetClients": "testService targetClients",
+    "targetClients": [
+        "Adults (aged 18+)"
+    ],
     "isAllDay": true,
-    "website": "testService.com",
-    "specialty": "testService specialty",
+    "website": "https://wellnesstogether.ca/en-CA/service/talk",
+    "specialty": [
+        "Any Except Crisis"
+    ],
     "isOfferedOnline": false,
-    "delivery": "testService delivery",
-    "description": "testService description wow what a wonderful day."
+    "delivery": [
+        "Phone"
+    ],
+    "description": "Our partners provide free support over the phone, to help you through problems big and small. When you call one of the numbers below, you’ll be connected with a professional counsellor who will listen non-judgmentally to whatever’s on your mind."
 }
+###
+DELETE http://localhost:4000/counselling-services/6222ae68c10113e79aea0871
 
 ###
-DELETE http://localhost:4000/counsellingServices/6222ae68c10113e79aea0871
-
-###
-PATCH http://localhost:4000/counsellingServices/6222b39ce0af657cf2955e88
+PATCH http://localhost:4000/counselling-services/6223e2b28bae61f01f2ab573
 Content-Type: application/json
 
 {
-    "serviceName": "test name",
-    "isAllDay": false
+    "location": "Not Specified"
 }
