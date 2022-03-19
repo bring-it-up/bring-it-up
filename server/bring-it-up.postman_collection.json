@@ -6,25 +6,25 @@
 	},
 	"item": [
 		{
-			"name": "/counsellingServices",
+			"name": "/counselling-services",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{local_url}}/counsellingServices",
+					"raw": "http://{{local_url}}/counselling-services",
 					"protocol": "http",
 					"host": [
 						"{{local_url}}"
 					],
 					"path": [
-						"counsellingServices"
+						"counselling-services"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "/counsellingServices",
+			"name": "/counselling-services",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -38,20 +38,20 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{local_url}}/counsellingServices",
+					"raw": "http://{{local_url}}/counselling-services",
 					"protocol": "http",
 					"host": [
 						"{{local_url}}"
 					],
 					"path": [
-						"counsellingServices"
+						"counselling-services"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "/counsellingServices/:id",
+			"name": "/counselling-services/:id",
 			"request": {
 				"method": "PATCH",
 				"header": [],
@@ -65,13 +65,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{local_url}}/counsellingServices/:id",
+					"raw": "http://{{local_url}}/counselling-services/:id",
 					"protocol": "http",
 					"host": [
 						"{{local_url}}"
 					],
 					"path": [
-						"counsellingServices",
+						"counselling-services",
 						":id"
 					],
 					"variable": [
@@ -85,18 +85,18 @@
 			"response": []
 		},
 		{
-			"name": "/counsellingServices/:id",
+			"name": "/counselling-services/:id",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://{{local_url}}/counsellingServices/:id",
+					"raw": "http://{{local_url}}/counselling-services/:id",
 					"protocol": "http",
 					"host": [
 						"{{local_url}}"
 					],
 					"path": [
-						"counsellingServices",
+						"counselling-services",
 						":id"
 					],
 					"query": [
