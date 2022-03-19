@@ -1,6 +1,4 @@
-﻿# new-project
-
-Welcome to Bring It Up :)
+﻿# Welcome to Bring It Up :)
 
 This repo holds two apps, one React client, and one express NodeJS server.
 1. run ```npm install``` within the 'server' and 'client' folder
