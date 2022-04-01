@@ -1,22 +1,34 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 // interface to reinforce types
-interface ICounsellingServiceSchema {
-    serviceName: String;
+interface ICounsellingService {
+    serviceName: string;
+    location: string;
+    school: string;
+    organization: string;
+    type: string;
+    urgency: string;
+    targetClients: string[];
+    isAllDay: boolean;
+    website: string;
+    specialty: string[];
+    isOfferedOnline: boolean;
+    delivery: string[];
+    description: string;
 }
 
 // when create new doc in db mongoose returns additional info
 // this interface captures that
-interface CounsellingServiceDoc extends mongoose.Document, ICounsellingServiceSchema {
+interface CounsellingServiceDoc extends mongoose.Document, ICounsellingService {
 }
 
 // add build function to model
-interface CounsellingServiceModelInterface extends mongoose.Model<CounsellingServiceDoc> {
-    build(attr: ICounsellingServiceSchema): CounsellingServiceDoc
+interface ICounsellingServiceModel extends mongoose.Model<CounsellingServiceDoc> {
+    build(attr: ICounsellingService): CounsellingServiceDoc
 }
 
 // define object schema
-const CounsellingServiceSchema = new mongoose.Schema({
+const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     serviceName: {
         type: String,
         required: true
@@ -72,11 +84,11 @@ const CounsellingServiceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-})
+});
 
 // attach as static function of the schema
-CounsellingServiceSchema.statics.build = (attr: ICounsellingServiceSchema) => {
-    return new CounsellingService(attr)
-}
+CounsellingServiceSchema.statics.build = (attr: ICounsellingService) => {
+    return new CounsellingService(attr);
+};
 
-export const CounsellingService = mongoose.model('CounsellingService', CounsellingServiceSchema)
+export const CounsellingService: ICounsellingServiceModel = mongoose.model<CounsellingServiceDoc,ICounsellingServiceModel>('CounsellingService', CounsellingServiceSchema);
