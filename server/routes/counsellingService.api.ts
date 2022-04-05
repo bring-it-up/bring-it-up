@@ -5,14 +5,20 @@ import { CounsellingService } from '../models/counsellingService.model';
 
 // get all
 router.get('/', async (req, res) => {
+  const school = req.query.school ? { school: req.query.school } : {};
+  const isOfferedOnline = req.query.isOfferedOnline ? { isOfferedOnline: req.query.isOfferedOnline } : {};
+  const specialty = req.query.specialty ? { specialty: req.query.specialty } : {};
+  const urgency = req.query.urgency ? { urgency: req.query.urgency } : {};
+
   try {
-    const services = await CounsellingService.find();
+    const services = await CounsellingService.find({...school, ...isOfferedOnline, ...specialty, ...urgency});
     res.json(services);
   } catch (err: any) {
     // send status code 500 with message to client (means server's fault)
     res.status(500).json({ message: err.message });
   }
 });
+
 
 // get one
 router.get('/:id', getService, async (req, res: any) => {
