@@ -20,6 +20,7 @@ interface ICounsellingService {
 // when create new doc in db mongoose returns additional info
 // this interface captures that
 interface CounsellingServiceDoc extends mongoose.Document, ICounsellingService {
+    //collation: any
 }
 
 // add build function to model
@@ -83,7 +84,13 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     description: {
         type: String,
         required: true
-    },
+    }
+}, 
+{
+    collation: { 
+        locale: 'en', 
+        strength: 2 
+    }
 });
 
 // attach as static function of the schema

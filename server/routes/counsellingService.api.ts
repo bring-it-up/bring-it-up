@@ -7,11 +7,11 @@ import { CounsellingService } from '../models/counsellingService.model';
 router.get('/', async (req, res) => {
   const school = req.query.school ? { school: req.query.school } : {};
   const isOfferedOnline = req.query.isOfferedOnline ? { isOfferedOnline: req.query.isOfferedOnline } : {};
-  const specialty = req.query.specialty ? { specialty: {$regex: req.query.specialty} } : {};
-  const urgency = req.query.urgency ? { urgency: {$regex: req.query.urgency} } : {};
-
+  const specialty = req.query.specialty ? { specialty: {$regex: req.query.specialty, $options: 'i'} } : {};
+  const urgency = req.query.urgency ? { urgency: {$regex: req.query.urgency, $options: 'i'} } : {};
+  
   try {
-    const services = await CounsellingService.find({...school, ...isOfferedOnline, ...specialty, ...urgency});
+    const services = await CounsellingService.find({...school, ...isOfferedOnline, ...specialty, ...urgency}).collation({ locale: 'en', strength: 2});
     res.json(services);
   } catch (err: any) {
     // send status code 500 with message to client (means server's fault)
