@@ -3,7 +3,6 @@ import RandomComponent from './components/randomComponent';
 import FirstDropdown from "./components/firstDropdown";
 
 function App() {
-  console.log("Line 10");
   return (
     <div>
       <RandomComponent str={"testing"} ></RandomComponent>

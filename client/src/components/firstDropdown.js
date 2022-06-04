@@ -31,34 +31,3 @@ export default function FirstDropdown(props) {
         </Dropdown>
     );
 }
-
-/*
-export default function FirstDropdown({ str }, {strs} ) {
-
-    return (
-        <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                {str}
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu> 
-  
-                <Dropdown.Item href="#/action-1">
-                <Form.Check
-                    inline
-                    label="1"
-                    name="group1"
-                    type="checkbox"
-                    id={`inline-checkbox-1`}
-                /> 
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Option 2</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Option 3</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Option 4</Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
-    );
-}
-
-*/
-
