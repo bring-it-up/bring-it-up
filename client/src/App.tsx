@@ -1,9 +1,14 @@
-import React from 'react';
 import './App.css';
 import RandomComponent from './components/randomComponent';
+import FirstDropdown from "./components/firstDropdown";
 
 function App() {
-  return <RandomComponent str={"blah"} ></RandomComponent>;
+  return (
+    <div>
+      <RandomComponent str={"testing"} ></RandomComponent>
+      <FirstDropdown str="category 1" options={["1", "2", "3"]}></FirstDropdown> 
+    </div>
+  );
 }
 
 export default App;
