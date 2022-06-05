@@ -1,20 +1,23 @@
 import mongoose from 'mongoose';
+import { CounsellingType } from './counselling-type.enum';
+import { DeliveryMethod } from './delivery-method.enum';
+import { UrgencyLevel } from './urgency-level.enum';
 
 // interface to reinforce types
 interface ICounsellingService {
     serviceName: string;
-    location: string;
-    school: string;
+    location?: string;
+    school?: string;
     organization: string;
-    type: string;
-    urgency: string;
+    type: CounsellingType[];
+    urgency: UrgencyLevel[];
     targetClients: string[];
     isAllDay: boolean;
     website: string;
     specialty: string[];
-    isOfferedOnline: boolean;
-    delivery: string[];
+    delivery: DeliveryMethod[];
     description: string;
+    logo?: string;
 }
 
 // when create new doc in db mongoose returns additional info
@@ -36,23 +39,24 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     },
     location: {
         type: String,
-        required: true
+        required: false
     },
     school: {
         type: String,
-        required: true
+        required: false
     },
     organization: {
         type: String,
         required: true
     },
     type: {
-        type: String,
+        type: [String],
+        enum: CounsellingType,
         required: true
     },
     urgency: {
-        type: String,
-        enum: ['Urgent', 'Non-urgent', 'Urgent and Non-urgent'],
+        type: [String],
+        enum: UrgencyLevel,
         required: true
     },
     targetClients: {
@@ -73,12 +77,9 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
         default: undefined,
         required: true
     },
-    isOfferedOnline: {
-        type: Boolean,
-        required: true
-    },
     delivery: {
         type: [String],
+        enum: DeliveryMethod,
         required: true
     },
     description: {
