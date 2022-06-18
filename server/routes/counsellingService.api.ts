@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
                       {};
   
   try {
-    const services = await CounsellingService.find({...school, ...isOfferedOnline, ...specialty, ...urgency}).collation({ locale: 'en', strength: 2});
+    const services = await CounsellingService.find({$and: [{...school, ...isOfferedOnline, ...specialty, ...urgency}]}).collation({ locale: 'en', strength: 2});
     res.json(services);
   } catch (err: any) {
     // send status code 500 with message to client (means server's fault)
