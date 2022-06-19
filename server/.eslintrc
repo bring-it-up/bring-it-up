@@ -8,7 +8,8 @@
         "space-before-blocks": "off",
         "@typescript-eslint/space-before-blocks": ["error"],
         "semi": "off",
-        "@typescript-eslint/semi": ["error"]
+        "@typescript-eslint/semi": ["error"],
+        "@typescript-eslint/no-var-requires": "off"
     },
     "extends": [
       "eslint:recommended",
