@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { CounsellingType } from './counselling-type.enum';
+import { ServiceType } from './counselling-type.enum';
 import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
 
@@ -9,7 +9,7 @@ interface ICounsellingService {
     location?: string;
     school?: string;
     organization: string;
-    type: CounsellingType[];
+    type: ServiceType[];
     urgency: UrgencyLevel[];
     targetClients: string[];
     isAllDay: boolean;
@@ -51,7 +51,7 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     },
     type: {
         type: [String],
-        enum: CounsellingType,
+        enum: ServiceType,
         required: true
     },
     urgency: {
