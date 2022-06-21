@@ -15,6 +15,7 @@ interface ICounsellingService {
     isOfferedOnline: boolean;
     delivery: string[];
     description: string;
+    secondaryID: string;
 }
 
 // when create new doc in db mongoose returns additional info
@@ -84,7 +85,11 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     description: {
         type: String,
         required: true
-    }
+    },
+    secondaryID: {
+        type: String,
+        required: false
+    },
 }, 
 {
     collation: { 
