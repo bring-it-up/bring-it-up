@@ -15,11 +15,13 @@ interface ICounsellingService {
     isOfferedOnline: boolean;
     delivery: string[];
     description: string;
+    secondaryID: string;
 }
 
 // when create new doc in db mongoose returns additional info
 // this interface captures that
 interface CounsellingServiceDoc extends mongoose.Document, ICounsellingService {
+    //collation: any
 }
 
 // add build function to model
@@ -84,6 +86,16 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
         type: String,
         required: true
     },
+    secondaryID: {
+        type: String,
+        required: false
+    },
+}, 
+{
+    collation: { 
+        locale: 'en', 
+        strength: 2 
+    }
 });
 
 // attach as static function of the schema
