@@ -8,7 +8,6 @@ function GetData() {
     useEffect(() => {
         fetch("http://localhost:4000/counselling-services")
         .then(res => res.json())
-        .then(temp => console.log(temp))
         .then(parsedData => setData(parsedData))
         .catch((e) => console.log(e));
     }, [])
@@ -16,7 +15,7 @@ function GetData() {
     for (let service of data) {
       serviceNames.push(service.serviceName);
     }
-    console.log(serviceNames);
+    
     return serviceNames;
   }
   
@@ -25,7 +24,7 @@ const Services = () => {
     return (
         <>
             <h1>Services</h1>
-            <p>services: {GetData()}</p>
+            <p>These are the services in database: {GetData()}</p>
         </>
     );
 }
