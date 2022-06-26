@@ -2,24 +2,6 @@ import {Nav, Navbar, NavLink} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// export default function Navigation(){
-//     return (
-//         <Nav variant="pills" defaultActiveKey="/home">
-//             <Nav.Item>
-//                 <Nav.Link href="/home">Active</Nav.Link>
-//             </Nav.Item>
-//             <Nav.Item>
-//                 <Nav.Link eventKey="link-1">Option 2</Nav.Link>
-//             </Nav.Item>
-//             <Nav.Item>
-//                 <Nav.Link eventKey="disabled" disabled>
-//                     Disabled
-//                 </Nav.Link>
-//             </Nav.Item>
-//         </Nav>
-//     );
-// }
-
 const Navigation = () => {
     return (
         <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
