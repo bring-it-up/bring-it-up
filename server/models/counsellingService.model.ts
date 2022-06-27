@@ -9,8 +9,8 @@ interface ICounsellingService {
     location?: string;
     school?: string;
     organization: string;
-    type: ServiceType[];
-    urgency: UrgencyLevel[];
+    serviceType: ServiceType[];
+    urgency: UrgencyLevel;
     targetClients: string[];
     isAllDay: boolean;
     website: string;
@@ -49,13 +49,13 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
         type: String,
         required: true
     },
-    type: {
+    serviceType: {
         type: [String],
         enum: ServiceType,
         required: true
     },
     urgency: {
-        type: [String],
+        type: String,
         enum: UrgencyLevel,
         required: true
     },
