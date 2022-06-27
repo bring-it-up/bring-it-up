@@ -19,8 +19,7 @@ function App(): ReactElement {
           <Route exact path='/services' component={Services}/>
         </Switch>
       </Router>
-      {/* end navbar */}
-      <FirstDropdown str="category 1" options={["1", "2", "3"]}></FirstDropdown> 
+      {/* end navbar */} 
     </div>
   );
 }
