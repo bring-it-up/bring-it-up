@@ -1,17 +1,22 @@
+import { ReactElement } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 
+type Props = {
+    str: string;
+    options: string[];
+  };
 
-export default function FirstDropdown(props) {
+const FirstDropdown = ({ str, options }: Props): ReactElement => {
 
     return (
         <Dropdown className="d-inline mx-2" autoClose = "outside">
             <Dropdown.Toggle variant="success" id="dropdown-autoclose-outside">
-                {props.str}
+                {str}
             </Dropdown.Toggle>
             <Dropdown.Menu> 
-            {props.options.map((option) => (
+            {options.map((option) => (
                  
                     <Dropdown.Item href="#/{option}">
                         <Form.Check
@@ -31,3 +36,5 @@ export default function FirstDropdown(props) {
         </Dropdown>
     );
 }
+
+export default FirstDropdown;

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { ReactElement, useState, useEffect } from 'react';
 
-function GetData() {
-    var [data, setData] = useState([]);
-    var serviceNames = [];
+function GetData(): string[] {
+    var [data, setData] = useState<any[]>([]);
+    var serviceNames: string[] = [];
   
     // this returns array of all service objects
     useEffect(() => {
@@ -10,7 +10,7 @@ function GetData() {
         .then(res => res.json())
         .then(parsedData => setData(parsedData))
         .catch((e) => console.log(e));
-    }, [])
+    }, []);
   
     for (let service of data) {
       serviceNames.push(service.serviceName);
@@ -20,7 +20,7 @@ function GetData() {
   }
   
 
-const Services = () => {
+const Services = (): ReactElement => {
     return (
         <>
             <h1>Services</h1>

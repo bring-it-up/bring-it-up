@@ -1,8 +1,9 @@
+import { ReactElement } from "react";
 import {Nav, Navbar, NavLink} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Navigation = () => {
+const Navigation = (): ReactElement => {
     return (
         <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
             <Navbar.Toggle aria-controls="navbarScroll" data-bs-target="#navbarScroll" />
