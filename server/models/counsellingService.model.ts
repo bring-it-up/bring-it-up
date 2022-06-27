@@ -89,19 +89,9 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     secondaryID: {
         type: String,
         required: false,
-        index: true
-
+        unique: true
     },
-
 });
-
-
-CounsellingServiceSchema.index({ secondaryID: 1 } ); // index
-
-//CounsellingServiceSchema.index({ secondaryID: 1 }, { unique: true }); // index
-//db.CounsellingServiceSchema.createIndexes({ secondaryID: 1 }, { unique: true }); // index
-
-
 
 // attach as static function of the schema
 CounsellingServiceSchema.statics.build = (attr: ICounsellingService) => {
@@ -109,3 +99,8 @@ CounsellingServiceSchema.statics.build = (attr: ICounsellingService) => {
 };
 
 export const CounsellingService: ICounsellingServiceModel = mongoose.model<CounsellingServiceDoc,ICounsellingServiceModel>('CounsellingService', CounsellingServiceSchema);
+
+CounsellingService.on('index', error => {
+    // If there is an error with creating an index, this will be logged here
+    if (error) console.log(error);
+});
