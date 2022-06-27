@@ -10,7 +10,7 @@ function GetData(): string[] {
         .then(res => res.json())
         .then(parsedData => setData(parsedData))
         .catch((e) => console.log(e));
-    }, [])
+    }, []);
   
     for (let service of data) {
       serviceNames.push(service.serviceName);
