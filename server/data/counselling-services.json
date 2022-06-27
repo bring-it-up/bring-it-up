@@ -27,12 +27,11 @@
         "isOfferedOnline": true,
         "delivery": [
             "Online",
-            "Video",
             "Phone",
             "App"
         ],
         "description": "Offered by Aspiria, the UBC Student Assistance Program (SAP) is a free, 24/7 wellness resource for students. Services include personal counselling, life coaching, group programs and more based on your needs."
-        },
+    },
     {
         "serviceName": "Group Counselling Programs",
         "school": "UBC",
