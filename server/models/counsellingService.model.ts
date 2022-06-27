@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { CounsellingType } from './counselling-type.enum';
+import { ServiceType } from './counselling-type.enum';
 import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
 
@@ -9,8 +9,8 @@ interface ICounsellingService {
     location?: string;
     school?: string;
     organization: string;
-    type: CounsellingType[];
-    urgency: UrgencyLevel[];
+    serviceType: ServiceType[];
+    urgency: UrgencyLevel;
     targetClients: string[];
     isAllDay: boolean;
     website: string;
@@ -23,6 +23,7 @@ interface ICounsellingService {
 // when create new doc in db mongoose returns additional info
 // this interface captures that
 interface CounsellingServiceDoc extends mongoose.Document, ICounsellingService {
+    //collation: any
 }
 
 // add build function to model
@@ -48,13 +49,13 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
         type: String,
         required: true
     },
-    type: {
+    serviceType: {
         type: [String],
-        enum: CounsellingType,
+        enum: ServiceType,
         required: true
     },
     urgency: {
-        type: [String],
+        type: String,
         enum: UrgencyLevel,
         required: true
     },
@@ -84,7 +85,13 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     description: {
         type: String,
         required: true
-    },
+    }
+}, 
+{
+    collation: { 
+        locale: 'en', 
+        strength: 2 
+    }
 });
 
 // attach as static function of the schema
