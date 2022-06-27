@@ -6,11 +6,26 @@ import { CounsellingService } from '../models/counsellingService.model';
 // get all
 router.get('/', async (req, res) => {
   const school = req.query.school ? { school: req.query.school } : {};
-  const specialty = req.query.specialty ? { specialty: {$regex: req.query.specialty} } : {};
-  const urgency = req.query.urgency ? { urgency: {$regex: req.query.urgency} } : {};
+  const isOfferedOnline = req.query.isOfferedOnline ? { isOfferedOnline: req.query.isOfferedOnline } : {};
+  const urgency = req.query.urgency ? { urgency: {$regex: req.query.urgency, $options: 'i'} } : {};
 
+  const optRegexp : RegExp[] = [];
+  if (req.query.specialty && Array.isArray(req.query.specialty)) {
+    (req.query.specialty as string[]).forEach(function(opt: string) {
+      optRegexp.push( new RegExp(opt, "i") );
+    }); 
+  }
+
+  const specialty = req.query.specialty ? 
+                      optRegexp.length == 0 ? 
+                        { specialty: {$regex: req.query.specialty, $options: 'i'} }
+                      : 
+                        { specialty: {$in: optRegexp} }
+                    :
+                      {};
+  
   try {
-    const services = await CounsellingService.find({...school, ...specialty, ...urgency});
+    const services = await CounsellingService.find({$and: [{...school, ...isOfferedOnline, ...specialty, ...urgency}]}).collation({ locale: 'en', strength: 2});
     res.json(services);
   } catch (err: any) {
     // send status code 500 with message to client (means server's fault)

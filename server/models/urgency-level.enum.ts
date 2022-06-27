@@ -1,5 +1,6 @@
 export enum UrgencyLevel {
-    CRISIS = 'Crisis',
-    SHORT_TERM = 'Short Term',
-    LONG_TERM = 'Long Term'
+    IMMEDIATE = 'Immediate',
+    SAME_DAY = 'Same Day',
+    SAME_WEEK = 'Same Week',
+    SAME_MONTH = 'Same Month'
 }

@@ -3,13 +3,13 @@
 GET http://localhost:4000/counselling-services
 
 ###
-GET http://localhost:4000/counselling-services?isOfferedOnline=true&urgency=Non-urgent
+GET http://localhost:4000/counselling-services?school=uBc
 
 ###
-GET http://localhost:4000/counselling-services?school=UBC
+GET http://localhost:4000/counselling-services?isOfferedOnline=true&school=UBC
 
 ###
-GET http://localhost:4000/counselling-services?specialty=stress
+GET http://localhost:4000/counselling-services?specialty=anxiety&specialty=stress
 
 ###
 GET http://localhost:4000/counselling-services/622b940195fc76787d2782e2
