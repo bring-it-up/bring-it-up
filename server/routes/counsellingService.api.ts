@@ -36,10 +36,24 @@ router.get('/', async (req, res) => {
 
 // get one
 router.get('/:id', getService, async (req, res: any) => {
+
+
+
   res.send(res.service);
 });
-// create one
+
 router.post('/', async (req, res) => {
+
+
+  console.log(req.body)
+
+
+
+  req.body.secondaryID=req.body.serviceName.toLowerCase().replace(/\s/g, '-')
+
+
+  console.log(req.body)
+
   const service = CounsellingService.build(req.body);
   try {
     const newService = await service.save();
@@ -52,6 +66,7 @@ router.post('/', async (req, res) => {
 });
 // update one (only info that is passed e.g. hours)
 router.patch('/:id', async (req, res: any) => {
+
   try {
     // get update version of service if save success
     await CounsellingService.findByIdAndUpdate(req.params.id, req.body);

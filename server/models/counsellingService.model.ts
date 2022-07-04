@@ -18,12 +18,12 @@ interface ICounsellingService {
     delivery: DeliveryMethod[];
     description: string;
     logo?: string;
+    secondaryID: string;
 }
 
 // when create new doc in db mongoose returns additional info
 // this interface captures that
 interface CounsellingServiceDoc extends mongoose.Document, ICounsellingService {
-    //collation: any
 }
 
 // add build function to model
@@ -85,13 +85,13 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     description: {
         type: String,
         required: true
-    }
-}, 
-{
-    collation: { 
-        locale: 'en', 
-        strength: 2 
-    }
+    },
+
+    secondaryID: {
+        type: String,
+        required: false,
+        unique: true
+    },
 });
 
 // attach as static function of the schema
@@ -100,3 +100,8 @@ CounsellingServiceSchema.statics.build = (attr: ICounsellingService) => {
 };
 
 export const CounsellingService: ICounsellingServiceModel = mongoose.model<CounsellingServiceDoc,ICounsellingServiceModel>('CounsellingService', CounsellingServiceSchema);
+
+CounsellingService.on('index', error => {
+    // If there is an error with creating an index, this will be logged here
+    if (error) console.log(error);
+});
