@@ -4,7 +4,7 @@ import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
 
 // interface to reinforce types
-interface ICounsellingService {
+export interface ICounsellingService {
     serviceName: string;
     location?: string;
     school?: string;
