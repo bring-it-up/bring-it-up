@@ -2,7 +2,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-require('dotenv').config(".env");
+
+const envFile = process.env.NODE_ENV === 'test' ? 'test.env' : '.env';
+
+require('dotenv').config({ path: envFile });
 
 // Initialize the express engine
 const app: express.Application = express();
@@ -54,3 +57,5 @@ app.use(express.json());
 const councellingServicesRouter = require('./routes/counsellingService.api.ts');
 // all url that starts with this route will use councellingServicesRouter
 app.use('/counselling-services', councellingServicesRouter);
+
+export default app;
