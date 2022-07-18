@@ -73,11 +73,11 @@ async function getCounsellingServices(nameQuery: any,
     }); 
   }
 
-  const deliveryMethod = deliveryQuery ? 
+  const delivery = deliveryQuery ? 
     optRegexpDeliveryMethod.length == 0 ? 
-      { deliveryMethod: {$regex: deliveryQuery, $options: 'i'} }
+      { delivery: {$regex: deliveryQuery, $options: 'i'} }
       : 
-      { deliveryMethod: {$in: optRegexpDeliveryMethod} }
+      { delivery: {$in: optRegexpDeliveryMethod} }
     :
     {};
 
@@ -90,7 +90,7 @@ async function getCounsellingServices(nameQuery: any,
                                                             ...urgency,
                                                             ...targetClients,
                                                             ...isAllDay,
-                                                            ...deliveryMethod,
+                                                            ...delivery,
                                                             ...description}] }).collation({ locale: 'en', strength: 2 }).lean();
 
   return services;
