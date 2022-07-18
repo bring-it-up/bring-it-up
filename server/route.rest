@@ -3,7 +3,7 @@
 GET http://localhost:4000/counselling-services
 
 ###
-GET http://localhost:4000/counselling-services?school=uBc
+GET http://localhost:4000/counselling-services?delivery=app
 
 ###
 GET http://localhost:4000/counselling-services?isOfferedOnline=true&school=UBC
@@ -53,7 +53,46 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:4000/counselling-services/6222ae68c10113e79aea0871
+POST http://localhost:4000/counselling-services
+Content-Type: application/json
+
+{
+    "serviceName": "Student test",
+    "school": "SFU",
+    "location": "Vancouver",
+    "organization": "Test",
+    "serviceType": [
+        "Counselling",
+        "Medical"
+    ],
+    "urgency": "Same Day",
+    "targetClients": [
+        "SFU students"
+    ],
+    "isAllDay": false,
+    "website": "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
+    "specialty": [
+        "Stress",
+        "Anxiety",
+        "Depression",
+        "Addiction",
+        "Crisis",
+        "Grief",
+        "Trauma",
+        "Fitness",
+        "Nutrition",
+        "Sleep"
+    ],
+    "isOfferedOnline": true,
+    "delivery": [
+        "Online",
+        "Phone"
+    ],
+    "description": "test"
+}
+
+###
+DELETE http://localhost:4000/counselling-services/62c23ea0246374345e9ded70
 
 ###
 PATCH http://localhost:4000/counselling-services/6223e2b28bae61f01f2ab573
