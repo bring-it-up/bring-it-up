@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec npx ts-node index.ts",
-    "test": "cross-env NODE_ENV=test mocha --require ts-node/register --exit --require mocha-suppress-logs tests/**/*.spec.ts"
+    "test": "cross-env NODE_ENV=test mocha --require ts-node/register --exit --require mocha-suppress-logs tests/**/*.spec.ts",
+    "test:unit": "cross-env NODE_ENV=test mocha --require ts-node/register --exit --require mocha-suppress-logs tests/unit/**/*.spec.ts",
+    "test:int": "cross-env NODE_ENV=test mocha --require ts-node/register --exit --require mocha-suppress-logs tests/integration/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
