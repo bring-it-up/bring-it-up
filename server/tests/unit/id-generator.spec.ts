@@ -12,7 +12,27 @@ describe('ID Generator', () => {
     };
 
     runTest(
-        'should return an alphanumeric lowercase ID separated by dashes', 
+        'should return a lowercase ID separated by dashes', 
         'UBC Counselling Services', 'ubc-counselling-services'
+    );
+
+    runTest(
+        'should remove non-alphanumeric characters', 
+        'Student Assistance Program (UBC)', 'student-assistance-program-ubc'
+    );
+
+    runTest(
+        'should create a single word alphanumeric ID', 
+        'Here2Talk', 'here2talk'
+    );
+
+    runTest(
+        'should remove existing dashes', 
+        'Counselling Services - Capilano', 'counselling-services-capilano'
+    );
+
+    runTest(
+        'should remove extra white spaces', 
+        'SFU My   SSP', 'sfu-my-ssp'
     );
 });
