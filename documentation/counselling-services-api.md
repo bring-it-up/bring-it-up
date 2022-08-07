@@ -38,7 +38,38 @@ Query Params:
 
 ### Response
 
-...
+Example response for GET http://localhost:4000/counselling-services?specialty=trauma&school=SFU:
+
+    [
+    {
+        "_id": "62e455344e29966a054f9dda",
+        "serviceName": "SFU Indigenous Counsellors",
+        "school": "SFU",
+        "organization": "SFU Health & Counselling Services (HCS)",
+        "serviceType": [
+        "Counselling"
+        ],
+        "urgency": "Same Month",
+        "targetClients": [
+        "SFU students"
+        ],
+        "isAllDay": false,
+        "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
+        "specialty": [
+        "Stress",
+        "Anxiety",
+        "Depression",
+        "Grief",
+        "Trauma"
+        ],
+        "delivery": [
+        "In Person"
+        ],
+        "description": "Counselling for Indigenous students is available with Tanu Gamble or Jennifer Reandy. To book an appointment, email isc_well@sfu.ca or learn more about counselling for Indigenous students here.",
+        "secondaryID": "sfu-indigenous-counsellors",
+        "__v": 0
+    }
+    ]
 
 ### Examples
 
