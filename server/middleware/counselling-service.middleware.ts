@@ -1,4 +1,4 @@
-import {body, CustomValidator, validationResult} from "express-validator";
+import {body, CustomValidator, matchedData, validationResult} from "express-validator";
 import {Request} from "express";
 import {ServiceType} from "../models/counselling-type.enum";
 import {UrgencyLevel} from "../models/urgency-level.enum";
@@ -49,12 +49,18 @@ export const postRules = [
     body('organization')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
+    body('serviceType')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
     body('serviceType.*')
         .exists({checkNull: true, checkFalsy:true})
         .custom(isValidServiceType),
     body('urgency')
         .exists({checkNull: true, checkFalsy:true})
         .custom(isValidUrgency),
+    body('targetClients')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
     body('targetClients.*')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
@@ -64,9 +70,15 @@ export const postRules = [
     body('website')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
+    body('specialty')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
     body('specialty.*')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
+    body('delivery')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
     body('delivery.*')
         .exists({checkNull: true, checkFalsy:true})
         .custom(isValidDelivery),
@@ -96,6 +108,10 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
+    body('serviceType')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
     body('serviceType.*')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
@@ -104,6 +120,10 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .custom(isValidUrgency),
+    body('targetClients')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
     body('targetClients.*')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
@@ -116,10 +136,18 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
+    body('specialty')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
     body('specialty.*')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
+    body('delivery')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
     body('delivery.*')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
@@ -137,7 +165,10 @@ export const patchRules = [
 export function validateRequest(req: Request) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        // console.log(errors);
         throw new InvalidRequestError("Invalid request");
     }
+}
+
+export function filterRequest(req: Request) {
+    return matchedData(req, { locations: ['body'] });
 }
