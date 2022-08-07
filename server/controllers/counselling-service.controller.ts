@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { CounsellingService } from '../models/counsellingService.model';
 import CSService from '../services/counselling-service.service';
+import {validatePost} from "./counselling-service.validator";
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
@@ -38,11 +38,11 @@ async function getCounsellingService(req: Request, res: Response) {
 }
 
 async function addCounsellingService(req: Request, res: Response) {
-    req.body.secondaryID = req.body.serviceName.toLowerCase().replace(/\s/g, '-');
+    // console.log(req.body);
 
-    console.log(req.body);
-  
     try {
+      validatePost(req);
+      req.body.secondaryID = req.body.serviceName.toLowerCase().replace(/\s/g, '-');
       const newService = await CSService.createCounsellingService(req.body);
       // 201 means successfully created object
       res.status(201).json(newService);
