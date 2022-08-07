@@ -1,6 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import CounsellingServiceController from '../controllers/counselling-service.controller';
+import {patchRules, postRules} from "../middleware/counselling-service.middleware";
 
 
 // get all
@@ -10,10 +11,10 @@ router.get('/', CounsellingServiceController.getCounsellingServices);
 router.get('/:id', CounsellingServiceController.getCounsellingService);
 
 // create
-router.post('/', CounsellingServiceController.addCounsellingService);
+router.post('/', postRules, CounsellingServiceController.addCounsellingService);
 
 // update one (only info that is passed e.g. hours)
-router.patch('/:id', CounsellingServiceController.updateCounsellingService);
+router.patch('/:id', patchRules, CounsellingServiceController.updateCounsellingService);
 
 // delete one
 router.delete('/:id', CounsellingServiceController.deleteCounsellingService);
