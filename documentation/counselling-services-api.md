@@ -32,7 +32,6 @@ Query Params:
 | `urgency` | `UrgencyLevel array` | The maximum level of urgency the service caters to, one or more of: "Immediate", "Same Day", "Same Week", "Same Month" |
 | `targetClients` | `string array` | The clients the service is targeted towards, e.g. "UBC students" or "Indigenous people, all ages" |
 | `specialty` | `string array` | The areas the service specializes in, e.g. "Trauma" or "Addiction" |
-| `isOfferedOnline` | `boolean` | Whether or not the service is available online |
 | `delivery` | `DeliveryMethod array` | Format(s) in which the service is offered, one or more of: "In person", "Online", "Phone", "App", "Email" |
 | `description` | `string` | A description of the service |
 
@@ -76,7 +75,7 @@ Example response for GET http://localhost:4000/counselling-services?specialty=tr
 | Request  | Should Return         | 
 |:-----------|:-------------|
 |GET http://localhost:4000/counselling-services?delivery=app | All services that offer delivery via app (including those that use additional delivery methods) |
-|GET http://localhost:4000/counselling-services?isOfferedOnline=true&school=UBC | All services that are offered online AND have UBC as their associated school |
+|GET http://localhost:4000/counselling-services?delivery=online&school=UBC | All services that are offered online AND have UBC as their associated school |
 |GET http://localhost:4000/counselling-services?specialty=anxiety&specialty=stress | All services that specialize in at least one of anxiety or stress |
 
 
