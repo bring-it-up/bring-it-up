@@ -90,3 +90,13 @@ Returns the counselling service with the specified ID.
 Path Params:
 - `id`: the ID of the service
 
+### Response
+
+Currently, the response takes the same shape as the response example in the `GET` `/counselling-services` endpoint, except it is a single object instead of an array.
+
+
+### Examples
+
+| Request  | Should Return         | 
+|:-----------|:-------------|
+|GET http://localhost:4000/counselling-services/isc-wellness-program | An object containing information about the ISC Wellness Program at SFU |
