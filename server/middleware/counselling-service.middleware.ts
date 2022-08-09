@@ -1,5 +1,5 @@
 import {body, CustomValidator, matchedData, validationResult} from "express-validator";
-import {Request} from "express";
+import {NextFunction, Request, Response} from "express";
 import {ServiceType} from "../models/counselling-type.enum";
 import {UrgencyLevel} from "../models/urgency-level.enum";
 import {DeliveryMethod} from "../models/delivery-method.enum";
@@ -14,7 +14,7 @@ const isValidServiceType: CustomValidator = type => {
     if (Object.values(ServiceType).includes(type as ServiceType)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid service type");
+        throw new InvalidRequestError("invalid value");
     }
 }
 
@@ -22,7 +22,7 @@ const isValidUrgency: CustomValidator = urgency => {
     if (Object.values(UrgencyLevel).includes(urgency as UrgencyLevel)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid urgency");
+        throw new InvalidRequestError("invalid value");
     }
 };
 
@@ -30,7 +30,7 @@ const isValidDelivery: CustomValidator = delivery => {
     if (Object.values(DeliveryMethod).includes(delivery as DeliveryMethod)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid delivery");
+        throw new InvalidRequestError("invalid value");
     }
 }
 
@@ -51,7 +51,8 @@ export const postRules = [
         .isString(),
     body('serviceType')
         .exists({checkNull: true, checkFalsy:true})
-        .isArray({min: 1}),
+        .isArray({min: 1})
+        .withMessage("serviceType is not an array"),
     body('serviceType.*')
         .exists({checkNull: true, checkFalsy:true})
         .custom(isValidServiceType),
@@ -63,7 +64,8 @@ export const postRules = [
         .isArray({min: 1}),
     body('targetClients.*')
         .exists({checkNull: true, checkFalsy:true})
-        .isString(),
+        .isString()
+        .withMessage("targetClients is not an array"),
     body('isAllDay')
         .exists({checkNull: true})
         .isBoolean(),
@@ -72,13 +74,15 @@ export const postRules = [
         .isString(),
     body('specialty')
         .exists({checkNull: true, checkFalsy:true})
-        .isArray({min: 1}),
+        .isArray({min: 1})
+        .withMessage("specialty is not an array"),
     body('specialty.*')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
     body('delivery')
         .exists({checkNull: true, checkFalsy:true})
-        .isArray({min: 1}),
+        .isArray({min: 1})
+        .withMessage("delivery is not an array"),
     body('delivery.*')
         .exists({checkNull: true, checkFalsy:true})
         .custom(isValidDelivery),
@@ -111,7 +115,8 @@ export const patchRules = [
     body('serviceType')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
-        .isArray({min: 1}),
+        .isArray({min: 1})
+        .withMessage("serviceType is not an array"),
     body('serviceType.*')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
@@ -123,7 +128,8 @@ export const patchRules = [
     body('targetClients')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
-        .isArray({min: 1}),
+        .isArray({min: 1})
+        .withMessage("targetClients is not an array"),
     body('targetClients.*')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
@@ -139,7 +145,8 @@ export const patchRules = [
     body('specialty')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
-        .isArray({min: 1}),
+        .isArray({min: 1})
+        .withMessage("specialty is not an array"),
     body('specialty.*')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
@@ -147,7 +154,8 @@ export const patchRules = [
     body('delivery')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
-        .isArray({min: 1}),
+        .isArray({min: 1})
+        .withMessage("delivery is not an array"),
     body('delivery.*')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
@@ -162,11 +170,12 @@ export const patchRules = [
         .isString(),
 ]
 
-export function validateRequest(req: Request) {
+export function validateRequest(req: Request, res: Response, next: NextFunction) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        throw new InvalidRequestError("Invalid request");
+        return res.status(400).json({ errors: errors.array() });
     }
+    next();
 }
 
 export function filterRequest(req: Request) {

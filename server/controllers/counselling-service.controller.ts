@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import CSService from '../services/counselling-service.service';
-import { filterRequest, validateRequest } from "../middleware/counselling-service.middleware";
+import { filterRequest } from "../middleware/counselling-service.middleware";
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
@@ -41,7 +41,6 @@ async function addCounsellingService(req: Request, res: Response) {
     // console.log(req.body);
 
     try {
-      validateRequest(req);
       req.body = filterRequest(req);
       req.body.secondaryID = req.body.serviceName.toLowerCase().replace(/\s/g, '-');
       const newService = await CSService.createCounsellingService(req.body);
@@ -55,7 +54,6 @@ async function addCounsellingService(req: Request, res: Response) {
 
 async function updateCounsellingService(req: Request, res: Response) {
     try {
-        validateRequest(req)
         req.body = filterRequest(req);
         // get update version of service if save success
         await CSService.updateCounsellingService(req.params.id, req.body);
