@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { CounsellingService } from '../models/counsellingService.model';
 import CSService from '../services/counselling-service.service';
+import { filterRequest } from "../middleware/counselling-service.middleware";
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
@@ -27,7 +27,7 @@ async function getCounsellingService(req: Request, res: Response) {
     try {
       const service = await CSService.getCounsellingService(req.params.id);
       if (service == null) {
-        // means we couldnt find it
+        // means we couldn't find it
         return res.status(404).json({ message: 'Cannot find service' });
       } else {
         res.send(service);
@@ -38,11 +38,11 @@ async function getCounsellingService(req: Request, res: Response) {
 }
 
 async function addCounsellingService(req: Request, res: Response) {
-    req.body.secondaryID = req.body.serviceName.toLowerCase().replace(/\s/g, '-');
+    // console.log(req.body);
 
-    console.log(req.body);
-  
     try {
+      req.body = filterRequest(req);
+      req.body.secondaryID = req.body.serviceName.toLowerCase().replace(/\s/g, '-');
       const newService = await CSService.createCounsellingService(req.body);
       // 201 means successfully created object
       res.status(201).json(newService);
@@ -54,6 +54,7 @@ async function addCounsellingService(req: Request, res: Response) {
 
 async function updateCounsellingService(req: Request, res: Response) {
     try {
+        req.body = filterRequest(req);
         // get update version of service if save success
         await CSService.updateCounsellingService(req.params.id, req.body);
         res.json({ message: "Updated Service." });
