@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { CounsellingService } from '../models/counsellingService.model';
 import CSService from '../services/counselling-service.service';
+import { generateSecondaryId } from '../utils/id-generator.util';
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
@@ -38,7 +39,7 @@ async function getCounsellingService(req: Request, res: Response) {
 }
 
 async function addCounsellingService(req: Request, res: Response) {
-    req.body.secondaryID = req.body.serviceName.toLowerCase().replace(/\s/g, '-');
+    req.body.secondaryID = generateSecondaryId(req.body.serviceName);
 
     console.log(req.body);
   
