@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import CSService from '../services/counselling-service.service';
+import { generateSecondaryId } from '../utils/id-generator.util';
 import { filterRequest } from "../middleware/counselling-service.middleware";
 
 async function getCounsellingServices(req: Request, res: Response) {  
@@ -42,7 +43,7 @@ async function addCounsellingService(req: Request, res: Response) {
 
     try {
       req.body = filterRequest(req);
-      req.body.secondaryID = req.body.serviceName.toLowerCase().replace(/\s/g, '-');
+      req.body.secondaryID = generateSecondaryId(req.body.serviceName);
       const newService = await CSService.createCounsellingService(req.body);
       // 201 means successfully created object
       res.status(201).json(newService);

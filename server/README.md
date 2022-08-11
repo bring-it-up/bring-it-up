@@ -16,6 +16,20 @@ Before running tests, make sure you have a local `test.env` file in this directo
 
 Run the tests using the command: `npm test`
 
+## Unit Tests
+
+Unit tests are in the `server/tests/unit` directory.
+
+Run the unit tests: `npm run test:unit`
+
+## Integration Tests
+
+Integration tests are in the `server/tests/integration` directory.
+
+Run the integration tests: `npm run test:int`
+
+Our "integration" tests use a live database to test the functionality of the endpoints together. This is a bit more like "system" testing, but for our purposes it will get the job done.
+
 # Testing Endpoints Manually
 
 To test the API during dev, you can use a REST client to send the requests and view the responses.
