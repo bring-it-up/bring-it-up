@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../index';
 import { CounsellingService } from '../../models/counsellingService.model';
-import { service1Data, service2Data } from '../data';
+import { service1Data, service2Data } from './data/counselling-service-data';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const should = chai.should();
 

@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import server from '../index';
+import server from '../../index';
 import {
     invalidDeliveryData,
     invalidIsAllDayData,
@@ -11,7 +11,7 @@ import {
     invalidUrgencyData,
     missingServiceNameData,
     nonArrayTargetClientsData
-} from "./invalida-request-data";
+} from "./data/invalid-request-data";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const should = chai.should();
 
