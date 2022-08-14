@@ -10,7 +10,8 @@ async function getCounsellingServices(nameQuery: any,
                                       isAllDayQuery: any,
                                       specialtyQuery: any,
                                       deliveryQuery: any,
-                                      descriptionQuery: any): Promise<ICounsellingService[]> {
+                                      descriptionQuery: any,
+                                      searchString?: any): Promise<ICounsellingService[]> {
   // TODO: Move input validation to controller
 
   const serviceName = nameQuery ? { serviceName: { $regex: nameQuery, $options: 'i' } } : {};
@@ -81,6 +82,8 @@ async function getCounsellingServices(nameQuery: any,
     :
     {};
 
+  const search = {$text: {$search: searchString}};
+
   const services = await CounsellingService.find({ $and: [{ ...serviceName, 
                                                             ...location,
                                                             ...school, 
@@ -91,7 +94,8 @@ async function getCounsellingServices(nameQuery: any,
                                                             ...targetClients,
                                                             ...isAllDay,
                                                             ...delivery,
-                                                            ...description}] }).collation({ locale: 'en', strength: 2 }).lean();
+                                                            ...description,
+                                                            ...search}] }).collation({ locale: 'en', strength: 2 }).lean();
 
   return services;
 }

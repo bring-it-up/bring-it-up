@@ -15,8 +15,8 @@ async function getCounsellingServices(req: Request, res: Response) {
                                                               req.query.isAllDay,
                                                               req.query.specialty,
                                                               req.query.delivery,
-                                                              req.query.description);
-      // const services = await CSService.getCounsellingServices(req.query.serviceName, req.query.location, req.query.school, req.query.organization, req.query.serviceType, req.query.urgency, req.query.targetClients, req.query.isAllDay, req.query.specialty, req.query.delivery, req.query.description);
+                                                              req.query.description,
+                                                              req.query.searchString);
       res.json(services);
     } catch (err: any) {
       // send status code 500 with message to client (means server's fault)

@@ -32,7 +32,7 @@ interface ICounsellingServiceModel extends mongoose.Model<CounsellingServiceDoc>
 }
 
 // define object schema
-const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
+let CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     serviceName: {
         type: String,
         required: true
@@ -93,6 +93,9 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
         unique: true
     },
 });
+
+CounsellingServiceSchema.index({name: 'text', 'serviceName': 'text', 'school': 'text', 'description': 'text',
+    'organization': 'text', 'specialty': 'text', 'serviceType': 'text', 'delivery' : 'text'});
 
 // attach as static function of the schema
 CounsellingServiceSchema.statics.build = (attr: ICounsellingService) => {
