@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "fabaf20e-879a-42e5-879b-e8e006acc080",
+		"_postman_id": "872ad4ae-af1a-4f01-9c2a-a483541ba107",
 		"name": "bring-it-up",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11974707"
 	},
 	"item": [
 		{
@@ -11,13 +12,38 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{local_url}}/counselling-services",
+					"raw": "http://{{local_url}}/counselling-services?specialty=stress&specialty=anxiety",
 					"protocol": "http",
 					"host": [
 						"{{local_url}}"
 					],
 					"path": [
 						"counselling-services"
+					],
+					"query": [
+						{
+							"key": "school",
+							"value": "sfu",
+							"disabled": true
+						},
+						{
+							"key": "urgency",
+							"value": "Non-urgent",
+							"disabled": true
+						},
+						{
+							"key": "online",
+							"value": "false",
+							"disabled": true
+						},
+						{
+							"key": "specialty",
+							"value": "stress"
+						},
+						{
+							"key": "specialty",
+							"value": "anxiety"
+						}
 					]
 				}
 			},
@@ -30,7 +56,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"location\": \"N/A\",\n    \"school\": \"SFU\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"type\": \"Wellness\",\n    \"urgency\": \"Non-urgent\",\n    \"targetClients\": \"Indigenous students at SFU\",\n    \"isAllDay\": false,\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"specialty\": [\"Mental\", \"physical\", \"social wellness\"],\n    \"isOfferedOnline\": true,\n    \"delivery\": [\"online\"],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
+					"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"location\": \"N/A\",\n    \"school\": \"SFU\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"serviceType\": [\"Wellness\"],\n    \"urgency\": \"Same Month\",\n    \"targetClients\": [\"Indigenous students at SFU\"],\n    \"isAllDay\": false,\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"specialty\": [\"Mental\", \"physical\", \"social wellness\"],\n    \"delivery\": [\"Online\"],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -102,14 +128,14 @@
 					"query": [
 						{
 							"key": "",
-							"value": null,
+							"value": "",
 							"disabled": true
 						}
 					],
 					"variable": [
 						{
 							"key": "id",
-							"value": "SERVICE_ID"
+							"value": "62479eab758112176899295e"
 						}
 					]
 				}

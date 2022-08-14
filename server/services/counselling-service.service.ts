@@ -97,7 +97,7 @@ async function getCounsellingServices(nameQuery: any,
 }
 
 async function getCounsellingService(id: string): Promise<ICounsellingService> {
-    return await CounsellingService.findById(id).lean();
+    return await CounsellingService.findOne({secondaryID: id}).lean();
 }
 
 async function createCounsellingService(inputService: ICounsellingService): Promise<ICounsellingService> {

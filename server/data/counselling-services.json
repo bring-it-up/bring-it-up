@@ -24,7 +24,6 @@
             "Nutrition",
             "Sleep"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online",
             "Phone",
@@ -50,7 +49,6 @@
             "Anxiety",
             "Academics"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online"
         ],
@@ -76,7 +74,6 @@
             "Grief",
             "Trauma"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online",
             "App"
@@ -104,7 +101,6 @@
             "Trauma",
             "Multiple language options"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online",
             "Phone"
@@ -130,7 +126,6 @@
             "Academics",
             "Multiple language options"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online",
             "Phone",
@@ -158,7 +153,6 @@
             "Homesickness",
             "Cultural Adjustment"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online",
             "Phone",
@@ -184,7 +178,6 @@
             "Physical wellness",
             "Social wellness"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online"
         ],
@@ -210,7 +203,6 @@
             "Grief",
             "Trauma"
         ],
-        "isOfferedOnline": false,
         "delivery": [
             "In Person"
         ],
@@ -236,7 +228,6 @@
             "Depression",
             "Distress surrounding international conflicts"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online",
             "Phone",
@@ -265,7 +256,6 @@
             "Trauma",
             "Academic success"
         ],
-        "isOfferedOnline": true,
         "delivery": [
             "Online",
             "Phone"
@@ -291,7 +281,6 @@
             "Grief",
             "Trauma"
         ],
-        "isOfferedOnline": false,
         "delivery": [
             "Phone"
         ],
