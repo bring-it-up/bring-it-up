@@ -12,11 +12,6 @@ code {
     monospace;
 } 
 
-/* .test {
-  display: flex;
-  flex-direction: column; 
-  height: 50px;
-} */
 .card {
   /* Add shadows to create the "card" effect */
   display: flex;
@@ -30,6 +25,10 @@ code {
   margin-top: 10px; /* temporarily */
   padding: 20px 20px 16px 16px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbaec8a0beb0e89c50b2ad8634eb8b319783cd74
 .tag {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -38,6 +37,81 @@ code {
   font-size: 10px;
   margin-right: 10px;
   /* background-color: gray; */
+<<<<<<< HEAD
+=======
+}
+
+h6.review {
+  font-size: 10px;
+  text-decoration: underline;
+}
+
+div.name {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  font-size: 10px;
+}
+
+div.tags {
+  display: flex; 
+  flex-direction: row;
+  justify-content: left;
+}
+
+li.shareIcon {
+  margin-left: 20px;
+  list-style: none;
+}
+
+div.ratingItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.checked {
+  margin: 5px;
+}
+
+.share {
+  margin-top: 2px;
+  margin-left: 3px;
+
+}
+
+.information {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+p {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  border: none;
+  background-color: blue;
+}
+
+h6.text {
+  font-size: 15px;
+}
+
+.checked {
+  color: orange;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  width: 450px; /* could be cool to make this dynamic i.e. size / 2 */
+  justify-content: space-between;
+>>>>>>> bbaec8a0beb0e89c50b2ad8634eb8b319783cd74
 }
 h6.review {
   font-size: 10px;
