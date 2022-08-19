@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/server"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependabot"
+      - "backend"
+    open-pull-requests-limit: 3
+    pull-request-branch-name:
+      separator: "-"
