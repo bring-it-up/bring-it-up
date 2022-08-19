@@ -8,6 +8,10 @@ type Props = {
 
 // logic for defining tags is not determined yet
 var tags: string[] = ["a", "b", "c"];
+var arr: string[];
+arr = ["a", "b", "c"];
+
+let serv = new Service("a", "a", "a", "a", "a", "a", arr, true, "a", arr, false, arr, "a", "a");
 
 const ServiceCard = ({ service }: Props): ReactElement => {
     return (

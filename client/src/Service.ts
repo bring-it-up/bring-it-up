@@ -15,7 +15,7 @@ export default class Service {
 	public readonly secondaryID: string = '';
 
 	constructor(
-		serviceName?: string,
+	serviceName?: string,
     location?: string,
     school?: string,
     organization?: string,

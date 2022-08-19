@@ -25,10 +25,6 @@ code {
   margin-top: 10px; /* temporarily */
   padding: 20px 20px 16px 16px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> bbaec8a0beb0e89c50b2ad8634eb8b319783cd74
 .tag {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -37,8 +33,6 @@ code {
   font-size: 10px;
   margin-right: 10px;
   /* background-color: gray; */
-<<<<<<< HEAD
-=======
 }
 
 h6.review {
@@ -111,7 +105,6 @@ h6.text {
   flex-direction: row;
   width: 450px; /* could be cool to make this dynamic i.e. size / 2 */
   justify-content: space-between;
->>>>>>> bbaec8a0beb0e89c50b2ad8634eb8b319783cd74
 }
 h6.review {
   font-size: 10px;
