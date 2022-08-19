@@ -21,6 +21,7 @@ async function getCounsellingServices(nameQuery: any,
   const urgency = urgencyQuery ? { urgency: { $regex: urgencyQuery, $options: 'i' } } : {};
   const isAllDay = (isAllDayQuery != null) ? { isAllDay: isAllDayQuery } : {};
   const description = descriptionQuery ? { description: { $regex: descriptionQuery, $options: 'i' } } : {};
+  const search = searchString ? { $text: { $search: searchString } } : {};
 
   const optRegexpServiceType : RegExp[] = [];
   if (serviceTypeQuery && Array.isArray(serviceTypeQuery)) {
@@ -81,8 +82,6 @@ async function getCounsellingServices(nameQuery: any,
       { delivery: {$in: optRegexpDeliveryMethod} }
     :
     {};
-
-  const search = searchString ? {$text: {$search: searchString}} : {};
 
   const services = await CounsellingService.find({ $and: [{ ...serviceName, 
                                                             ...location,
