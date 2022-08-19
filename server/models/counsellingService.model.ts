@@ -94,8 +94,7 @@ let CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     },
 });
 
-CounsellingServiceSchema.index({name: 'text', 'serviceName': 'text', 'school': 'text', 'description': 'text',
-    'organization': 'text', 'specialty': 'text', 'serviceType': 'text', 'delivery' : 'text'});
+CounsellingServiceSchema.index({ '$**': 'text' }, {name: 'search_index'});
 
 // attach as static function of the schema
 CounsellingServiceSchema.statics.build = (attr: ICounsellingService) => {
