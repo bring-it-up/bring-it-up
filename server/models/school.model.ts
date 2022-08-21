@@ -33,6 +33,10 @@ let SchoolSchema = new mongoose.Schema<SchoolDoc>({
     }
 });
 
+SchoolSchema.statics.build = (attr: ISchool) => {
+    return new School(attr);
+};
+
 export const School: ISchoolModel = mongoose.model<SchoolDoc,ISchoolModel>('School', SchoolSchema);
 
 School.on('index', error => {

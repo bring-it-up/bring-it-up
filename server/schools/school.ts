@@ -30,7 +30,7 @@ async function createSchool(inputSchool: ISchool): Promise<ISchool> {
 }
 
 async function deleteSchool(id: string) {
-    const school = await School.findById(id);
+    const school = await School.findOne({indentifier: id});
     await school?.remove();
 }
 
