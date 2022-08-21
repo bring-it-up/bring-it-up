@@ -17,7 +17,7 @@ async function getSchools(req: Request, res: Response) {
 
 async function getSchool(req: Request, res: Response) {
     try {
-        const school = await School.getSchool(req.params.id);
+        const school = await School.getSchool(req.params.identifier);
         if (school == null) {
             res.status(StatusCode.NOT_FOUND).json({ message: 'Cannot find school' });
         } else {
@@ -40,7 +40,7 @@ async function createSchool(req: Request, res: Response) {
 
 async function deleteSchool(req: Request, res: Response) {
     try {
-        await School.deleteSchool(req.params.id);
+        await School.deleteSchool(req.params.identifier);
         res.json({ message: "Deleted School." });
     } catch (error: any) {
         res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });

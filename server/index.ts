@@ -54,8 +54,12 @@ db.on('open', (data) => console.log('Connected to Database'));
 
 // let server accept json
 app.use(express.json());
-const councellingServicesRouter = require('./routes/counsellingService.api.ts');
-// all url that starts with this route will use councellingServicesRouter
-app.use('/counselling-services', councellingServicesRouter);
+
+const counsellingServicesRouter = require('./routes/counsellingService.api.ts');
+// all url that starts with this route will use counsellingServicesRouter
+app.use('/counselling-services', counsellingServicesRouter);
+
+const schoolsRouter = require('./routes/school.api.ts');
+app.use('/schools', schoolsRouter);
 
 export default app;

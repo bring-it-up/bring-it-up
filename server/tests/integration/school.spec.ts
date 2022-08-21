@@ -1,42 +1,60 @@
+import chai from "chai";
 import chaiHttp from "chai-http";
+import server from "../../index";
+
 import {describe} from "mocha";
 import {School} from "../../models/school.model";
+import {schoolData1, schoolData2} from "./data/school-data";
+import {StatusCode} from "../../controllers/response-status-code.enum";
+
+const should = chai.should();
 
 chai.use(chaiHttp);
 
 describe('Schools', () => {
     beforeEach(async () => {
         await School.remove({});
-        // TODO: add data to school object
-        const school = new School();
+        const school = new School(schoolData1);
         await school.save();
     });
 
     describe('GET /schools', () => {
         it('should get all schools', async () => {
-            // TODO
+            const result = await chai.request(server).get('/schools');
+            result.should.have.status(StatusCode.OK);
+            result.body.should.be.a('array');
+            result.body.length.should.be.eql(1);
         });
     });
 
-    describe('GET /schools/:id', () => {
+    describe('GET /schools/:identifier', () => {
         it('should get a school', async () => {
-            // TODO
+            const result = await chai.request(server).get('schools/ubcv');
+            result.should.have.status(StatusCode.OK);
+            result.body.should.be.a('array');
+            result.body.length.should.be.eql(1);
         });
     });
 
     describe('POST /schools', () => {
         it ('should create a school', async () => {
-            // TODO
+            const result = await chai.request(server).post('/schools').send(schoolData2);
+            result.should.have.status(StatusCode.CREATED);
         });
 
         it ('should not create a duplicate school', async () => {
-            // TODO
+            await chai.request(server).post('/schools').send(schoolData2);
+            const result = await chai.request(server).post('/schools').send(schoolData2);
+            result.should.have.status(StatusCode.BAD_REQUEST);
         });
     });
 
-    describe('DEL /schools/:id', () => {
+    describe('DEL /schools/:identifier', () => {
         it ('should delete a school', async () => {
-            // TODO
+            const postResult = await chai.request(server).delete('/schools/ubcv');
+            postResult.should.have.status(StatusCode.OK);
+            const getResult = await chai.request(server).get('/schools/ubcv');
+            getResult.should.have.status(StatusCode.NOT_FOUND);
         });
     });
 });
