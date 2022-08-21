@@ -3,6 +3,18 @@ import School from '../schools/school';
 import {StatusCode} from "./response-status-code.enum";
 import {filterRequest} from "../middleware/utils.middleware";
 
+async function getSchools(req: Request, res: Response) {
+    try {
+        const schools = await School.getSchools(req.query.identifer,
+                                                req.query.name,
+                                                req.query.abbreviation,
+                                                req.query.mentalHealthCoverage);
+        res.json(schools);
+    } catch (err: any) {
+        res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: err.message });
+    }
+}
+
 async function getSchool(req: Request, res: Response) {
     try {
         const school = await School.getSchool(req.params.id);
@@ -36,6 +48,7 @@ async function deleteSchool(req: Request, res: Response) {
 }
 
 export default {
+    getSchools,
     getSchool,
     createSchool,
     deleteSchool

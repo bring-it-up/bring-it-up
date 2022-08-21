@@ -5,20 +5,19 @@ import {validateRequest} from "../middleware/utils.middleware";
 
 const router = express.Router();
 
-// get all
+// get counselling service(s)
 router.get('/', CounsellingServiceController.getCounsellingServices);
 
-// get one
+// get one counselling service
 router.get('/:id', CounsellingServiceController.getCounsellingService);
 
-// create
+// create one counselling service
 router.post('/', postRules, validateRequest, CounsellingServiceController.addCounsellingService);
 
-// update one (only info that is passed e.g. hours)
+// update one counselling service (only info that is passed e.g. hours)
 router.patch('/:id', patchRules, validateRequest, CounsellingServiceController.updateCounsellingService);
 
-// delete one
+// delete one counselling service
 router.delete('/:id', CounsellingServiceController.deleteCounsellingService);
-
 
 module.exports = router;
