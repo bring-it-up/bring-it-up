@@ -19,7 +19,7 @@ async function getSchools(req: Request, res: Response) {
 
 async function getSchool(req: Request, res: Response) {
     try {
-        const school = await School.getSchool(req.params.identifier);
+        const school = await School.getSchool(req.params.uid);
         res.send(school);
     } catch (err: any) {
         if (err instanceof BadRequestError) {
@@ -42,7 +42,7 @@ async function createSchool(req: Request, res: Response) {
 
 async function deleteSchool(req: Request, res: Response) {
     try {
-        await School.deleteSchool(req.params.identifier);
+        await School.deleteSchool(req.params.uid);
         res.json({ message: "Deleted School." });
     } catch (err: any) {
         if (err instanceof BadRequestError) {

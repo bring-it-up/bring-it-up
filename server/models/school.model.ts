@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export interface ISchool {
-    identifier: string;
+    uid: string;
     name: string;
     abbreviation: string;
     mentalHealthCoverage: string;
@@ -15,7 +15,7 @@ interface ISchoolModel extends mongoose.Model<SchoolDoc> {
 }
 
 let SchoolSchema = new mongoose.Schema<SchoolDoc>({
-    identifier: {
+    uid: {
         type: String,
         required: true,
         unique: true

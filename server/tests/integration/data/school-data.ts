@@ -1,12 +1,12 @@
 export const schoolData1 = {
-    identifier: "ubcv",
+    uid: "ubcv",
     name: "University of British Columbia - Vancouver",
     abbreviation: "UBC Vancouver",
     mentalHealthCoverage: "$1500 per policy year"
 };
 
 export const schoolData2 = {
-    identifier: "sfu",
+    uid: "sfu",
     name: "Simon Fraser University",
     abbreviation: "SFU",
     mentalHealthCoverage: "80% of costs, up to $500 per policy year"

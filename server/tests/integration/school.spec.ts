@@ -27,7 +27,7 @@ describe('Schools', () => {
         });
     });
 
-    describe('GET /schools/:identifier', () => {
+    describe('GET /schools/:uid', () => {
         it('should get a school', async () => {
             const result = await chai.request(server).get('/schools/ubcv');
             result.should.have.status(StatusCode.OK);
@@ -36,8 +36,10 @@ describe('Schools', () => {
 
     describe('POST /schools', () => {
         it ('should create a school', async () => {
-            const result = await chai.request(server).post('/schools').send(schoolData2);
-            result.should.have.status(StatusCode.CREATED);
+            const result1 = await chai.request(server).post('/schools').send(schoolData2);
+            result1.should.have.status(StatusCode.CREATED);
+            const result2 = await chai.request(server).post('/schools').send(schoolData2);
+            result2.should.have.status(StatusCode.BAD_REQUEST);
         });
 
         it ('should not create a duplicate school', async () => {
@@ -47,7 +49,7 @@ describe('Schools', () => {
         });
     });
 
-    describe('DEL /schools/:identifier', () => {
+    describe('DEL /schools/:uid', () => {
         it ('should delete a school', async () => {
             const postResult = await chai.request(server).delete('/schools/ubcv');
             postResult.should.have.status(StatusCode.OK);

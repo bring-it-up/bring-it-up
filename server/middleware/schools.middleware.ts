@@ -6,7 +6,7 @@ import {body} from "express-validator"
  */
 
 export const postRules = [
-    body('identifier')
+    body('uid')
         .exists({checkNull: true, checkFalsy: true})
         .isString(),
     body('name')
