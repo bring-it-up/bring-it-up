@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from "chai-http";
 import server from '../../index';
 
-import {missingNameData, nonStringAbbreviationData, nonStringMentalHealthCoverageData}
+import {missingNameData, missingUidData, nonStringAbbreviationData, nonStringMentalHealthCoverageData}
     from "./data/school-invalid-request-data";
 import {StatusCode} from "../../utils/status-code.enum";
 
@@ -11,6 +11,13 @@ chai.use(chaiHttp);
 describe('School Invalid Requests', () => {
 
     describe('POST /schools', () => {
+        it('should reject missing uid', async () => {
+            const result = await chai.request(server)
+                .post('/schools')
+                .send(missingUidData);
+            result.should.have.status(StatusCode.BAD_REQUEST);
+        });
+
         it('should reject missing name', async () => {
             const result = await chai.request(server)
                 .post('/schools')
