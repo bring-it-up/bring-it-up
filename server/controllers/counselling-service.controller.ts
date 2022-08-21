@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import CSService from '../services/counselling-service.service';
 import { generateSecondaryId } from '../utils/id-generator.util';
-import { filterRequest } from "../middleware/counselling-service.middleware";
+import { filterRequest } from "../middleware/utils.middleware";
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {

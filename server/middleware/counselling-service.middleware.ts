@@ -1,5 +1,4 @@
-import {body, CustomValidator, matchedData, validationResult} from "express-validator";
-import {NextFunction, Request, Response} from "express";
+import {body, CustomValidator} from "express-validator";
 import {ServiceType} from "../models/counselling-type.enum";
 import {UrgencyLevel} from "../models/urgency-level.enum";
 import {DeliveryMethod} from "../models/delivery-method.enum";
@@ -169,15 +168,3 @@ export const patchRules = [
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
 ]
-
-export function validateRequest(req: Request, res: Response, next: NextFunction) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    next();
-}
-
-export function filterRequest(req: Request) {
-    return matchedData(req, { locations: ['body'] });
-}

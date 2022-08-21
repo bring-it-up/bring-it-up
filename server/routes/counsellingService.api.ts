@@ -1,8 +1,9 @@
 import express from 'express';
-const router = express.Router();
 import CounsellingServiceController from '../controllers/counselling-service.controller';
-import {patchRules, postRules, validateRequest} from "../middleware/counselling-service.middleware";
+import {patchRules, postRules} from "../middleware/counselling-service.middleware";
+import {validateRequest} from "../middleware/utils.middleware";
 
+const router = express.Router();
 
 // get all
 router.get('/', CounsellingServiceController.getCounsellingServices);

@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import School from '../schools/school';
 import {StatusCode} from "./response-status-code.enum";
+import {filterRequest} from "../middleware/utils.middleware";
 
 async function getSchool(req: Request, res: Response) {
     try {
@@ -17,6 +18,7 @@ async function getSchool(req: Request, res: Response) {
 
 async function createSchool(req: Request, res: Response) {
     try {
+        req.body = filterRequest(req);
         const school = await School.createSchool(req.body);
         res.status(StatusCode.CREATED).json(school);
     } catch (error: any) {
