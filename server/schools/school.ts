@@ -21,7 +21,7 @@ async function getSchools(identifierQuery: any,
 }
 
 async function getSchool(id: string): Promise<ISchool> {
-    return await School.findOne({indentifier: id}).lean();
+    return await School.findOne({identifier: id}).lean();
 }
 
 async function createSchool(inputSchool: ISchool): Promise<ISchool> {
@@ -30,7 +30,7 @@ async function createSchool(inputSchool: ISchool): Promise<ISchool> {
 }
 
 async function deleteSchool(id: string) {
-    const school = await School.findOne({indentifier: id});
+    const school = await School.findOne({identifier: id});
     await school?.remove();
 }
 

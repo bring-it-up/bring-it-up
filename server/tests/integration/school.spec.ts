@@ -29,10 +29,8 @@ describe('Schools', () => {
 
     describe('GET /schools/:identifier', () => {
         it('should get a school', async () => {
-            const result = await chai.request(server).get('schools/ubcv');
+            const result = await chai.request(server).get('/schools/ubcv');
             result.should.have.status(StatusCode.OK);
-            result.body.should.be.a('array');
-            result.body.length.should.be.eql(1);
         });
     });
 

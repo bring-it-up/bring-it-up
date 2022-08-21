@@ -9,12 +9,12 @@ const router = express.Router();
 router.get('/', SchoolController.getSchools);
 
 // get one school
-router.get('/:id', SchoolController.getSchool);
+router.get('/:identifier', SchoolController.getSchool);
 
 // create one school
 router.post('/', postRules, validateRequest, SchoolController.createSchool);
 
 // delete one school
-router.delete('/:id', SchoolController.deleteSchool);
+router.delete('/:identifier', SchoolController.deleteSchool);
 
 module.exports = router;
