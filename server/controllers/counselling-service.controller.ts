@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import CSService from '../services/counselling-service.service';
 import { generateSecondaryId } from '../utils/id-generator.util';
 import { filterRequest } from "../middleware/utils.middleware";
-import {StatusCode} from "./response-status-code.enum";
+import {StatusCode} from "../utils/status-code.enum";
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
@@ -55,7 +55,7 @@ async function updateCounsellingService(req: Request, res: Response) {
         await CSService.updateCounsellingService(req.params.id, req.body);
         res.json({ message: "Updated Service." });
     } catch (error: any) {
-        res.status(400).json({ message: error.message });
+        res.status(StatusCode.BAD_REQUEST).json({ message: error.message });
     }
 }
 

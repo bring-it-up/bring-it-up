@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import School from '../schools/school';
-import {StatusCode} from "./response-status-code.enum";
+import {StatusCode} from "../utils/status-code.enum";
 import {filterRequest} from "../middleware/utils.middleware";
 
 async function getSchools(req: Request, res: Response) {

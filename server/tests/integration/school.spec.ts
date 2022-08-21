@@ -5,7 +5,7 @@ import server from "../../index";
 import {describe} from "mocha";
 import {School} from "../../models/school.model";
 import {schoolData1, schoolData2} from "./data/school-data";
-import {StatusCode} from "../../controllers/response-status-code.enum";
+import {StatusCode} from "../../utils/status-code.enum";
 
 const should = chai.should();
 
