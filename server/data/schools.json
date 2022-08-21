@@ -1,0 +1,20 @@
+[
+  {
+    "identifer": "ubcv",
+    "name": "University of British Columbia - Vancouver",
+    "abbreviation": "UBC Vancouver",
+    "mentalHealthCoverage": "$1500 per policy year"
+  },
+  {
+    "identifer": "sfu",
+    "name": "Simon Fraser University",
+    "abbreviation": "SFU",
+    "mentalHealthCoverage": "80% of costs, up to $500 per policy year"
+  },
+  {
+    "identifer": "capu",
+    "name": "Capilano University",
+    "abbreviation": "CapU",
+    "mentalHealthCoverage": "$900 per policy year"
+  }
+]
