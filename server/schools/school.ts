@@ -1,19 +1,23 @@
 import {ISchool, School} from "../models/school.model";
+import {BadRequestError} from "../middleware/bad-request-error";
 
 async function getSchools(identifierQuery: any,
                           nameQuery: any,
                           abbreviationQuery: any,
-                          mentalHealthCoverageQuery: any): Promise<ISchool[]> {
+                          mentalHealthCoverageQuery: any,
+                          searchString: any): Promise<ISchool[]> {
 
     const identifier = identifierQuery ? { identifierQuery: { $regex: identifierQuery, $options: 'i' }} : {};
     const name = nameQuery ? { nameQuery: { $regex: nameQuery, $options: 'i' }} : {};
     const abbreviation = abbreviationQuery ? { abbreviationQuery: { $regex: identifierQuery, $options: 'i' }} : {};
     const mentalHealthCoverage = mentalHealthCoverageQuery ? { mentalHealthCoverageQuery: { $regex: identifierQuery, $options: 'i' }} : {};
+    const search = searchString ? { $text: { $search: searchString } } : {};
 
     const schools = await School.find({ $and: [{ ...identifier,
                                                       ...name,
                                                       ...abbreviation,
-                                                      ...mentalHealthCoverage}] })
+                                                      ...mentalHealthCoverage,
+                                                      ...search}] })
                                 .collation({ locale: 'en', strength: 2 })
                                 .lean();
 
@@ -21,7 +25,11 @@ async function getSchools(identifierQuery: any,
 }
 
 async function getSchool(id: string): Promise<ISchool> {
-    return await School.findOne({identifier: id}).lean();
+    const school = await School.findOne({identifier: id}).lean();
+    if (school == null) {
+        throw new BadRequestError();
+    }
+    return school;
 }
 
 async function createSchool(inputSchool: ISchool): Promise<ISchool> {
@@ -31,7 +39,10 @@ async function createSchool(inputSchool: ISchool): Promise<ISchool> {
 
 async function deleteSchool(id: string) {
     const school = await School.findOne({identifier: id});
-    await school?.remove();
+    if (school == null) {
+        throw new BadRequestError();
+    }
+    await school.remove();
 }
 
 export default {

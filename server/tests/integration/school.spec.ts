@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 
 describe('Schools', () => {
     beforeEach(async () => {
-        await School.remove({});
+        await School.deleteMany({});
         const school = new School(schoolData1);
         await school.save();
     });
@@ -54,5 +54,9 @@ describe('Schools', () => {
             const getResult = await chai.request(server).get('/schools/ubcv');
             getResult.should.have.status(StatusCode.NOT_FOUND);
         });
+    });
+
+    after(async () => {
+        await School.deleteMany({});
     });
 });

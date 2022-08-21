@@ -11,7 +11,7 @@ import {
     invalidUrgencyData,
     missingServiceNameData,
     nonArrayTargetClientsData
-} from "./data/invalid-request-data";
+} from "./data/counselling-service-invalid-request-data";
 import {StatusCode} from "../../utils/status-code.enum";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 

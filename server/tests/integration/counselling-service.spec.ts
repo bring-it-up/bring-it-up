@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 describe('Counselling Services', () => {
     beforeEach(async () => {
-        await CounsellingService.remove({});
+        await CounsellingService.deleteMany({});
         const service = new CounsellingService(service1Data);
         await service.save();
     });
@@ -43,5 +43,9 @@ describe('Counselling Services', () => {
                 .send(service2Data);
             result.should.have.status(StatusCode.BAD_REQUEST);
         });
+    });
+
+    after(async () => {
+        await CounsellingService.deleteMany({});
     });
 });

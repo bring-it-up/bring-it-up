@@ -17,7 +17,8 @@ interface ISchoolModel extends mongoose.Model<SchoolDoc> {
 let SchoolSchema = new mongoose.Schema<SchoolDoc>({
     identifier: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     name: {
         type: String,
@@ -32,6 +33,8 @@ let SchoolSchema = new mongoose.Schema<SchoolDoc>({
         required: true
     }
 });
+
+SchoolSchema.index({ '$**': 'text' }, {name: 'search_index'});
 
 SchoolSchema.statics.build = (attr: ISchool) => {
     return new School(attr);

@@ -2,7 +2,7 @@ import {body, CustomValidator} from "express-validator";
 import {ServiceType} from "../models/counselling-type.enum";
 import {UrgencyLevel} from "../models/urgency-level.enum";
 import {DeliveryMethod} from "../models/delivery-method.enum";
-import {InvalidRequestError} from "./invalid-request-error";
+import {BadRequestError} from "./bad-request-error";
 
 /*
     This file contains the logic for validating requests to
@@ -13,7 +13,7 @@ const isValidServiceType: CustomValidator = type => {
     if (Object.values(ServiceType).includes(type as ServiceType)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid value");
+        throw new BadRequestError("invalid value");
     }
 }
 
@@ -21,7 +21,7 @@ const isValidUrgency: CustomValidator = urgency => {
     if (Object.values(UrgencyLevel).includes(urgency as UrgencyLevel)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid value");
+        throw new BadRequestError("invalid value");
     }
 };
 
@@ -29,7 +29,7 @@ const isValidDelivery: CustomValidator = delivery => {
     if (Object.values(DeliveryMethod).includes(delivery as DeliveryMethod)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid value");
+        throw new BadRequestError("invalid value");
     }
 }
 
