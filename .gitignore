@@ -23,10 +23,9 @@ npm-debug.log*
 /coverage
 /dist
 /node_modules
+/package-lock.json
 /platforms
 /plugins
 /www
 
 *.env
-
-package-lock.json
