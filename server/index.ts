@@ -2,6 +2,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import DataJson from './data/counselling-services.json';
+
 
 const envFile = process.env.NODE_ENV === 'test' ? 'test.env' : '.env';
 
@@ -36,6 +38,12 @@ app.get('/', (_req, _res) => {
   _res.send(groceries);
 });
 
+app.get('/data', (_req, _res) => {
+  // Sends Json data
+  _res.send(DataJson);
+});
+
+
 // Server setup
 app.listen(port, () => {
   console.log(`TypeScript with Express http://localhost:${port}/`);
@@ -51,6 +59,16 @@ const db = mongoose.connection;
 // set up db to log on error
 db.on('error', (error) => console.error(error));
 db.on('open', (data) => console.log('Connected to Database'));
+
+
+// Post data to mongoDB
+app.post('/data', (_req, _res) => {
+  // Sends Json data
+  console.log('Worked');
+  _res.send('Worked'); 
+});
+
+
 
 // let server accept json
 app.use(express.json());
