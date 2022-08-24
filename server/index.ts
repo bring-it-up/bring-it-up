@@ -13,7 +13,7 @@ require('dotenv').config({ path: envFile });
 const app: express.Application = express();
 
 // Take a port 3000 for running server.
-const port = 4000;
+const port = 3000;
 
 // setup cors to allow client http access
 app.use(cors({
@@ -59,16 +59,25 @@ const db = mongoose.connection;
 // set up db to log on error
 db.on('error', (error) => console.error(error));
 db.on('open', (data) => console.log('Connected to Database'));
-
+const coll = db.collection("Counselling services collection");
 
 // Post data to mongoDB
 app.post('/data', (_req, _res) => {
   // Sends Json data
-  console.log('Worked');
-  _res.send('Worked'); 
+  console.log('Data posted onto MongoDB');
+  coll.insertMany(DataJson);
+  _res.send('Data posted onto MongoDB'); 
 });
 
-
+// Delete the mongoDB collection
+app.delete('/data', (_req, _res) => {
+  // Sends Json data
+  coll.drop(function (err, result) {
+    if (err) throw err;
+    if (result) console.log("Collection successfully deleted.");
+  _res.send('Data dropped');
+});
+});
 
 // let server accept json
 app.use(express.json());
