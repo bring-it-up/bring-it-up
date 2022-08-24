@@ -25,6 +25,19 @@ describe('Counselling Services', () => {
         });
     });
 
+    describe('GET /counselling-services?school=ubc', () => {
+        it('should get services with school ubc', async () => {
+            const result = await chai.request(server)
+                .get('/counselling-services?school=ubc');
+            result.should.have.status(200);
+            result.body.should.be.a('array');
+            result.body.length.should.be.eql(1);
+            for (let i = 0; i < result.body.length; i++) {
+                result.body[i].should.have.property('school', "UBC");
+            }
+        });
+    });
+
     describe('POST /counselling-services', () => {
         it('should create a counselling service', async () => {
             const result = await chai.request(server)
@@ -41,6 +54,32 @@ describe('Counselling Services', () => {
                 .post('/counselling-services')
                 .send(service2Data);
             result.should.have.status(400);
+        });
+    });
+
+    describe('GET /counselling-services?school=ubc&school=sfu', () => {
+        it('should get services with school ubc or sfu', async () => {
+            const result = await chai.request(server)
+                .get('/counselling-services?school=ubc&school=sfu');
+            result.should.have.status(200);
+            result.body.should.be.a('array');
+            result.body.length.should.be.eql(2);
+            for (let i = 0; i < result.body.length; i++) {
+                result.body[i].property('school').should.be.oneOf(["UBC", "SFU"]);
+            }
+        });
+    });
+
+    describe('GET /counselling-services?urgency=Immediate&delivery=App', () => {
+        it('should get services with urgency Immediate and delivery including App', async () => {
+            const result = await chai.request(server)
+                .get('/counselling-services?urgency=Immediate&delivery=App');
+            result.should.have.status(200);
+            result.body.should.be.a('array');
+            result.body.length.should.be.eql(1);
+            for (let i = 0; i < result.body.length; i++) {
+                result.body[i].should.have.property('urgency', "Immediate").and.property('delivery').should.include("App");
+            }
         });
     });
 });
