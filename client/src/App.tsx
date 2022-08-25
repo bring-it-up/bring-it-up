@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import About from './components/About';
 import Services from './components/Services';
 import Home from './components/Home';
-import FirstDropdown from "./components/firstDropdown";
 import { ReactElement } from 'react';
 import ServiceCard from './components/ServiceCard';
 import Service from './Service';

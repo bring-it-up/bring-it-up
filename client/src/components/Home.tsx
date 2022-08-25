@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import FirstDropdown from "./firstDropdown";
+import FirstDropdown from "./FirstDropdown";
 
 const Home = (): ReactElement => {
     return (
