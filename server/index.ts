@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import DataJson from './data/counselling-services.json';
 
-
 const envFile = process.env.NODE_ENV === 'test' ? 'test.env' : '.env';
 
 require('dotenv').config({ path: envFile });
@@ -67,16 +66,6 @@ app.post('/data', (_req, _res) => {
   console.log('Data posted onto MongoDB');
   coll.insertMany(DataJson);
   _res.send('Data posted onto MongoDB'); 
-});
-
-// Delete the mongoDB collection
-app.delete('/data', (_req, _res) => {
-  // Sends Json data
-  coll.drop(function (err, result) {
-    if (err) throw err;
-    if (result) console.log("Collection successfully deleted.");
-  _res.send('Data dropped');
-});
 });
 
 // let server accept json

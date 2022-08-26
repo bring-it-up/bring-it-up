@@ -114,10 +114,16 @@ async function deleteCounsellingService(id: string) {
     await service?.remove();
 }
 
+async function deleteAllCounsellingServices() {
+  const service = await CounsellingService;
+  await service.deleteMany();
+}
+
 export default {
     getCounsellingServices,
     getCounsellingService,
     createCounsellingService,
     updateCounsellingService,
-    deleteCounsellingService
+    deleteCounsellingService,
+    deleteAllCounsellingServices
 };

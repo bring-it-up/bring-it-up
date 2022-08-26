@@ -73,10 +73,20 @@ async function deleteCounsellingService(req: Request, res: Response) {
     }
 }
 
+async function deleteAllCounsellingServices(req: Request, res: Response) {
+  try {
+      await CSService.deleteAllCounsellingServices();
+      res.json({ message: "Deleted All Services." });
+  } catch (error: any) {
+      res.status(500).json({ message: error.message });
+  }
+}
+
 export default {
     getCounsellingServices,
     getCounsellingService,
     addCounsellingService,
     updateCounsellingService,
-    deleteCounsellingService
+    deleteCounsellingService,
+    deleteAllCounsellingServices
 };
