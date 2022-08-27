@@ -1,6 +1,6 @@
 import { CounsellingService, ICounsellingService } from '../models/counsellingService.model';
 
-async function getCounsellingServices(nameQuery: any,
+async function getCounsellingServices(serviceNameQuery: any,
                                       locationQuery: any,
                                       schoolQuery: any, 
                                       organizationQuery: any,
@@ -12,91 +12,48 @@ async function getCounsellingServices(nameQuery: any,
                                       deliveryQuery: any,
                                       descriptionQuery: any,
                                       searchString: any): Promise<ICounsellingService[]> {
-  // TODO: Move input validation to controller
 
-  const serviceName = nameQuery ? { serviceName: { $regex: nameQuery, $options: 'i' } } : {};
-  const location = locationQuery ? { location: { $regex: locationQuery, $options: 'i' } } : {};
-  const school = schoolQuery ? { school: { $regex: schoolQuery, $options: 'i' } } : {};
-  const organization = organizationQuery ? { organization: { $regex: organizationQuery, $options: 'i' } } : {};
-  const urgency = urgencyQuery ? { urgency: { $regex: urgencyQuery, $options: 'i' } } : {};
+  const serviceName = await getFilter("serviceName", serviceNameQuery);
+  const location = await getFilter("location", locationQuery);
+  const school = await getFilter("school", schoolQuery);
+  const organization = await getFilter("organization", organizationQuery);
+  const serviceType = await getFilter("serviceType", serviceTypeQuery);
+  const specialty = await getFilter("specialty", specialtyQuery);
+  const urgency = await getFilter("urgency", urgencyQuery);
+  const targetClients = await getFilter("targetClients", targetClientsQuery);
   const isAllDay = (isAllDayQuery != null) ? { isAllDay: isAllDayQuery } : {};
-  const description = descriptionQuery ? { description: { $regex: descriptionQuery, $options: 'i' } } : {};
+  const delivery = await getFilter("delivery", deliveryQuery);
+  const description = await getFilter("description", descriptionQuery);
+
   const search = searchString ? { $text: { $search: searchString } } : {};
 
-  const optRegexpServiceType : RegExp[] = [];
-  if (serviceTypeQuery && Array.isArray(serviceTypeQuery)) {
-    (serviceTypeQuery as string[]).forEach(function(opt: string) {
-      optRegexpServiceType.push( new RegExp(opt, "i") );
-    }); 
-  }
+  const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
+                  ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
 
-  const serviceType = serviceTypeQuery ? 
-    optRegexpServiceType.length == 0 ? 
-      { serviceType: {$regex: serviceTypeQuery, $options: 'i'} }
-      : 
-      { serviceType: {$in: optRegexpServiceType} }
-    :
-    {};
-
-  const optRegexpTargetClients : RegExp[] = [];
-  if (targetClientsQuery && Array.isArray(targetClientsQuery)) {
-    (targetClientsQuery as string[]).forEach(function(opt: string) {
-      optRegexpTargetClients.push( new RegExp(opt, "i") );
-    }); 
-  }
-
-  const targetClients = targetClientsQuery ? 
-    optRegexpTargetClients.length == 0 ? 
-      { targetClients: {$regex: targetClientsQuery, $options: 'i'} }
-      : 
-      { targetClients: {$in: optRegexpTargetClients} }
-    :
-    {};
-
-  const optRegexpSpecialty : RegExp[] = [];
-  if (specialtyQuery && Array.isArray(specialtyQuery)) {
-    (specialtyQuery as string[]).forEach(function(opt: string) {
-      optRegexpSpecialty.push( new RegExp(opt, "i") );
-    }); 
-  }
-  
-  const specialty = specialtyQuery ? 
-    optRegexpSpecialty.length == 0 ? 
-      { specialty: {$regex: specialtyQuery, $options: 'i'} }
-      : 
-      { specialty: {$in: optRegexpSpecialty} }
-  :
-  {};
-
-  const optRegexpDeliveryMethod : RegExp[] = [];
-  if (deliveryQuery && Array.isArray(deliveryQuery)) {
-    (deliveryQuery as string[]).forEach(function(opt: string) {
-      optRegexpDeliveryMethod.push( new RegExp(opt, "i") );
-    }); 
-  }
-
-  const delivery = deliveryQuery ? 
-    optRegexpDeliveryMethod.length == 0 ? 
-      { delivery: {$regex: deliveryQuery, $options: 'i'} }
-      : 
-      { delivery: {$in: optRegexpDeliveryMethod} }
-    :
-    {};
-
-  const services = await CounsellingService.find({ $and: [{ ...serviceName, 
-                                                            ...location,
-                                                            ...school, 
-                                                            ...organization,
-                                                            ...serviceType,
-                                                            ...specialty, 
-                                                            ...urgency,
-                                                            ...targetClients,
-                                                            ...isAllDay,
-                                                            ...delivery,
-                                                            ...description,
-                                                            ...search}] }).collation({ locale: 'en', strength: 2 }).lean();
+  const services = await CounsellingService.find({ $and: [filter] })
+                                           .collation({ locale: 'en', strength: 2 })
+                                           .lean();
 
   return services;
+}
+
+async function getFilter(key: string, query: any): Promise<{}> {
+    let regExp : RegExp[] = [];
+    if (query && Array.isArray(query)) {
+        (query as string[]).forEach(function(opt: string) {
+            regExp.push( new RegExp(opt, "i") );
+        });
+    }
+
+    const filter = query ?
+        regExp.length == 0 ?
+            { [key]: {$regex: query, $options: 'i'} }
+            :
+            { [key]: {$in: regExp} }
+        :
+        {};
+
+    return await filter;
 }
 
 async function getCounsellingService(id: string): Promise<ICounsellingService> {
