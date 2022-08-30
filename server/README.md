@@ -50,4 +50,4 @@ After installing, import a collection using the `bring-it-up.postman_collection.
 
 ## ESLint
 
-Run `npm run lint -s` to manually run ESLint on all files .ts in ./server.
+Run `npm run lint -s` to manually run ESLint on all .ts files in ./server.
