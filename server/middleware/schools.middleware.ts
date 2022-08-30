@@ -1,4 +1,4 @@
-import {body} from "express-validator"
+import {body} from "express-validator";
 
 /*
     This file contains the logic for validating requests to
@@ -18,4 +18,4 @@ export const postRules = [
     body('mentalHealthCoverage')
         .exists({checkNull: true, checkFalsy: true})
         .isString(),
-]
+];

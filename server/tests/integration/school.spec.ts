@@ -7,8 +7,6 @@ import {School} from "../../models/school.model";
 import {schoolData1, schoolData2} from "./data/school-data";
 import {StatusCode} from "../../utils/status-code.enum";
 
-const should = chai.should();
-
 chai.use(chaiHttp);
 
 describe('Schools', () => {

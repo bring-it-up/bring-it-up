@@ -14,7 +14,7 @@ interface ISchoolModel extends mongoose.Model<SchoolDoc> {
     build(attr: ISchool): SchoolDoc
 }
 
-let SchoolSchema = new mongoose.Schema<SchoolDoc>({
+const SchoolSchema = new mongoose.Schema<SchoolDoc>({
     uid: {
         type: String,
         required: true,

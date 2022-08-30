@@ -58,4 +58,4 @@ export default {
     getSchool,
     createSchool,
     deleteSchool
-}
+};

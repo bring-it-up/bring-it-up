@@ -1,5 +1,5 @@
 import express from 'express';
-import SchoolController from '../controllers/school.controller'
+import SchoolController from '../controllers/school.controller';
 import {postRules} from "../middleware/schools.middleware";
 import {validateRequest} from "../middleware/utils.middleware";
 

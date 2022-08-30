@@ -37,8 +37,8 @@ async function getCounsellingServices(serviceNameQuery: any,
   return services;
 }
 
-async function getFilter(key: string, query: any): Promise<{}> {
-    let regExp : RegExp[] = [];
+async function getFilter(key: string, query: any): Promise<any> {
+    const regExp : RegExp[] = [];
     if (query && Array.isArray(query)) {
         (query as string[]).forEach(function(opt: string) {
             regExp.push( new RegExp(opt, "i") );

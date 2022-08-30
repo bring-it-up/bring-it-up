@@ -50,7 +50,7 @@ const db = mongoose.connection;
 
 // set up db to log on error
 db.on('error', (error) => console.error(error));
-db.on('open', (data) => console.log('Connected to Database'));
+db.on('open', () => console.log('Connected to Database'));
 
 // let server accept json
 app.use(express.json());

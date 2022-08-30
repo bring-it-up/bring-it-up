@@ -15,7 +15,7 @@ const isValidServiceType: CustomValidator = type => {
     } else {
         throw new BadRequestError("invalid value");
     }
-}
+};
 
 const isValidUrgency: CustomValidator = urgency => {
     if (Object.values(UrgencyLevel).includes(urgency as UrgencyLevel)) {
@@ -31,7 +31,7 @@ const isValidDelivery: CustomValidator = delivery => {
     } else {
         throw new BadRequestError("invalid value");
     }
-}
+};
 
 export const postRules = [
     body('serviceName')
@@ -92,7 +92,7 @@ export const postRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
-]
+];
 
 export const patchRules = [
     body('serviceName')
@@ -167,4 +167,4 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
-]
+];
