@@ -1,5 +1,6 @@
 import {ISchool, School} from "../models/school.model";
 import {BadRequestError} from "../middleware/bad-request-error";
+import {getFilter} from "../utils/filter.util";
 
 async function getSchools(uidQuery: any,
                           nameQuery: any,
@@ -7,17 +8,16 @@ async function getSchools(uidQuery: any,
                           mentalHealthCoverageQuery: any,
                           searchString: any): Promise<ISchool[]> {
 
-    const uid = uidQuery ? { uidQuery: { $regex: uidQuery, $options: 'i' }} : {};
-    const name = nameQuery ? { nameQuery: { $regex: nameQuery, $options: 'i' }} : {};
-    const abbreviation = abbreviationQuery ? { abbreviationQuery: { $regex: abbreviationQuery, $options: 'i' }} : {};
-    const mentalHealthCoverage = mentalHealthCoverageQuery ? { mentalHealthCoverageQuery: { $regex: uidQuery, $options: 'i' }} : {};
+    const uid = getFilter("uid", uidQuery);
+    const name = getFilter("name", nameQuery);
+    const abbreviation = getFilter("abbreviation", abbreviationQuery);
+    const mentalHealthCoverage = getFilter("mentalHealthCoverage", mentalHealthCoverageQuery);
+
     const search = searchString ? { $text: { $search: searchString } } : {};
 
-    const schools = await School.find({ $and: [{ ...uid,
-                                                      ...name,
-                                                      ...abbreviation,
-                                                      ...mentalHealthCoverage,
-                                                      ...search}] })
+    const filter = {...uid, ...name, ...abbreviation, ...mentalHealthCoverage, ...search};
+
+    const schools = await School.find({ $and: [filter] })
                                 .collation({ locale: 'en', strength: 2 })
                                 .lean();
 

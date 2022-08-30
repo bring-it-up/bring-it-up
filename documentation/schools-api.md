@@ -15,7 +15,18 @@ These docs will only document the school endpoints meant to be used by the clien
 
 `GET` `/schools`
 
-Returns a list of schools.
+Returns a list of schools.  Use the following URL parameters to filter the services. You may use multiple parameters and multiple values for the same parameter. If multiple values for the same parameter are present, they are treated as an OR condition. Different parameters will form an AND condition.
+
+### Request
+
+Query Params:
+
+| Parameter  | Type         | Description                       |
+|:-----------|:-------------|:----------------------------------|
+| `uid` | `string` | The unique identifier of the school (e.g "ubc") |
+| `name` | `string` | The name of the school (e.g. "University of British Columbia - Vancouver" |
+| `abbreviation` | `string` | The abbreviated name of the school (e.g. "UBC Vancouver") |
+| `mentalHealthCoverage` | `string` | The mental health coverage provided to students by the school (e.g. "$1500 per policy year" |
 
 ### Response
 
@@ -31,6 +42,11 @@ Example response for GET http://localhost:4000/schools:
         }
     ]
 
+### Examples
+
+| Request  | Should Return         | 
+|:-----------|:-------------|
+|GET http://localhost:4000/schools?uid=ubcv&uid=sfu | Schools with uid=ubcv and uid=sfu |
 
 ## Get a School
 
