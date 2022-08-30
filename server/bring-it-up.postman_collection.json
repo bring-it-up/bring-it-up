@@ -61,23 +61,23 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "indentifier",
-									"value": "test",
+									"key": "uid",
+									"value": "\"sfu\"",
 									"type": "text"
 								},
 								{
 									"key": "name",
-									"value": "test",
+									"value": "\"Simon Fraser University\"",
 									"type": "text"
 								},
 								{
 									"key": "abbreviation",
-									"value": "test",
+									"value": "\"SFU\"",
 									"type": "text"
 								},
 								{
 									"key": "mentalHealthCoverage",
-									"value": "test",
+									"value": "\"80% of costs, up to $500 per policy year\"",
 									"type": "text"
 								}
 							]
