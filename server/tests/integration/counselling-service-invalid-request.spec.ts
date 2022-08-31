@@ -13,7 +13,9 @@ import {
     nonArrayTargetClientsData
 } from "./data/counselling-service-invalid-request-data";
 import {StatusCode} from "../../utils/status-code.enum";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+const should = chai.should();
 
 chai.use(chaiHttp);
 

@@ -6,7 +6,7 @@ import {BadRequestError} from "../middleware/bad-request-error";
 
 async function getSchools(req: Request, res: Response) {
     try {
-        const schools = await School.getSchools(req.query.identifer,
+        const schools = await School.getSchools(req.query.uid,
                                                 req.query.name,
                                                 req.query.abbreviation,
                                                 req.query.mentalHealthCoverage,

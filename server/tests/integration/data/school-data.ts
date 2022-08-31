@@ -11,3 +11,10 @@ export const schoolData2 = {
     abbreviation: "SFU",
     mentalHealthCoverage: "80% of costs, up to $500 per policy year"
 };
+
+export const schoolData3 = {
+    "uid": "capu",
+    "name": "Capilano University",
+    "abbreviation": "CapU",
+    "mentalHealthCoverage": "$900 per policy year"
+}
