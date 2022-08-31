@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import CSService from '../services/counselling-service.service';
 import { generateSecondaryId } from '../utils/id-generator.util';
 import { filterRequest } from "../middleware/counselling-service.middleware";
+import DataJson from '../data/counselling-services.json';
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
@@ -82,11 +83,28 @@ async function deleteAllCounsellingServices(req: Request, res: Response) {
   }
 }
 
+async function addCounsellingServicesJSON(req: Request, res: Response) {
+  let out_str = "";
+
+  for (let i = 0; i < DataJson.length; i++) {
+    out_str = out_str.concat('Service', (i).toString(), ': ', DataJson[i]['serviceName'], '\n ');
+  }
+
+  try {
+    res.json({ message: out_str, });
+  } catch (error: any) {
+    // 400 means something wrong with use input
+    res.status(400).json({ message: error.message });
+  }
+}
+
+
 export default {
     getCounsellingServices,
     getCounsellingService,
     addCounsellingService,
     updateCounsellingService,
     deleteCounsellingService,
-    deleteAllCounsellingServices
+    deleteAllCounsellingServices,
+    addCounsellingServicesJSON
 };
