@@ -19,5 +19,7 @@ router.patch('/:id', patchRules, validateRequest, CounsellingServiceController.u
 // delete one
 router.delete('/:id', CounsellingServiceController.deleteCounsellingService);
 
+// delete all
+router.delete('/', CounsellingServiceController.deleteAllCounsellingServices);
 
 module.exports = router;
