@@ -52,7 +52,7 @@ describe('Schools', () => {
             assertSchool(response.body[0], schoolData2)
         });
 
-        it('should get schools with uid = ubcv and uid = sfu', async () => {
+        it('should get schools with uid = ubcv or uid = sfu', async () => {
             const response = await chai.request(server).get('/schools?uid=ubcv&uid=sfu');
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
@@ -65,7 +65,7 @@ describe('Schools', () => {
             }
         });
 
-        it('should get school with keyword Vancouver', async () => {
+        it('should get schools with keyword Vancouver', async () => {
             const response = await chai.request(server).get('/schools?searchString=Vancouver');
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
