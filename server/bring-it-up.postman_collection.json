@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "50c11705-f4ec-4a99-95a8-7726afa784d2",
+		"_postman_id": "9abab9ca-942d-40f7-8083-c30c7d963704",
 		"name": "bring-it-up",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18455401"
+		"_exporter_id": "11974707"
 	},
 	"item": [
 		{
@@ -45,7 +45,7 @@
 							"variable": [
 								{
 									"key": "uid",
-									"value": null
+									"value": "sfu"
 								}
 							]
 						}
@@ -58,29 +58,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "uid",
-									"value": "\"sfu\"",
-									"type": "text"
-								},
-								{
-									"key": "name",
-									"value": "\"Simon Fraser University\"",
-									"type": "text"
-								},
-								{
-									"key": "abbreviation",
-									"value": "\"SFU\"",
-									"type": "text"
-								},
-								{
-									"key": "mentalHealthCoverage",
-									"value": "\"80% of costs, up to $500 per policy year\"",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"uid\": \"sfu\",\n    \"name\": \"Simon Fraser University\",\n    \"abbreviation\": \"SFU\",\n    \"mentalHealthCoverage\": \"80% of costs, up to $500 per policy year\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://{{local_url}}/schools",
@@ -113,7 +97,7 @@
 							"variable": [
 								{
 									"key": "uid",
-									"value": null
+									"value": "sfu"
 								}
 							]
 						}
@@ -170,7 +154,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"location\": \"N/A\",\n    \"school\": \"SFU\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"serviceType\": [\"Wellness\"],\n    \"urgency\": \"Same Month\",\n    \"targetClients\": [\"Indigenous students at SFU\"],\n    \"isAllDay\": false,\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"specialty\": [\"Mental\", \"physical\", \"social wellness\"],\n    \"delivery\": [\"Online\"],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
+							"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"location\": \"N/A\",\n    \"school\": \"sfu\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"serviceType\": [\"Wellness\"],\n    \"urgency\": \"Same Month\",\n    \"targetClients\": [\"Indigenous students at SFU\"],\n    \"isAllDay\": false,\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"specialty\": [\"Mental\", \"physical\", \"social wellness\"],\n    \"delivery\": [\"Online\"],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
