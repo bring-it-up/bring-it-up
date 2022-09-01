@@ -96,7 +96,7 @@ let CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
 
     hours: {
         type: Object,
-        require: true,
+        required: false,
         unique: false
     },
 });

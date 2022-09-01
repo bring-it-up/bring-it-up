@@ -34,6 +34,30 @@ const isValidDelivery: CustomValidator = delivery => {
     }
 }
 
+const isValidHour: CustomValidator = hours => {
+    if (Object.keys(hours).length < 7 || Object.keys(hours).length > 7) {
+        return false;
+    }
+
+    for (const day in hours) {
+        if (hours[day].length === 1) {
+            if (hours[day][0] !== 0 || hours[day][0] !== 1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else if (hours[day].length === 2) {
+            if (hours[day][0] >= hours[day][1]) {
+                return false;
+            } else if (hours[day][0] < 0 || hours[day][1] >= 24) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+}
+
 export const postRules = [
     body('serviceName')
         .exists({checkNull: true, checkFalsy:true})
@@ -93,6 +117,10 @@ export const postRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
+    body('hours')
+        .optional()
+        .exists({checkNull: true, checkFalsy: true})
+        .custom(isValidHour),
 ]
 
 export const patchRules = [
@@ -168,6 +196,10 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
+    body('hours')
+        .optional()
+        .exists({checkNull: true, checkFalsy: true})
+        .custom(isValidHour),
 ]
 
 export function validateRequest(req: Request, res: Response, next: NextFunction) {
