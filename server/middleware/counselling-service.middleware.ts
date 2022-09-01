@@ -1,9 +1,8 @@
-import {body, CustomValidator, matchedData, validationResult} from "express-validator";
-import {NextFunction, Request, Response} from "express";
+import {body, CustomValidator} from "express-validator";
 import {ServiceType} from "../models/counselling-type.enum";
 import {UrgencyLevel} from "../models/urgency-level.enum";
 import {DeliveryMethod} from "../models/delivery-method.enum";
-import {InvalidRequestError} from "./invalid-request-error";
+import {BadRequestError} from "./bad-request-error";
 
 /*
     This file contains the logic for validating requests to
@@ -14,15 +13,15 @@ const isValidServiceType: CustomValidator = type => {
     if (Object.values(ServiceType).includes(type as ServiceType)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid value");
+        throw new BadRequestError("invalid value");
     }
-}
+};
 
 const isValidUrgency: CustomValidator = urgency => {
     if (Object.values(UrgencyLevel).includes(urgency as UrgencyLevel)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid value");
+        throw new BadRequestError("invalid value");
     }
 };
 
@@ -30,9 +29,9 @@ const isValidDelivery: CustomValidator = delivery => {
     if (Object.values(DeliveryMethod).includes(delivery as DeliveryMethod)) {
         return true;
     } else {
-        throw new InvalidRequestError("invalid value");
+        throw new BadRequestError("invalid value");
     }
-}
+};
 
 export const postRules = [
     body('serviceName')
@@ -93,7 +92,7 @@ export const postRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
-]
+];
 
 export const patchRules = [
     body('serviceName')
@@ -168,16 +167,4 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
-]
-
-export function validateRequest(req: Request, res: Response, next: NextFunction) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    next();
-}
-
-export function filterRequest(req: Request) {
-    return matchedData(req, { locations: ['body'] });
-}
+];

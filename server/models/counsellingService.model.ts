@@ -32,7 +32,7 @@ interface ICounsellingServiceModel extends mongoose.Model<CounsellingServiceDoc>
 }
 
 // define object schema
-let CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
+const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     serviceName: {
         type: String,
         required: true
