@@ -2,6 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../index';
 import {
+    invalidDay,
     invalidDeliveryData,
     invalidHourData,
     invalidIsAllDayData,
@@ -104,6 +105,13 @@ describe('Counselling Services Invalid Requests', () => {
             const result = await chai.request(server)
                 .post('/counselling-services')
                 .send(invalidNumHours);
+            result.should.have.status(400);
+        });
+
+        it('should reject invalid day', async () => {
+            const result = await chai.request(server)
+                .post('/counselling-services')
+                .send(invalidDay);
             result.should.have.status(400);
         });
     });
