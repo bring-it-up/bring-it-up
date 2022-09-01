@@ -11,7 +11,7 @@ import Service from './Service';
 var tags: string[] = ["a", "b", "c"];
 var arr: string[] = ["a", "b", "c"];
 
-let serv = new Service("a", "b", "c", "d", "e", "f", arr, true, "g", arr, false, arr, "h", "i");
+let serv = new Service("UBC Student Assistance Program (SAP)", "Vancouver, BC", "UBC", "a", "a", "a", arr, true, "a", arr, false, arr, "a", "a");
 
 
 function App(): ReactElement {

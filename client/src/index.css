@@ -14,23 +14,26 @@ code {
 
 .card {
   /* Add shadows to create the "card" effect */
+  background-color: rgba(103, 80, 164, 0.11);
+  font-family: "Noto Sans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  height: 150px; 
-  width: 500px; 
+  height: 159px; 
+  width:610px; 
+  border-radius: 10px;
   margin-left: 10px; /* temporarily */
   margin-top: 10px; /* temporarily */
   padding: 20px 20px 16px 16px;
 }
 .tag {
   /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  border-radius: 5px;
+  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+  background-color: rgba(103, 80, 164, 0.25);
+  border-radius: 10px;
+  font-weight: 400;
   padding: 5px;
-  font-size: 10px;
+  font-size: 15px;
   margin-right: 10px;
   /* background-color: gray; */
 }
@@ -53,15 +56,33 @@ div.tags {
   justify-content: left;
 }
 
-li.shareIcon {
-  margin-left: 20px;
-  list-style: none;
+.share {
+  font-size: medium;
+}
+
+h6.rating1 {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+h6.rating2 {
+  font-size: 18px;
+  font-weight: 700;
 }
 
 div.ratingItem {
+  margin-left: 90px;
+  vertical-align: top;
+  /* border-style: solid;
+  border-color: aqua; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  bottom: 0;
+}
+.favourite {
+  margin-right: 8px;
+  font-size:"medium"
 }
 
 .checked {
@@ -70,13 +91,15 @@ div.ratingItem {
 
 .share {
   margin-top: 2px;
-  margin-left: 3px;
+  margin-bottom: 4px;
+  margin-left: 8px;
 
 }
 
 .information {
+  width: 100px;
   display: flex;
-  width: 200px;
+  font-size: 15px;
   justify-content: space-between;
   flex-direction: row;
 }
@@ -112,10 +135,12 @@ h6.review {
 }
 
 div.name {
+  font-weight: 500;
   display: flex;
   flex-direction: row;
   width: 300px;
   font-size: 10px;
+  white-space: nowrap;
 }
 div.tags {
   display: flex; 
@@ -145,9 +170,16 @@ div.ratingItem {
 
 .information {
   display: flex;
+  font-size: 30px;
   width: 200px;
   justify-content: space-between;
   flex-direction: row;
+  white-space: nowrap;
+}
+p.info {
+  font-size: 15px;
+  font-weight: 400;
+  margin-right: 5px;
 }
 p {
   font-size: 10px;
