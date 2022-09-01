@@ -51,6 +51,8 @@ const isValidHour: CustomValidator = hours => {
                 return false;
             } else if (hours[day][0] < 0 || hours[day][1] >= 24) {
                 return false;
+            } else if (Number(hours[day][0].split('.')[1]) > 0.59 || Number(hours[day][1].split('.')[1]) > 0.59) {
+                return false;
             }
         } else {
             return false;

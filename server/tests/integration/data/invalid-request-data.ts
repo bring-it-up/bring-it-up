@@ -151,7 +151,7 @@ export const invalidHourData = {
         tue: [1],
         wed: [10.30, 20.00],
         thu: [1],
-        fri: [7.15, 25.00],
+        fri: [7.15, 20.60],
         sat: [0],
         sun: [0]
     }
