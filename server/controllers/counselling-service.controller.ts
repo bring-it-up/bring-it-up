@@ -87,16 +87,20 @@ async function addCounsellingServicesJSON(req: Request, res: Response) {
   let out_str = "";
 
   for (let i = 0; i < DataJson.length; i++) {
-    out_str = out_str.concat('Service', (i).toString(), ': ', DataJson[i]['serviceName'], '\n ');
+    //out_str = out_str.concat('Service', (i).toString(), ': ', DataJson[i]['serviceName'], '\n ');
+    const sec_id = generateSecondaryId(DataJson[i]['serviceName']);
+    out_str = out_str.concat(sec_id);
   }
-
+  
   try {
     res.json({ message: out_str, });
+
   } catch (error: any) {
     // 400 means something wrong with use input
     res.status(400).json({ message: error.message });
   }
 }
+
 
 
 export default {
