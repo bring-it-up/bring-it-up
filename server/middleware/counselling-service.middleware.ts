@@ -45,10 +45,8 @@ const isValidHour: CustomValidator = hours => {
         if (!(days.has(day))) {
             return false;
         } else if (hours[day].length === 1) {
-            if (hours[day][0] !== 0 || hours[day][0] !== 1) {
+            if (hours[day][0] !== 0 && hours[day][0] !== 1) {
                 return false;
-            } else {
-                return true;
             }
         } else if (hours[day].length === 2) {
             if (hours[day][0] >= hours[day][1]) {
@@ -58,10 +56,9 @@ const isValidHour: CustomValidator = hours => {
             } else if (Number(hours[day][0].split('.')[1]) > 0.59 || Number(hours[day][1].split('.')[1]) > 0.59) {
                 return false;
             }
-        } else {
-            return false;
         }
     }
+    return true;
 }
 
 export const postRules = [
