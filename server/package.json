@@ -7,7 +7,8 @@
     "start": "nodemon --exec npx ts-node index.ts",
     "test": "cross-env NODE_ENV=test mocha --require ts-node/register --exit --require mocha-suppress-logs tests/**/*.spec.ts",
     "test:unit": "cross-env NODE_ENV=test mocha --require ts-node/register --exit --require mocha-suppress-logs tests/unit/**/*.spec.ts",
-    "test:int": "cross-env NODE_ENV=test mocha --require ts-node/register --exit --require mocha-suppress-logs tests/integration/**/*.spec.ts"
+    "test:int": "cross-env NODE_ENV=test mocha --require ts-node/register --exit --require mocha-suppress-logs tests/integration/**/*.spec.ts",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -33,14 +34,15 @@
     "@types/cors": "^2.8.12",
     "@types/mocha": "^9.1.1",
     "@types/mongoose": "^5.11.97",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
+    "eslint": "^8.23.0",
     "mocha": "^10.0.0",
     "mocha-suppress-logs": "^0.3.1",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.4.0",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
     "typescript": "^4.5.5"
   }
 }

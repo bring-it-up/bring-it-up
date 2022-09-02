@@ -1,6 +1,6 @@
-# Public API Methods
+# Public API Methods (Counselling Services)
 
-These docs will only document the endpoints meant to be used by the client (frontend).
+These docs will only document the counselling service endpoints meant to be used by the client (frontend).
 
 ## Overview
 
