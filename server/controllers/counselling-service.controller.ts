@@ -84,7 +84,9 @@ async function deleteAllCounsellingServices(req: Request, res: Response) {
 }
 
 async function addCounsellingServicesJSON(req: Request, res: Response) {
+  //Deletes anything that was already in the database
   await CSService.deleteAllCounsellingServices();
+
   try {
     const final_obj:any = {final_push: []};  
     let vis_DataJson:any = {};
@@ -95,15 +97,15 @@ async function addCounsellingServicesJSON(req: Request, res: Response) {
       vis_DataJson.__v = 0;
       final_obj.final_push.push(vis_DataJson);
     }
+
     await CSService.createCounsellingServicesJSON(final_obj.final_push);
     res.json({ message: "Added the following to the database:", "Added:" : final_obj.final_push, });
 
   } catch (error: any) {
-    // 400 means something wrong with use input
+    // 400 means something wrong with input
     res.status(400).json({ message: error.message });
   }
 }
-
 
 
 

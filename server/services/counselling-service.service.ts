@@ -119,7 +119,6 @@ async function deleteAllCounsellingServices() {
   await service.deleteMany();
 }
 
-
 async function createCounsellingServicesJSON(inputService: ICounsellingService) {
   const service = await CounsellingService;
   await service.insertMany(inputService);
