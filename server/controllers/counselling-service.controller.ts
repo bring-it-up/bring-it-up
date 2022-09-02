@@ -84,22 +84,26 @@ async function deleteAllCounsellingServices(req: Request, res: Response) {
 }
 
 async function addCounsellingServicesJSON(req: Request, res: Response) {
-  let out_str = "";
-
-  for (let i = 0; i < DataJson.length; i++) {
-    //out_str = out_str.concat('Service', (i).toString(), ': ', DataJson[i]['serviceName'], '\n ');
-    const sec_id = generateSecondaryId(DataJson[i]['serviceName']);
-    out_str = out_str.concat(sec_id);
-  }
-  
+  await CSService.deleteAllCounsellingServices();
   try {
-    res.json({ message: out_str, });
+    const final_obj:any = {final_push: []};  
+    let vis_DataJson:any = {};
+
+    for (let i = 0; i < DataJson.length; ++i) {
+      vis_DataJson = DataJson[i];
+      vis_DataJson.secondaryID = generateSecondaryId(DataJson[i]['serviceName']);
+      vis_DataJson.__v = 0;
+      final_obj.final_push.push(vis_DataJson);
+    }
+    await CSService.createCounsellingServicesJSON(final_obj.final_push);
+    res.json({ message: "Added the following to the database:", "Added:" : final_obj.final_push, });
 
   } catch (error: any) {
     // 400 means something wrong with use input
     res.status(400).json({ message: error.message });
   }
 }
+
 
 
 

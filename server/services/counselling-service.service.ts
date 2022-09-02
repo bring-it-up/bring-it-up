@@ -120,9 +120,9 @@ async function deleteAllCounsellingServices() {
 }
 
 
-async function createCounsellingServicesJSON(inputService: ICounsellingService): Promise<ICounsellingService> {
-  const service = CounsellingService.build(inputService);
-  return await service.save();
+async function createCounsellingServicesJSON(inputService: ICounsellingService) {
+  const service = await CounsellingService;
+  await service.insertMany(inputService);
 }
 
 export default {

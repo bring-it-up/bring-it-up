@@ -58,15 +58,6 @@ const db = mongoose.connection;
 // set up db to log on error
 db.on('error', (error) => console.error(error));
 db.on('open', (data) => console.log('Connected to Database'));
-const coll = db.collection("Counselling services collection");
-
-// Post data to mongoDB
-app.post('/data', (_req, _res) => {
-  // Sends Json data
-  console.log('Data posted onto MongoDB');
-  coll.insertMany(DataJson);
-  _res.send('Data posted onto MongoDB'); 
-});
 
 // let server accept json
 app.use(express.json());
