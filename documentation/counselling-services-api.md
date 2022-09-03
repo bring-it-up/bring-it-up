@@ -34,6 +34,7 @@ Query Params:
 | `specialty` | `string array` | The areas the service specializes in, e.g. "Trauma" or "Addiction" |
 | `delivery` | `DeliveryMethod array` | Format(s) in which the service is offered, one or more of: "In person", "Online", "Phone", "App", "Email" |
 | `description` | `string` | A description of the service |
+| `hours` | `object` | Operating Hours of Service represented as arrays of floats using 24-hr time (e.g. 8:30 PM = 20.3). 1 represents open all-day, 0 represents closed on that day, day key must be first 3 letters of day (e.g. Monday = mon) |
 
 ### Response
 
@@ -65,6 +66,29 @@ Example response for GET http://localhost:4000/counselling-services?specialty=tr
         "In Person"
         ],
         "description": "Counselling for Indigenous students is available with Tanu Gamble or Jennifer Reandy. To book an appointment, email isc_well@sfu.ca or learn more about counselling for Indigenous students here.",
+        "hours": {
+            "mon": [
+                1
+            ],
+            "tue": [
+                1
+            ],
+            "wed": [
+                1
+            ],
+            "thu": [
+                1
+            ],
+            "fri": [
+                1
+            ],
+            "sat": [
+                1
+            ],
+            "sun": [
+                1
+            ]
+        },
         "secondaryID": "sfu-indigenous-counsellors",
         "__v": 0
     }
