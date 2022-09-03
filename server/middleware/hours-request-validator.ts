@@ -17,10 +17,14 @@ export const isValidHour = (hours: any) => {
                 return false;
             } else if (hours[day][0] < 0 || hours[day][1] >= 24) {
                 return false;
-            } else if (Number(hours[day][0].toString().split('.')[1]) > 59 || Number(hours[day][1].toString().split('.')[1]) > 59) {
+            } else if (floatToMinutes(hours[day][0]) > 0.59 || floatToMinutes(hours[day][1]) > 0.59) {
                 return false;
             }
         }
     }
     return true;
+}
+
+const floatToMinutes = (hour: any) => {
+    return Number((hour % 1).toFixed(2));
 }
