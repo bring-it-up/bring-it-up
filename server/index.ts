@@ -10,7 +10,7 @@ require('dotenv').config({ path: envFile });
 // Initialize the express engine
 const app: express.Application = express();
 
-// Take a port 3000 for running server.
+// Take a port 4000 for running server.
 const port = 4000;
 
 // setup cors to allow client http access
