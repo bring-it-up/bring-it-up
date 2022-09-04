@@ -19,6 +19,7 @@ export interface ICounsellingService {
     description: string;
     logo?: string;
     secondaryID: string;
+    hours: object;
 }
 
 // when create new doc in db mongoose returns additional info
@@ -92,7 +93,15 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
         required: false,
         unique: true
     },
+
+    hours: {
+        type: Object,
+        required: false,
+        unique: false
+    },
 });
+
+CounsellingServiceSchema.index({ '$**': 'text' }, {name: 'search_index'});
 
 // attach as static function of the schema
 CounsellingServiceSchema.statics.build = (attr: ICounsellingService) => {

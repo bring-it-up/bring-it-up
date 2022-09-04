@@ -1,9 +1,7 @@
-export class InvalidRequestError extends Error {
-    statusCode = 400;
-
+export class BadRequestError extends Error {
     constructor(message?: string) {
         super(message);
-        Object.setPrototypeOf(this, InvalidRequestError.prototype);
+        Object.setPrototypeOf(this, BadRequestError.prototype);
     }
 
     getErrorMessage() {
