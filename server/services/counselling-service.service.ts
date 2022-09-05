@@ -31,7 +31,7 @@ async function getCounsellingServices(serviceNameQuery: any,
   const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
                   ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
 
-  const services = await CounsellingService.find({ $and: [filter] })
+  const services = await CounsellingService.find({ $and: [filter] }, { _id: 0, __v: 0})
                                            .collation({ locale: 'en', strength: 2 })
                                            .lean();
 
@@ -39,7 +39,7 @@ async function getCounsellingServices(serviceNameQuery: any,
 }
 
 async function getCounsellingService(id: string): Promise<ICounsellingService> {
-    return await CounsellingService.findOne({secondaryID: id}).lean();
+    return await CounsellingService.findOne({secondaryID: id}, {_id: 0, __v: 0}).lean();
 }
 
 async function createCounsellingService(inputService: ICounsellingService): Promise<ICounsellingService> {

@@ -78,7 +78,9 @@ describe('Schools', () => {
         it('should get a school with uid = ubcv', async () => {
             const response = await chai.request(server).get('/schools/ubcv');
             response.should.have.status(StatusCode.OK);
-            assertSchool(response.body, schoolData1)
+            assertSchool(response.body, schoolData1);
+            response.body.should.not.have.property('_id');
+            response.body.should.not.have.property('__v');
         });
     });
 
