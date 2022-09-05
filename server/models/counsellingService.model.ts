@@ -19,6 +19,7 @@ export interface ICounsellingService {
     description: string;
     logo?: string;
     secondaryID: string;
+    hours: object;
 }
 
 // when create new doc in db mongoose returns additional info
@@ -32,7 +33,7 @@ interface ICounsellingServiceModel extends mongoose.Model<CounsellingServiceDoc>
 }
 
 // define object schema
-let CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
+const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     serviceName: {
         type: String,
         required: true
@@ -91,6 +92,12 @@ let CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
         type: String,
         required: false,
         unique: true
+    },
+
+    hours: {
+        type: Object,
+        required: false,
+        unique: false
     },
 });
 
