@@ -3,7 +3,7 @@ import CSService from '../services/counselling-service.service';
 import { generateSecondaryId } from '../utils/id-generator.util';
 import { filterRequest } from "../middleware/utils.middleware";
 import {StatusCode} from "../utils/status-code.enum";
-import DataJson from '../data/counselling-services.json';\
+import DataJson from '../data/counselling-services.json';
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
