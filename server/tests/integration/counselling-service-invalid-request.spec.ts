@@ -2,14 +2,10 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../index';
 import {
-    invalidDay,
     invalidDeliveryData,
-    invalidHourData,
     invalidIsAllDayData,
-    invalidNumHours,
     invalidServiceNameData,
     invalidServiceTypeData,
-    invalidSpecialHourData,
     invalidSpecialtyData,
     invalidTargetClientsData,
     invalidUrgencyData,
@@ -87,34 +83,6 @@ describe('Counselling Services Invalid Requests', () => {
                 .post('/counselling-services')
                 .send(invalidSpecialtyData);
             result.should.have.status(StatusCode.BAD_REQUEST);
-        });
-
-        it('should reject invalid hour', async () => {
-            const result = await chai.request(server)
-                .post('/counselling-services')
-                .send(invalidHourData);
-            result.should.have.status(400);
-        });
-
-        it('should reject invalid special hour', async () => {
-            const result = await chai.request(server)
-                .post('/counselling-services')
-                .send(invalidSpecialHourData);
-            result.should.have.status(400);
-        });
-
-        it('should reject invalid num hours', async () => {
-            const result = await chai.request(server)
-                .post('/counselling-services')
-                .send(invalidNumHours);
-            result.should.have.status(400);
-        });
-
-        it('should reject invalid day', async () => {
-            const result = await chai.request(server)
-                .post('/counselling-services')
-                .send(invalidDay);
-            result.should.have.status(400);
         });
     });
 });
