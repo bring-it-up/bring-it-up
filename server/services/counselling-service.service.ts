@@ -1,4 +1,5 @@
 import { CounsellingService, ICounsellingService } from '../models/counsellingService.model';
+import { School } from "../models/school.model";
 import { getFilter } from "../utils/filter.util";
 
 async function getCounsellingServices(serviceNameQuery: any,
@@ -38,8 +39,30 @@ async function getCounsellingServices(serviceNameQuery: any,
   return services;
 }
 
-async function getCounsellingService(id: string): Promise<ICounsellingService> {
-    return await CounsellingService.findOne({secondaryID: id}, {_id: 0, __v: 0}).lean();
+async function getCounsellingService(id: string): Promise<any> {
+    return await CounsellingService.aggregate([
+        {
+            $match: {
+                secondaryID: id,
+            },
+        },
+        {
+            $lookup: {
+                from: School.collection.name,
+                localField: 'school',
+                foreignField: 'uid',
+                as: 'school',
+            },
+        },
+        {
+            $project: {
+                _id: 0,
+                __v: 0,
+                'school._id': 0,
+                'school.__v': 0,
+            },
+        },
+    ]);
 }
 
 async function createCounsellingService(inputService: ICounsellingService): Promise<ICounsellingService> {
