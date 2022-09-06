@@ -1,207 +1,122 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-} 
+}
 
-.card {
-  /* Add shadows to create the "card" effect */
+.serviceCard {
   background-color: rgba(103, 80, 164, 0.11);
+  height: 159px;
+  width: 570px;
+  border-radius: 30px;
+}
+
+.cardContent {
   font-family: "Noto Sans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 159px; 
-  width:610px; 
-  border-radius: 10px;
-  margin-left: 10px; /* temporarily */
-  margin-top: 10px; /* temporarily */
-  padding: 20px 20px 16px 16px;
+  padding: 30px 25px 20px 25px;
 }
 .tag {
-  /* Add shadows to create the "card" effect */
-  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
   background-color: rgba(103, 80, 164, 0.25);
   border-radius: 10px;
   font-weight: 400;
-  padding: 5px;
+  padding: 4px 15px 4px 15px;
   font-size: 15px;
-  margin-right: 10px;
-  /* background-color: gray; */
+  margin-right: 15px;
 }
-
-h6.review {
-  font-size: 10px;
-  text-decoration: underline;
-}
-
 div.name {
   display: flex;
   flex-direction: row;
   width: 300px;
-  font-size: 10px;
 }
-
+.reviews a {
+  color: rgba(53, 53, 53, 1);
+}
 div.tags {
-  display: flex; 
+  display: flex;
   flex-direction: row;
   justify-content: left;
 }
-
-.share {
-  font-size: medium;
-}
-
-h6.rating1 {
+h6.rating {
+  margin-right: 2px;
+  margin-top: -6.5px;
   font-size: 25px;
   font-weight: 700;
 }
-
-h6.rating2 {
+h6.maxRating {
   font-size: 18px;
   font-weight: 700;
 }
-
 div.ratingItem {
   margin-left: 90px;
   vertical-align: top;
-  /* border-style: solid;
-  border-color: aqua; */
+  white-space: nowrap;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   bottom: 0;
 }
 .favourite {
+  margin-top: -4px;
   margin-right: 8px;
-  font-size:"medium"
+  font-size: "medium";
 }
-
-.checked {
-  margin: 5px;
-}
-
-.share {
-  margin-top: 2px;
-  margin-bottom: 4px;
+.shareIcon {
+  font-size: large;
+  margin-top: -3px;
   margin-left: 8px;
-
 }
-
-.information {
-  width: 100px;
-  display: flex;
-  font-size: 15px;
-  justify-content: space-between;
-  flex-direction: row;
-}
-
-p {
-  font-size: 10px;
-  margin: 0;
-  padding: 0;
-}
-
-.button {
-  border: none;
-  background-color: blue;
-}
-
-h6.text {
-  font-size: 15px;
-}
-
-.checked {
-  color: orange;
-}
-
 .title {
   display: flex;
   flex-direction: row;
-  width: 450px; /* could be cool to make this dynamic i.e. size / 2 */
+  width: 450px;
   justify-content: space-between;
 }
-h6.review {
-  font-size: 10px;
-  text-decoration: underline;
-}
-
-div.name {
+.name {
+  white-space: nowrap;
+  font-size: 18px;
   font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+}
+.informationList {
   display: flex;
   flex-direction: row;
-  width: 300px;
-  font-size: 10px;
+  list-style: none;
+  justify-content: space-between;
+  padding-left: 0%;
   white-space: nowrap;
+  color: rgba(53, 53, 53, 1);
 }
 div.tags {
-  display: flex; 
-  flex-direction: row;
-  justify-content: left;
-}
-
-li.shareIcon {
-  margin-left: 20px;
-  list-style: none;
-}
-div.ratingItem {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
+  color: rgba(0, 0, 0, 1);
 }
-
-.checked {
-  margin: 5px;
-}
-
 .share {
   margin-top: 2px;
   margin-left: 3px;
-
 }
-
 .information {
-  display: flex;
-  font-size: 30px;
-  width: 200px;
-  justify-content: space-between;
-  flex-direction: row;
-  white-space: nowrap;
+  width: 280px;
+  font-weight: 400;
+  font-size: 15px;
 }
 p.info {
   font-size: 15px;
   font-weight: 400;
   margin-right: 5px;
 }
-p {
-  font-size: 10px;
-  margin: 0;
-  padding: 0;
-}
-.button {
-  border: none;
-  background-color: blue;
-}
 h6.text {
   font-size: 15px;
 }
-
-.checked {
-  color: orange;
-}
-
-.title {
-  display: flex;
-  flex-direction: row;
-  width: 450px; /* could be cool to make this dynamic i.e. size / 2 */
-  justify-content: space-between;
-}
-

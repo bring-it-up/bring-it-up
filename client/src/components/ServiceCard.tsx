@@ -9,33 +9,34 @@ type Props = {
 }
 
 // logic for defining tags is not determined yet
-var tags: string[] = ["Peer", "24/7", "Professional"];
-var arr: string[];
-arr = ["a", "b", "c"];
+var tags: string[] = ["Peer", "24/7", "Professional", "Phone", "Online"];
 
 const ServiceCard = ({ service }: Props): ReactElement => {
     return (
-            <div className="card">
-                <div className="title"> 
-                    <div className="name">
-                        <h6>{service.serviceName}</h6>      
-                    </div>
+        <div className="serviceCard">
+            <div className="cardContent">
+            <div className="title">
+                <div className="name">
+                    {service.serviceName}
+                </div>
+
                     <div className="ratingItem">
                         <StarOutlineRoundedIcon className="favourite" onClick={() => { }} />
-                        <h6 className="rating1">{'5.0'}</h6>
-                        <h6 className="rating2">/5.0</h6>
-                    <ShareOutlinedIcon className="share" onClick={()=>{}}/>
+                        <h6 className="rating">{'5.0'}</h6>
+                    <h6 className="maxRating">/ 5.0</h6>
+                    <ShareOutlinedIcon className="shareIcon"></ShareOutlinedIcon>
+                  
                     </div>
-                </div>
-
-
-                <div className="information">
-                    <p className="info">{service.location}</p>
-                    <p className="info">|</p>
-                    <p className="info"><a href="https://www.w3schools.com/">{'5'} reviews</a></p>
-                    <p className="info">|</p>
-                    <p className="info">{'5'} likes</p>
-                </div>
+            </div>
+            <div className="information">
+            <ul className="informationList">
+                    <li>{service.location}</li>
+                    <li>|</li>
+                    <li className="reviews"><a href="https://www.w3schools.com/">{'5'} reviews</a></li>
+                    <li>|</li>
+                    <li>{'245'} likes</li>
+            </ul>
+            </div>
 
                 <div className="tags">
                         {tags.map((tag, index) => (
@@ -45,7 +46,8 @@ const ServiceCard = ({ service }: Props): ReactElement => {
                         ),
                     )}
                 </div>
-            </div>
+                </div>
+           </div>
     );
 }
 
