@@ -1,4 +1,3 @@
-import React from 'react';
 import {AppBar, Typography, Toolbar, Button} from '@mui/material';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/system';
