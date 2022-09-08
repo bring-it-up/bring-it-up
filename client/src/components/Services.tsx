@@ -25,10 +25,9 @@ const Services = (): ReactElement => {
     return (
         <>
             <h1>Services</h1>
-            <p>These are the services in database: {GetData()}</p>
-            <p>Sample Service 1 <Link to={generatePath("services/:id", {id:'customID1'})}>Click here</Link> </p>
-            <p>Sample Service 2 <Link to={generatePath("services/:id", {id:'customID2'})}>Click here</Link> </p>
-            <p>Sample Service 3 <Link to={generatePath("services/:id", {id:'customID3'})}>Click here</Link> </p>
+            <p>These are the services in database: {GetData().map(
+                x => <p>{x} <Link to={generatePath("services/:id", {id:x})}>Click here</Link> </p>
+                )}</p>
         </>
     );
 }
