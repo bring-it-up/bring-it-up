@@ -38,7 +38,7 @@ async function createSchool(inputSchool: ISchool): Promise<ISchool> {
 }
 
 async function deleteSchool(id: string) {
-    const school = await School.findOne({uid: id}, {_id: 0, __v: 0});
+    const school = await School.findOne({uid: id});
     if (school == null) {
         throw new BadRequestError();
     }

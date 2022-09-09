@@ -7,7 +7,7 @@ import { UrgencyLevel } from './urgency-level.enum';
 export interface ICounsellingService {
     serviceName: string;
     location?: string;
-    school?: string;
+    school?: string | object;
     organization: string;
     serviceType: ServiceType[];
     urgency: UrgencyLevel;

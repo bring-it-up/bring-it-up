@@ -32,15 +32,35 @@ async function getCounsellingServices(serviceNameQuery: any,
   const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
                   ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
 
-  const services = await CounsellingService.find({ $and: [filter] }, { _id: 0, __v: 0})
-                                           .collation({ locale: 'en', strength: 2 })
-                                           .lean();
+  const services = await CounsellingService.aggregate([
+      {
+          $match: {
+              $and: [filter]
+          },
+      },
+      {
+          $lookup: {
+              from: School.collection.name,
+              localField: 'school',
+              foreignField: 'uid',
+              as: 'school',
+          },
+      },
+      {
+          $project: {
+              _id: 0,
+              __v: 0,
+              'school._id': 0,
+              'school.__v': 0,
+          },
+      },
+  ]).collation({ locale: 'en', strength: 2 });
 
   return services;
 }
 
-async function getCounsellingService(id: string): Promise<any> {
-    return await CounsellingService.aggregate([
+async function getCounsellingService(id: string): Promise<ICounsellingService> {
+    const service = await CounsellingService.aggregate([
         {
             $match: {
                 secondaryID: id,
@@ -63,6 +83,8 @@ async function getCounsellingService(id: string): Promise<any> {
             },
         },
     ]);
+
+    return service[0];
 }
 
 async function createCounsellingService(inputService: ICounsellingService): Promise<ICounsellingService> {
