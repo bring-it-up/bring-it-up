@@ -7,6 +7,7 @@ import Home from './components/Home';
 import { ReactElement } from 'react';
 import ServiceCard from './components/ServiceCard';
 import Service from './Service';
+import SearchBar from './components/SearchBar';
 
 var tags: string[] = ["a", "b", "c"];
 var arr: string[] = ["a", "b", "c"];
@@ -29,7 +30,9 @@ function App(): ReactElement {
       </Router>
       {/* end navbar */} 
       </div>
-        <ServiceCard service={serv}></ServiceCard>
+      <SearchBar></SearchBar>
+      <div>space</div>
+      <ServiceCard service={serv}></ServiceCard>
   </div>
   );
 }

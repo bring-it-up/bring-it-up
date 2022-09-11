@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-// import { AiOutlineShareAlt, AiFillStar } from 'react-icons/ai'
 import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import Service from '../Service';

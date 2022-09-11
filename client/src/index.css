@@ -120,3 +120,45 @@ p.info {
 h6.text {
   font-size: 15px;
 }
+
+/* SearchBar Styling */
+
+.background{
+  height: 77px;
+  width: 570px;
+  border-radius: 40px;
+  background-color: rgba(103, 80, 164, 0.11);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+form input {
+  height: 47px;  
+  width: 468px;
+  border-radius: 40px 0px 0px 40px;
+  outline-style: solid;
+  outline-color: rgba(103, 80, 164, 1);
+  background-color: white;
+}
+
+form input[placeholder="Search"] {
+  color: rgb(233, 27, 154);
+}
+
+form button {
+  height: 47px;  
+  width: 50px;
+  border-radius: 0px 40px 40px 0px;
+  outline-style: solid;
+  outline-color: rgba(103, 80, 164, 1);
+  position: absolute;
+  background-color: white;
+}
