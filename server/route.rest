@@ -3,10 +3,10 @@
 GET http://localhost:4000/counselling-services
 
 ###
-GET http://localhost:4000/counselling-services?school=uBc
+GET http://localhost:4000/counselling-services?school=u
 
 ###
-GET http://localhost:4000/counselling-services?isOfferedOnline=true&school=UBC
+GET http://localhost:4000/counselling-services?specialty=trauma&school=SFU
 
 ###
 GET http://localhost:4000/counselling-services?specialty=anxiety&specialty=stress
@@ -19,28 +19,71 @@ POST http://localhost:4000/counselling-services
 Content-Type: application/json
 
 {
-    "serviceName": "Wellness Together Canada Talk Service",
-    "location": "Not Specified",
-    "school": "None",
-    "organization": "Wellness Together Canada",
-    "type": "Phone Counselling",
-    "urgency": "Non-urgent",
-    "targetClients": [
-        "Adults (aged 18+)"
+    "serviceName": "UBC Psychology Clinic",
+    "school": "UBC",
+    "organization": "UBC Psychology",
+    "serviceType": [
+        "Counselling"
     ],
-    "isAllDay": true,
-    "website": "https://wellnesstogether.ca/en-CA/service/talk",
+    "urgency": "Same Month",
+    "targetClients": [
+        "Adults in Greater Vancouver"
+    ],
+    "isAllDay": false,
+    "website": "https://clinic.psych.ubc.ca/services/",
     "specialty": [
-        "Any Except Crisis"
+        "Stress",
+        "Anxiety",
+        "Depression"
     ],
     "isOfferedOnline": false,
     "delivery": [
+        "In Person"
+    ],
+    "description": "The UBC Psychology Clinic offers comprehensive psychological services adults. Our clinical services are provided by graduate students from UBC’s doctoral programme in clinical psychology. Student clinicians are closely supervised by Registered Psychologists from our faculty and the community.Our Clinic is not able to provide psychiatric or emergency services or services where there is a risk of frequent or severe crisis or involvement with the law."
+}
+
+###
+POST http://localhost:4000/counselling-services
+Content-Type: application/json
+
+{
+    "serviceName": "Student test",
+    "school": "SFU",
+    "location": "Vancouver",
+    "organization": "Test",
+    "serviceType": [
+        "Counselling",
+        "Medical"
+    ],
+    "urgency": "Same Day",
+    "targetClients": [
+        "SFU students"
+    ],
+    "isAllDay": false,
+    "website": "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
+    "specialty": [
+        "Stress",
+        "Anxiety",
+        "Depression",
+        "Addiction",
+        "Crisis",
+        "Grief",
+        "Trauma",
+        "Fitness",
+        "Nutrition",
+        "Sleep"
+    ],
+    "isOfferedOnline": true,
+    "delivery": [
+        "Online",
         "Phone"
     ],
-    "description": "Our partners provide free support over the phone, to help you through problems big and small. When you call one of the numbers below, you’ll be connected with a professional counsellor who will listen non-judgmentally to whatever’s on your mind."
+    "description": "test"
 }
+
 ###
-DELETE http://localhost:4000/counselling-services/6222ae68c10113e79aea0871
+DELETE http://localhost:4000/counselling-services/62c23ea0246374345e9ded70
 
 ###
 PATCH http://localhost:4000/counselling-services/6223e2b28bae61f01f2ab573
