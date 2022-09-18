@@ -2,9 +2,10 @@ import chai from 'chai';
 import { isValidHour } from '../../middleware/hours-request-validator';
 import {
     invalidHourData,
-    invalidSpecialHourData,
+    invalidHourDataType,
     invalidNumHours,
-    invalidDay
+    invalidDay,
+    invalidNumHourDataValues
 } from './data/invalid-hour-data'
 import {
     validHourData,
@@ -27,8 +28,8 @@ describe('Hours Validator', () => {
     );
 
     runTest(
-        'should reject invalid special hour data', 
-        invalidSpecialHourData, false
+        'should reject invalid hour data type', 
+        invalidHourDataType, false
     );
 
     runTest(
@@ -39,6 +40,11 @@ describe('Hours Validator', () => {
     runTest(
         'should reject invalid day name', 
         invalidDay, false
+    );
+
+    runTest(
+        'should reject invalid number of hours', 
+        invalidNumHourDataValues, false
     );
 
     runTest(
