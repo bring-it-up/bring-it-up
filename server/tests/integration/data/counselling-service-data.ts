@@ -9,7 +9,8 @@ export const service1Data = {
     website: "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
     specialty: ["Stress", "Anxiety"],
     delivery: ["Online","Phone"],
-    description: "Offered by Aspiria, the UBC Student Assistance Program (SAP) is a free, 24/7 wellness resource for students. Services include personal counselling, life coaching, group programs and more based on your needs."
+    description: "Offered by Aspiria, the UBC Student Assistance Program (SAP) is a free, 24/7 wellness resource for students. Services include personal counselling, life coaching, group programs and more based on your needs.",
+    secondaryID: "student-assistance-program-(sap)"
 };
 
 export const service2Data = {
@@ -24,5 +25,6 @@ export const service2Data = {
     specialty: ["Stress","Anxiety","Homesickness","Cultural Adjustment"],
     isOfferedOnline: true,
     delivery: ["Online","Phone","App"],
-    description: "My SSP (My Student Support Program) is an app dedicated to supporting SFU/FIC students through its 24/7 crisis line, short-term counselling appointments and relevant resources on a range of mental health topics."
+    description: "My SSP (My Student Support Program) is an app dedicated to supporting SFU/FIC students through its 24/7 crisis line, short-term counselling appointments and relevant resources on a range of mental health topics.",
+    secondaryID: "my-ssp"
 };

@@ -1,6 +1,7 @@
 import { CounsellingService, ICounsellingService } from '../models/counsellingService.model';
+import { getFilter } from "../utils/filter.util";
 
-async function getCounsellingServices(nameQuery: any,
+async function getCounsellingServices(serviceNameQuery: any,
                                       locationQuery: any,
                                       schoolQuery: any, 
                                       organizationQuery: any,
@@ -10,88 +11,29 @@ async function getCounsellingServices(nameQuery: any,
                                       isAllDayQuery: any,
                                       specialtyQuery: any,
                                       deliveryQuery: any,
-                                      descriptionQuery: any): Promise<ICounsellingService[]> {
-  // TODO: Move input validation to controller
+                                      descriptionQuery: any,
+                                      searchString: any): Promise<ICounsellingService[]> {
 
-  const serviceName = nameQuery ? { serviceName: { $regex: nameQuery, $options: 'i' } } : {};
-  const location = locationQuery ? { location: { $regex: locationQuery, $options: 'i' } } : {};
-  const school = schoolQuery ? { school: { $regex: schoolQuery, $options: 'i' } } : {};
-  const organization = organizationQuery ? { organization: { $regex: organizationQuery, $options: 'i' } } : {};
-  const urgency = urgencyQuery ? { urgency: { $regex: urgencyQuery, $options: 'i' } } : {};
+  const serviceName = getFilter("serviceName", serviceNameQuery);
+  const location = getFilter("location", locationQuery);
+  const school = getFilter("school", schoolQuery);
+  const organization = getFilter("organization", organizationQuery);
+  const serviceType = getFilter("serviceType", serviceTypeQuery);
+  const specialty = getFilter("specialty", specialtyQuery);
+  const urgency = getFilter("urgency", urgencyQuery);
+  const targetClients = getFilter("targetClients", targetClientsQuery);
   const isAllDay = (isAllDayQuery != null) ? { isAllDay: isAllDayQuery } : {};
-  const description = descriptionQuery ? { description: { $regex: descriptionQuery, $options: 'i' } } : {};
+  const delivery = getFilter("delivery", deliveryQuery);
+  const description = getFilter("description", descriptionQuery);
 
-  const optRegexpServiceType : RegExp[] = [];
-  if (serviceTypeQuery && Array.isArray(serviceTypeQuery)) {
-    (serviceTypeQuery as string[]).forEach(function(opt: string) {
-      optRegexpServiceType.push( new RegExp(opt, "i") );
-    }); 
-  }
+  const search = searchString ? { $text: { $search: searchString } } : {};
 
-  const serviceType = serviceTypeQuery ? 
-    optRegexpServiceType.length == 0 ? 
-      { serviceType: {$regex: serviceTypeQuery, $options: 'i'} }
-      : 
-      { serviceType: {$in: optRegexpServiceType} }
-    :
-    {};
+  const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
+                  ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
 
-  const optRegexpTargetClients : RegExp[] = [];
-  if (targetClientsQuery && Array.isArray(targetClientsQuery)) {
-    (targetClientsQuery as string[]).forEach(function(opt: string) {
-      optRegexpTargetClients.push( new RegExp(opt, "i") );
-    }); 
-  }
-
-  const targetClients = targetClientsQuery ? 
-    optRegexpTargetClients.length == 0 ? 
-      { targetClients: {$regex: targetClientsQuery, $options: 'i'} }
-      : 
-      { targetClients: {$in: optRegexpTargetClients} }
-    :
-    {};
-
-  const optRegexpSpecialty : RegExp[] = [];
-  if (specialtyQuery && Array.isArray(specialtyQuery)) {
-    (specialtyQuery as string[]).forEach(function(opt: string) {
-      optRegexpSpecialty.push( new RegExp(opt, "i") );
-    }); 
-  }
-  
-  const specialty = specialtyQuery ? 
-    optRegexpSpecialty.length == 0 ? 
-      { specialty: {$regex: specialtyQuery, $options: 'i'} }
-      : 
-      { specialty: {$in: optRegexpSpecialty} }
-  :
-  {};
-
-  const optRegexpDeliveryMethod : RegExp[] = [];
-  if (deliveryQuery && Array.isArray(deliveryQuery)) {
-    (deliveryQuery as string[]).forEach(function(opt: string) {
-      optRegexpDeliveryMethod.push( new RegExp(opt, "i") );
-    }); 
-  }
-
-  const delivery = deliveryQuery ? 
-    optRegexpDeliveryMethod.length == 0 ? 
-      { delivery: {$regex: deliveryQuery, $options: 'i'} }
-      : 
-      { delivery: {$in: optRegexpDeliveryMethod} }
-    :
-    {};
-
-  const services = await CounsellingService.find({ $and: [{ ...serviceName, 
-                                                            ...location,
-                                                            ...school, 
-                                                            ...organization,
-                                                            ...serviceType,
-                                                            ...specialty, 
-                                                            ...urgency,
-                                                            ...targetClients,
-                                                            ...isAllDay,
-                                                            ...delivery,
-                                                            ...description}] }).collation({ locale: 'en', strength: 2 }).lean();
+  const services = await CounsellingService.find({ $and: [filter] })
+                                           .collation({ locale: 'en', strength: 2 })
+                                           .lean();
 
   return services;
 }
@@ -114,10 +56,22 @@ async function deleteCounsellingService(id: string) {
     await service?.remove();
 }
 
+async function deleteAllCounsellingServices() {
+  const service = await CounsellingService;
+  await service.deleteMany();
+}
+
+async function createCounsellingServicesJSON(inputService: ICounsellingService) {
+  const service = await CounsellingService;
+  await service.insertMany(inputService);
+}
+
 export default {
     getCounsellingServices,
     getCounsellingService,
     createCounsellingService,
     updateCounsellingService,
-    deleteCounsellingService
+    deleteCounsellingService,
+    deleteAllCounsellingServices,
+    createCounsellingServicesJSON
 };

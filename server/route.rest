@@ -9,7 +9,7 @@ GET http://localhost:4000/counselling-services?school=ubc
 GET http://localhost:4000/counselling-services?urgency=Immediate&delivery=App
 
 ###
-GET http://localhost:4000/counselling-services?specialty=anxiety&specialty=stress
+GET http://localhost:4000/counselling-services?school=ubc&school=sfu
 
 ###
 GET http://localhost:4000/counselling-services/622b940195fc76787d2782e2

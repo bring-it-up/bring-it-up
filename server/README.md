@@ -45,3 +45,9 @@ After installing, open the `route.rest` file in VS Code and you should be able t
 [Link](https://www.postman.com/)
 
 After installing, import a collection using the `bring-it-up.postman_collection.json` file. Note: This file is not currently fully up to date.
+
+# Other
+
+## ESLint
+
+Run `npm run lint -s` to manually run ESLint on all .ts files in ./server.

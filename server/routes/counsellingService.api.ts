@@ -1,23 +1,30 @@
 import express from 'express';
-const router = express.Router();
 import CounsellingServiceController from '../controllers/counselling-service.controller';
-import {patchRules, postRules, validateRequest} from "../middleware/counselling-service.middleware";
+import {patchRules, postRules} from "../middleware/counselling-service.middleware";
+import {validateRequest} from "../middleware/utils.middleware";
 
+const router = express.Router();
 
-// get all
+// get counselling service(s)
 router.get('/', CounsellingServiceController.getCounsellingServices);
 
-// get one
+// get one counselling service
 router.get('/:id', CounsellingServiceController.getCounsellingService);
 
-// create
+// create one counselling service
 router.post('/', postRules, validateRequest, CounsellingServiceController.addCounsellingService);
 
-// update one (only info that is passed e.g. hours)
+// update one counselling service (only info that is passed e.g. hours)
 router.patch('/:id', patchRules, validateRequest, CounsellingServiceController.updateCounsellingService);
 
-// delete one
+// delete one counselling service
 router.delete('/:id', CounsellingServiceController.deleteCounsellingService);
+
+// delete all
+router.delete('/', CounsellingServiceController.deleteAllCounsellingServices);
+
+// add json to database
+router.put('/', CounsellingServiceController.addCounsellingServicesJSON);
 
 
 module.exports = router;
