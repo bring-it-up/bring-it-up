@@ -4,7 +4,8 @@ import {
     invalidHourData,
     invalidHourDataType,
     invalidNumHours,
-    invalidDay
+    invalidDay,
+    invalidNumHourDataValues
 } from './data/invalid-hour-data'
 import {
     validHourData,
@@ -27,7 +28,7 @@ describe('Hours Validator', () => {
     );
 
     runTest(
-        'should reject invalid special hour data', 
+        'should reject invalid hour data type', 
         invalidHourDataType, false
     );
 
@@ -39,6 +40,11 @@ describe('Hours Validator', () => {
     runTest(
         'should reject invalid day name', 
         invalidDay, false
+    );
+
+    runTest(
+        'should reject invalid number of hours', 
+        invalidNumHourDataValues, false
     );
 
     runTest(
