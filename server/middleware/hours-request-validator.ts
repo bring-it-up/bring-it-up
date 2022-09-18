@@ -20,10 +20,6 @@ export const isValidHour = (hours: any) => {
             return false;
         }
     }
-    console.log('passed');
+    
     return true; 
-}
-
-const floatToMinutes = (hour: any) => {
-    return Number((hour % 1).toFixed(2));
 }
