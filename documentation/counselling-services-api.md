@@ -35,6 +35,7 @@ Query Params:
 | `delivery` | `DeliveryMethod array` | Format(s) in which the service is offered, one or more of: "In person", "Online", "Phone", "App", "Email" |
 | `description` | `string` | A description of the service |
 | `hours` | `object` | Operating Hours of Service represented as arrays of strings using 24-hr time (e.g. 8:30 PM = '20:30'). '0:00', '23:59' represents open all-day, empty array represents closed on that day, day key must be first 3 letters of day (e.g. Monday = mon) |
+| `searchString` | `string` | A user inputted string that will search for matches in all text fields |
 
 ### Response
 
