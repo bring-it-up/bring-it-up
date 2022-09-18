@@ -77,7 +77,7 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     keywordSearch: {
         type: [String],
         default: undefined,
-        required: true
+        required: false
     },
     specialty: {
         type: [String],
