@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { ServiceType } from './counselling-type.enum';
 import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
+import { Hours } from './hours.model'
 
 // interface to reinforce types
 export interface ICounsellingService {
@@ -20,7 +21,7 @@ export interface ICounsellingService {
     description: string;
     logo?: string;
     secondaryID: string;
-    hours: object;
+    hours: Hours;
 }
 
 // when create new doc in db mongoose returns additional info
