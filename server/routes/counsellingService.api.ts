@@ -20,4 +20,11 @@ router.patch('/:id', patchRules, validateRequest, CounsellingServiceController.u
 // delete one counselling service
 router.delete('/:id', CounsellingServiceController.deleteCounsellingService);
 
+// delete all
+router.delete('/', CounsellingServiceController.deleteAllCounsellingServices);
+
+// add json to database
+router.put('/', CounsellingServiceController.addCounsellingServicesJSON);
+
+
 module.exports = router;

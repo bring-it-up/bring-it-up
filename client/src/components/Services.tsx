@@ -1,4 +1,5 @@
 import { ReactElement, useState, useEffect } from 'react';
+import { Link, generatePath } from "react-router-dom";
 
 function GetData(): string[] {
     var [data, setData] = useState<any[]>([]);
@@ -24,7 +25,9 @@ const Services = (): ReactElement => {
     return (
         <>
             <h1>Services</h1>
-            <p>These are the services in database: {GetData()}</p>
+            <p>These are the services in database: {GetData().map(
+                x => <p>{x} <Link to={generatePath("services/:id", {id:x})}>Click here</Link> </p>
+                )}</p>
         </>
     );
 }

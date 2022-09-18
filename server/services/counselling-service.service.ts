@@ -56,10 +56,22 @@ async function deleteCounsellingService(id: string) {
     await service?.remove();
 }
 
+async function deleteAllCounsellingServices() {
+  const service = await CounsellingService;
+  await service.deleteMany();
+}
+
+async function createCounsellingServicesJSON(inputService: ICounsellingService) {
+  const service = await CounsellingService;
+  await service.insertMany(inputService);
+}
+
 export default {
     getCounsellingServices,
     getCounsellingService,
     createCounsellingService,
     updateCounsellingService,
-    deleteCounsellingService
+    deleteCounsellingService,
+    deleteAllCounsellingServices,
+    createCounsellingServicesJSON
 };
