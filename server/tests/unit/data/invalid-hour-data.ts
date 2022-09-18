@@ -3,40 +3,40 @@
  */
 
 export const invalidHourData = {
-    mon: [9.00,  22.30],
-    tue: [1],
-    wed: [10.30, 20.00],
-    thu: [1],
-    fri: [7.15, 20.60],
-    sat: [0],
-    sun: [0]
+    mon: ['09:00',  '22.30'],
+    tue: ['00:00', '23:59'],
+    wed: ['10:30', '20:00'],
+    thu: ['00:00', '23:59'],
+    fri: ['07:15', '20:60'],
+    sat: [],
+    sun: []
     
 };
 
-export const invalidSpecialHourData = {
-    mon: [9.00,  22.30],
-    tue: [1],
-    wed: [10.30, 20.00],
-    thu: [1],
-    fri: [7.15, 8.15],
-    sat: [2],
-    sun: [0]
+export const invalidHourDataType = {
+    mon: ['09:00',  '22:30'],
+    tue: ['00:00', '23:59'],
+    wed: ['10:30', '20:00'],
+    thu: ['00:00', '23:59'],
+    fri: ['07:15', '08:15'],
+    sat: [7.15, 8.15],
+    sun: []
 };
 
 export const invalidNumHours = {
-    mon: [9.00,  22.30],
-    tue: [1],
-    fri: [7.15, 8.15],
-    sat: [2],
-    sun: [0]
+    mon: ['09:00',  '22:30'],
+    tue: ['00:00', '23:59'],
+    fri: ['07:15', '08:15'],
+    sat: [],
+    sun: []
 };
 
 export const invalidDay = {
-    mon: [9.00,  22.30],
-    tuesday: [1],
-    wed: [10.30, 20.00],
-    thu: [1],
-    fri: [7.15, 8.15],
-    sat: [0],
-    sun: [0]
+    mon: ['09:00',  '22:30'],
+    tuesday: ['00:00', '23:59'],
+    wed: ['10:30', '20:00'],
+    thu: ['00:00', '23:59'],
+    fri: ['07:15', '08:15'],
+    sat: [],
+    sun: []
 };

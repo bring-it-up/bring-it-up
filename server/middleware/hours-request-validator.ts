@@ -8,19 +8,7 @@ export const isValidHour = (hours: any) => {
     for (const day in hours) {
         if (!(days.has(day))) {
             return false;
-        } else if (hours[day].length === 1) {
-            if (hours[day][0] !== 0 && hours[day][0] !== 1) {
-                return false;
-            }
-        } else if (hours[day].length === 2) {
-            if (hours[day][0] >= hours[day][1]) {
-                return false;
-            } else if (hours[day][0] < 0 || hours[day][1] >= 24) {
-                return false;
-            } else if (floatToMinutes(hours[day][0]) > 0.59 || floatToMinutes(hours[day][1]) > 0.59) {
-                return false;
-            }
-        }
+        } 
     }
     return true;
 }
