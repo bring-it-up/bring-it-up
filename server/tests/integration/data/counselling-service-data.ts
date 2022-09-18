@@ -10,8 +10,6 @@ export const service1Data = {
     specialty: ["Stress", "Anxiety"],
     delivery: ["Online","Phone"],
     description: "Offered by Aspiria, the UBC Student Assistance Program (SAP) is a free, 24/7 wellness resource for students. Services include personal counselling, life coaching, group programs and more based on your needs.",
-    secondaryID: "student-assistance-program-(sap)"
-    description: "Offered by Aspiria, the UBC Student Assistance Program (SAP) is a free, 24/7 wellness resource for students. Services include personal counselling, life coaching, group programs and more based on your needs.",
     secondaryID: "student-assistance-program-sap"
 };
 
