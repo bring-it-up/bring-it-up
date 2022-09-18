@@ -80,6 +80,11 @@ describe('Schools', () => {
             response.should.have.status(StatusCode.OK);
             assertSchool(response.body, schoolData1);
         });
+
+        it('should get no school', async () => {
+            const response = await chai.request(server).get('/schools/none');
+            response.should.have.status(StatusCode.NOT_FOUND);
+        });
     });
 
     describe('POST /schools', () => {
