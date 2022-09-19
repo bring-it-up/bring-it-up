@@ -15,6 +15,7 @@ export interface ICounsellingService {
     targetClients: string[];
     isAllDay: boolean;
     website: string;
+    keywordSearch: string[],
     specialty: string[];
     delivery: DeliveryMethod[];
     description: string;
@@ -73,6 +74,11 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     website: {
         type: String,
         required: true
+    },
+    keywordSearch: {
+        type: [String],
+        default: undefined,
+        required: false
     },
     specialty: {
         type: [String],

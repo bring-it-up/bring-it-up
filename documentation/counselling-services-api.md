@@ -32,6 +32,7 @@ Query Params:
 | `urgency` | `UrgencyLevel array` | The maximum level of urgency the service caters to, one or more of: "Immediate", "Same Day", "Same Week", "Same Month" |
 | `targetClients` | `string array` | The clients the service is targeted towards, e.g. "UBC students" or "Indigenous people, all ages" |
 | `specialty` | `string array` | The areas the service specializes in, e.g. "Trauma" or "Addiction" |
+| `keywordSearch` | `string array` | This is internal keywords that do not get displayed, meant to refine searches |
 | `delivery` | `DeliveryMethod array` | Format(s) in which the service is offered, one or more of: "In person", "Online", "Phone", "App", "Email" |
 | `description` | `string` | A description of the service |
 | `hours` | `object` | Operating Hours of Service represented as arrays of strings using 24-hr time (e.g. 8:30 PM = '20:30'). '0:00', '23:59' represents open all-day, empty array represents closed on that day, day key must be first 3 letters of day (e.g. Monday = mon) |
@@ -56,6 +57,7 @@ Example response for GET http://localhost:4000/counselling-services?specialty=tr
         ],
         "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
+        "keywordSearch":[],
         "specialty": [
         "Stress",
         "Anxiety",

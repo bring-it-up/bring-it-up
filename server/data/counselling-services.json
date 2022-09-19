@@ -12,6 +12,7 @@
         ],
         "isAllDay": true,
         "website": "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
+        "keywordSearch":[],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -67,6 +68,7 @@
         ],
         "isAllDay": false,
         "website": "https://students.ubc.ca/health/counselling-services/group-counselling-programs",
+        "keywordSearch":[],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -90,6 +92,7 @@
         ],
         "isAllDay": false,
         "website": "https://foundrybc.ca/virtual/",
+        "keywordSearch":[],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -141,6 +144,12 @@
         ],
         "isAllDay": true,
         "website": "https://hopeforwellness.ca/home.html",
+        "keywordSearch":[
+            "Experiences, challenges & issues",
+            "Feeling distressed",
+            "Finding other resources", 
+            "Multiple language options"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -191,6 +200,15 @@
         ],
         "isAllDay": true,
         "website": "https://here2talk.ca/main",
+        "keywordSearch":[
+            "Tensions with family members, friends, or instructors",
+            "Feelings of isolation, loneliness or depression",
+            "General stress and anxiety",
+            "Frustration or uncertainty related to studies or post-grad plans",
+            "Creating balance between personal and academic priorities",
+            "Building better communication and time management skills",
+            "Adapting to a new campus culture, learning style or city"
+        ],
         "specialty": [
             "Isolation",
             "Loneliness",
@@ -242,6 +260,19 @@
         ],
         "isAllDay": true,
         "website": "https://www.sfu.ca/students/health/get-support/my-ssp.html",
+        "keywordSearch":[
+            "Loneliness",
+            "Stress and anxiety",
+            "Identity",
+            "Relationship conflicts or challenges",
+            "Managing work/life balance",
+            "Chronic health concerns",
+            "Performance anxiety",
+            "Homesickness",
+            "Cultural adjustment",
+            "Coping mechanisms",
+            "Helping a friend in crisis"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -268,6 +299,7 @@
         ],
         "isAllDay": false,
         "website": "https://www.sfu.ca/students/indigenous/isc-wellness.html",
+        "keywordSearch":[],
         "specialty": [
             "Mental wellness",
             "Physical wellness",
@@ -298,6 +330,7 @@
             "Grief",
             "Trauma"
         ],
+        "keywordSearch":[],
         "delivery": [
             "In Person"
         ],
@@ -317,6 +350,10 @@
         ],
         "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/get-support/hcs-service-navigators.html",
+        "keywordSearch":[
+            "Emotional support",
+            "Distress surrounding international conflicts"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -343,6 +380,15 @@
         ],
         "isAllDay": false,
         "website": "https://www.bcit.ca/counselling/",
+        "keywordSearch":[
+            "Stress reduction",
+            "Anxiety",
+            "Depression",
+            "Trauma",
+            "Relationships",
+            "Academic progress",
+            "Academic pressures"
+        ],
         "specialty": [
             "Stress reduction",
             "Anxiety",
@@ -397,6 +443,14 @@
         ],
         "isAllDay": true,
         "website": "https://www.wellnesstogether.ca/en-CA/service/talk",
+        "keywordSearch":[
+            "Coping with COVID-19",
+            "Managing low mood",
+            "Managing worry",
+            "Coping with stress",
+            "Managing Substance use",
+            "Strengthening relationships"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -445,6 +499,17 @@
         ],
         "isAllDay": false,
         "website": "https://clinic.psych.ubc.ca/services/",
+        "keywordSearch":[
+            "Panic Disorder",
+            "Social Anxiety Disorder",
+            "Specific Phobias",
+            "Generalized Anxiety Disorder",
+            "Depression (except bipolar disorder)",
+            "Obsessive Compulsive Disorder",
+            "Relationship and life transition",
+            "Perfectionism",
+            "Neuropsychological assessment"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
