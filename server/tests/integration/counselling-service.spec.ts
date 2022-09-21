@@ -1,10 +1,12 @@
-import chai from 'chai';
+import chai, {expect} from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../index';
 import { CounsellingService } from '../../models/counsellingService.model';
 import { service1Data, service2Data, service3Data } from './data/counselling-service-data';
 import { StatusCode } from "../../utils/status-code.enum";
 import { generateSecondaryId } from "../../utils/id-generator.util";
+import {schoolData1, schoolData2} from "./data/school-data";
+import {School} from "../../models/school.model";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const should = chai.should();
@@ -14,10 +16,15 @@ chai.use(chaiHttp);
 describe('Counselling Services', () => {
     beforeEach(async () => {
         await CounsellingService.deleteMany({});
+        await School.deleteMany();
         const service1 = new CounsellingService(service1Data);
         await service1.save();
         const service2 = new CounsellingService(service2Data);
         await service2.save();
+        const school1 = new School(schoolData1);
+        await school1.save();
+        const school2 = new School(schoolData2);
+        await school2.save();
     });
 
     describe('GET /counselling-services', () => {
@@ -27,6 +34,10 @@ describe('Counselling Services', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(2);
+            for (let i = 0; i < 2; i++) {
+                response.body[0].should.not.have.property('_id');
+                response.body[0].should.not.have.property('__v');
+            }
         });
 
         it('should get all counselling services with keyword ubc', async () => {
@@ -63,6 +74,8 @@ describe('Counselling Services', () => {
                 .get('/counselling-services/' + id);
             response.should.have.status(StatusCode.OK);
             assertCounsellingService(response.body, service1Data);
+            response.body.should.not.have.property('school._id');
+            response.body.should.not.have.property('school.__v');
         });
 
         it('should get no counselling service', async () => {
@@ -73,13 +86,12 @@ describe('Counselling Services', () => {
 
         it('should get services with school ubc', async () => {
             const response = await chai.request(server)
-                .get('/counselling-services?school=ubc');
+                .get('/counselling-services?school=ubcv');
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
-            for (let i = 0; i < response.body.length; i++) {
-                response.body[i].should.have.property('school', "UBC");
-            }
+            response.body[0].should.have.property('school');
+            response.body[0].school.should.eql(schoolData1);
         });
 
         it('should get services with school ubc or sfu', async () => {
@@ -88,7 +100,8 @@ describe('Counselling Services', () => {
             response.body.should.be.a('array');
             response.body.length.should.be.eql(2);
             for (const i in response.body) {
-                response.body[i].school.should.be.oneOf(["UBC", "SFU"]);
+                response.body[i].should.have.property('school');
+                expect(response.body[i].school).to.be.oneOf([schoolData1, schoolData2]);
             }
             return;
         });

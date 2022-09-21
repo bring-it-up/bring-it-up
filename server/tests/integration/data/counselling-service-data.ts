@@ -1,6 +1,6 @@
 export const service1Data = {
     serviceName: "Student Assistance Program (SAP)",
-    school: "UBC",
+    school: "ubcv",
     organization: "Aspiria",
     serviceType: ["Counselling"],
     urgency: "Immediate",
@@ -15,7 +15,7 @@ export const service1Data = {
 
 export const service2Data = {
     serviceName: "My SSP",
-    school: "SFU",
+    school: "sfu",
     organization: "Morneau Shepell (LifeWorks)",
     serviceType: ["Counselling"],
     urgency: "Immediate",
@@ -32,7 +32,7 @@ export const service2Data = {
 // secondaryID excluded because this data will be used for testing POST which generates the ID
 export const service3Data = {
     serviceName: "UBC Psychology Clinic",
-    school: "UBC",
+    school: "sfu",
     organization: "UBC Psychology",
     serviceType: ["Counselling"],
     urgency: "Same Month",

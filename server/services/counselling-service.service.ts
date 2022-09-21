@@ -47,7 +47,11 @@ async function getCounsellingServices(serviceNameQuery: any,
           },
       },
       {
+          $unwind: "$school",
+      },
+      {
           $project: {
+              // "school": { "$arrayElemAt": [ "$school", 0 ] },
               _id: 0,
               __v: 0,
               'school._id': 0,
@@ -75,7 +79,11 @@ async function getCounsellingService(id: string): Promise<ICounsellingService> {
             },
         },
         {
+          $unwind: "$school",
+        },
+        {
             $project: {
+                // "school": { "$arrayElemAt": [ "$school", 0 ] },
                 _id: 0,
                 __v: 0,
                 'school._id': 0,
