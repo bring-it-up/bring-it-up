@@ -1,6 +1,6 @@
 import {ISchool, School} from "../models/school.model";
 import {BadRequestError} from "../middleware/bad-request-error";
-import {getFilter} from "../utils/filter.util";
+import {getFilter} from "../utils/get.util";
 
 async function getSchools(uidQuery: any,
                           nameQuery: any,

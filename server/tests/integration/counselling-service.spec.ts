@@ -1,4 +1,4 @@
-import chai, {expect} from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../index';
 import { CounsellingService } from '../../models/counsellingService.model';
@@ -34,9 +34,12 @@ describe('Counselling Services', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(2);
-            for (let i = 0; i < 2; i++) {
-                response.body[0].should.not.have.property('_id');
-                response.body[0].should.not.have.property('__v');
+            if (response.body[0].serviceName == service1Data.serviceName) {
+                assertCounsellingService(response.body[0], service1Data, schoolData1);
+                assertCounsellingService(response.body[1], service2Data, schoolData2);
+            } else {
+                assertCounsellingService(response.body[0], service2Data, schoolData2);
+                assertCounsellingService(response.body[1], service1Data, schoolData1);
             }
         });
 
@@ -46,7 +49,7 @@ describe('Counselling Services', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
-            assertCounsellingService(response.body[0], service1Data);
+            assertCounsellingService(response.body[0], service1Data, schoolData1);
         });
 
         it('should get all counselling services with keyword ssp', async () => {
@@ -55,7 +58,7 @@ describe('Counselling Services', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
-            assertCounsellingService(response.body[0], service2Data);
+            assertCounsellingService(response.body[0], service2Data, schoolData2);
         });
 
         it('should get no counselling services', async () => {
@@ -73,9 +76,7 @@ describe('Counselling Services', () => {
             const response = await chai.request(server)
                 .get('/counselling-services/' + id);
             response.should.have.status(StatusCode.OK);
-            assertCounsellingService(response.body, service1Data);
-            response.body.should.not.have.property('school._id');
-            response.body.should.not.have.property('school.__v');
+            assertCounsellingService(response.body, service1Data, schoolData1);
         });
 
         it('should get no counselling service', async () => {
@@ -90,8 +91,7 @@ describe('Counselling Services', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
-            response.body[0].should.have.property('school');
-            response.body[0].school.should.eql(schoolData1);
+            assertCounsellingService(response.body[0], service1Data, schoolData1)
         });
 
         it('should get services with school ubc or sfu', async () => {
@@ -99,11 +99,13 @@ describe('Counselling Services', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(2);
-            for (const i in response.body) {
-                response.body[i].should.have.property('school');
-                expect(response.body[i].school).to.be.oneOf([schoolData1, schoolData2]);
+            if (response.body[0].serviceName == service1Data.serviceName) {
+                assertCounsellingService(response.body[0], service1Data, schoolData1);
+                assertCounsellingService(response.body[1], service2Data, schoolData2);
+            } else {
+                assertCounsellingService(response.body[0], service2Data, schoolData2);
+                assertCounsellingService(response.body[1], service1Data, schoolData1);
             }
-            return;
         });
 
         it('should get services with urgency Immediate and delivery including App', async () => {
@@ -111,11 +113,7 @@ describe('Counselling Services', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
-            for (const i in response.body) {
-                response.body[i].should.have.property('urgency', "Immediate");
-                response.body[i].delivery.should.include("App");
-            }
-            return;
+            assertCounsellingService(response.body[0], service2Data, schoolData2);
         });
     });
 
@@ -144,10 +142,19 @@ describe('Counselling Services', () => {
     });
 });
 
-function assertCounsellingService(service: any, serviceData: any) {
-    const keys = ['serviceName', 'organization', 'serviceType', 'urgency', 'targetClients', 'isAllDay', 'website',
-    'specialty', 'delivery', 'serviceName', 'secondaryID'];
+function assertCounsellingService(service: any, serviceData: any, schoolData: any) {
+    const keys = ['serviceName', 'organization', 'serviceType', 'urgency', 'targetClients', 'isAllDay',
+        'website', 'specialty', 'delivery', 'serviceName', 'secondaryID'];
+
     for (let key of keys) {
-        service[key].should.be.deep.eql(serviceData[key]);
+        service[key].should.be.eql(serviceData[key]);
     }
+
+    service.should.have.property('school');
+    service.school.should.eql(schoolData);
+
+    service.should.not.have.property('_id');
+    service.should.not.have.property('__v');
+    service.should.not.have.property('school._id');
+    service.should.not.have.property('school.__v');
 }

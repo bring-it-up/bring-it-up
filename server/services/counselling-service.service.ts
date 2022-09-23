@@ -1,6 +1,5 @@
 import { CounsellingService, ICounsellingService } from '../models/counsellingService.model';
-import { School } from "../models/school.model";
-import { getFilter } from "../utils/filter.util";
+import { getFilter, getAggregation } from "../utils/get.util";
 
 async function getCounsellingServices(serviceNameQuery: any,
                                       locationQuery: any,
@@ -32,65 +31,26 @@ async function getCounsellingServices(serviceNameQuery: any,
   const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
                   ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
 
-  const services = await CounsellingService.aggregate([
-      {
-          $match: {
-              $and: [filter]
-          },
+  const match = {
+      $match: {
+          $and: [filter],
       },
-      {
-          $lookup: {
-              from: School.collection.name,
-              localField: 'school',
-              foreignField: 'uid',
-              as: 'school',
-          },
-      },
-      {
-          $unwind: "$school",
-      },
-      {
-          $project: {
-              // "school": { "$arrayElemAt": [ "$school", 0 ] },
-              _id: 0,
-              __v: 0,
-              'school._id': 0,
-              'school.__v': 0,
-          },
-      },
-  ]).collation({ locale: 'en', strength: 2 });
+  };
+
+  const services = await CounsellingService.aggregate(getAggregation(match))
+      .collation({ locale: 'en', strength: 2 });
 
   return services;
 }
 
 async function getCounsellingService(id: string): Promise<ICounsellingService> {
-    const service = await CounsellingService.aggregate([
-        {
-            $match: {
-                secondaryID: id,
-            },
+    const match = {
+        $match: {
+            secondaryID: id,
         },
-        {
-            $lookup: {
-                from: School.collection.name,
-                localField: 'school',
-                foreignField: 'uid',
-                as: 'school',
-            },
-        },
-        {
-          $unwind: "$school",
-        },
-        {
-            $project: {
-                // "school": { "$arrayElemAt": [ "$school", 0 ] },
-                _id: 0,
-                __v: 0,
-                'school._id': 0,
-                'school.__v': 0,
-            },
-        },
-    ]);
+    };
+
+    const service = await CounsellingService.aggregate(getAggregation(match));
 
     return service[0];
 }
