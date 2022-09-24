@@ -31,7 +31,10 @@ export function getAggregation(match: any) {
             },
         },
         {
-            $unwind: "$school",
+            $unwind: {
+                path: "$school",
+                preserveNullAndEmptyArrays: true,
+            },
         },
         {
             $project: {
