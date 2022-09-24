@@ -27,6 +27,10 @@ describe('Schools', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(2);
+            for (let i = 0; i < 2; i++) {
+                response.body[0].should.not.have.property('_id');
+                response.body[0].should.not.have.property('__v');
+            }
         });
 
         it('should get school with uid = ubcv', async () => {
@@ -79,6 +83,8 @@ describe('Schools', () => {
             const response = await chai.request(server).get('/schools/ubcv');
             response.should.have.status(StatusCode.OK);
             assertSchool(response.body, schoolData1);
+            response.body.should.not.have.property('_id');
+            response.body.should.not.have.property('__v');
         });
 
         it('should get no school', async () => {

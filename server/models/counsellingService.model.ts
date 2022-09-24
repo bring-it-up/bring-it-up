@@ -8,7 +8,7 @@ import { Hours } from './hours.model'
 export interface ICounsellingService {
     serviceName: string;
     location?: string;
-    school?: string;
+    school?: string | object;
     organization: string;
     serviceType: ServiceType[];
     urgency: UrgencyLevel;
