@@ -43,7 +43,7 @@ describe('Counselling Services', () => {
             }
         });
 
-        it('should get all counselling services with keyword ubc', async () => {
+        it('should get counselling services with keyword ubc', async () => {
             const response = await chai.request(server)
                 .get('/counselling-services?searchString=ubc');
             response.should.have.status(StatusCode.OK);
@@ -52,9 +52,40 @@ describe('Counselling Services', () => {
             assertCounsellingService(response.body[0], service1Data, schoolData1);
         });
 
-        it('should get all counselling services with keyword ssp', async () => {
+        it('should get counselling services with keyword ssp', async () => {
             const response = await chai.request(server)
                 .get('/counselling-services?searchString=ssp');
+            response.should.have.status(StatusCode.OK);
+            response.body.should.be.a('array');
+            response.body.length.should.be.eql(1);
+            assertCounsellingService(response.body[0], service2Data, schoolData2);
+        });
+
+        it('should get counselling services with school ubc', async () => {
+            const response = await chai.request(server)
+                .get('/counselling-services?school=ubcv');
+            response.should.have.status(StatusCode.OK);
+            response.body.should.be.a('array');
+            response.body.length.should.be.eql(1);
+            assertCounsellingService(response.body[0], service1Data, schoolData1)
+        });
+
+        it('should get counselling services with school ubc or sfu', async () => {
+            const response = await chai.request(server).get('/counselling-services?school=ubc&school=sfu');
+            response.should.have.status(StatusCode.OK);
+            response.body.should.be.a('array');
+            response.body.length.should.be.eql(2);
+            if (response.body[0].serviceName == service1Data.serviceName) {
+                assertCounsellingService(response.body[0], service1Data, schoolData1);
+                assertCounsellingService(response.body[1], service2Data, schoolData2);
+            } else {
+                assertCounsellingService(response.body[0], service2Data, schoolData2);
+                assertCounsellingService(response.body[1], service1Data, schoolData1);
+            }
+        });
+
+        it('should get counselling services with urgency Immediate and delivery including App', async () => {
+            const response = await chai.request(server).get('/counselling-services?urgency=Immediate&delivery=App');
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
@@ -71,7 +102,7 @@ describe('Counselling Services', () => {
     });
 
     describe('GET /counselling-services/:id', () => {
-        it('should get a counselling service', async () => {
+        it('should get the counselling service with id = student-assistance-program-sap', async () => {
             const id = generateSecondaryId(service1Data.serviceName);
             const response = await chai.request(server)
                 .get('/counselling-services/' + id);
@@ -79,41 +110,18 @@ describe('Counselling Services', () => {
             assertCounsellingService(response.body, service1Data, schoolData1);
         });
 
+        it('should get the counselling service with id = my-ssp', async () => {
+            const id = generateSecondaryId(service2Data.serviceName);
+            const response = await chai.request(server)
+                .get('/counselling-services/' + id);
+            response.should.have.status(StatusCode.OK);
+            assertCounsellingService(response.body, service2Data, schoolData2);
+        });
+
         it('should get no counselling service', async () => {
             const response = await chai.request(server)
                 .get('/counselling-services/none');
             response.should.have.status(StatusCode.NOT_FOUND);
-        });
-
-        it('should get services with school ubc', async () => {
-            const response = await chai.request(server)
-                .get('/counselling-services?school=ubcv');
-            response.should.have.status(StatusCode.OK);
-            response.body.should.be.a('array');
-            response.body.length.should.be.eql(1);
-            assertCounsellingService(response.body[0], service1Data, schoolData1)
-        });
-
-        it('should get services with school ubc or sfu', async () => {
-            const response = await chai.request(server).get('/counselling-services?school=ubc&school=sfu');
-            response.should.have.status(StatusCode.OK);
-            response.body.should.be.a('array');
-            response.body.length.should.be.eql(2);
-            if (response.body[0].serviceName == service1Data.serviceName) {
-                assertCounsellingService(response.body[0], service1Data, schoolData1);
-                assertCounsellingService(response.body[1], service2Data, schoolData2);
-            } else {
-                assertCounsellingService(response.body[0], service2Data, schoolData2);
-                assertCounsellingService(response.body[1], service1Data, schoolData1);
-            }
-        });
-
-        it('should get services with urgency Immediate and delivery including App', async () => {
-            const response = await chai.request(server).get('/counselling-services?urgency=Immediate&delivery=App');
-            response.should.have.status(StatusCode.OK);
-            response.body.should.be.a('array');
-            response.body.length.should.be.eql(1);
-            assertCounsellingService(response.body[0], service2Data, schoolData2);
         });
     });
 
