@@ -27,6 +27,10 @@ describe('Schools', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(2);
+            for (let i = 0; i < 2; i++) {
+                response.body[0].should.not.have.property('_id');
+                response.body[0].should.not.have.property('__v');
+            }
         });
 
         it('should get school with uid = ubcv', async () => {
@@ -34,7 +38,7 @@ describe('Schools', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
-            assertSchool(response.body[0], schoolData1)
+            assertSchool(response.body[0], schoolData1);
         });
 
         it('should get no schools', async () => {
@@ -49,7 +53,7 @@ describe('Schools', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
-            assertSchool(response.body[0], schoolData2)
+            assertSchool(response.body[0], schoolData2);
         });
 
         it('should get schools with uid = ubcv or uid = sfu', async () => {
@@ -57,7 +61,7 @@ describe('Schools', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(2);
-            for (let i in response.body) {
+            for (const i in response.body) {
                 response.body[i].uid.should.be.oneOf([schoolData1.uid, schoolData2.uid]);
                 response.body[i].name.should.be.oneOf([schoolData1.name, schoolData2.name]);
                 response.body[i].abbreviation.should.be.oneOf([schoolData1.abbreviation, schoolData2.abbreviation]);
@@ -71,14 +75,21 @@ describe('Schools', () => {
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
             assertSchool(response.body[0], schoolData1);
-        })
+        });
     });
 
     describe('GET /schools/:uid', () => {
         it('should get a school with uid = ubcv', async () => {
             const response = await chai.request(server).get('/schools/ubcv');
             response.should.have.status(StatusCode.OK);
-            assertSchool(response.body, schoolData1)
+            assertSchool(response.body, schoolData1);
+            response.body.should.not.have.property('_id');
+            response.body.should.not.have.property('__v');
+        });
+
+        it('should get no school', async () => {
+            const response = await chai.request(server).get('/schools/none');
+            response.should.have.status(StatusCode.NOT_FOUND);
         });
     });
 

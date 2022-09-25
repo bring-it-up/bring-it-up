@@ -2,24 +2,26 @@ import mongoose from 'mongoose';
 import { ServiceType } from './counselling-type.enum';
 import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
+import { Hours } from './hours.model'
 
 // interface to reinforce types
 export interface ICounsellingService {
     serviceName: string;
     location?: string;
-    school?: string;
+    school?: string | object;
     organization: string;
     serviceType: ServiceType[];
     urgency: UrgencyLevel;
     targetClients: string[];
     isAllDay: boolean;
     website: string;
+    keywordSearch: string[],
     specialty: string[];
     delivery: DeliveryMethod[];
     description: string;
     logo?: string;
     secondaryID: string;
-    hours: object;
+    hours: Hours;
 }
 
 // when create new doc in db mongoose returns additional info
@@ -72,6 +74,11 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     website: {
         type: String,
         required: true
+    },
+    keywordSearch: {
+        type: [String],
+        default: undefined,
+        required: false
     },
     specialty: {
         type: [String],

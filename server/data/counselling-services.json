@@ -12,6 +12,7 @@
         ],
         "isAllDay": true,
         "website": "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
+        "keywordSearch":[],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -32,25 +33,25 @@
         "description": "Offered by Aspiria, the UBC Student Assistance Program (SAP) is a free, 24/7 wellness resource for students. Services include personal counselling, life coaching, group programs and more based on your needs.",
         "hours": {
             "mon": [
-                1
+                "0:00", "23:59"
             ],
             "tue": [
-                1
+                "0:00", "23:59"
             ],
             "wed": [
-                1
+                "0:00", "23:59"
             ],
             "thu": [
-                1
+                "0:00", "23:59"
             ],
             "fri": [
-                1
+                "0:00", "23:59"
             ],
             "sat": [
-                1
+                "0:00", "23:59"
             ],
             "sun": [
-                1
+                "0:00", "23:59"
             ]
         }
     },
@@ -67,6 +68,7 @@
         ],
         "isAllDay": false,
         "website": "https://students.ubc.ca/health/counselling-services/group-counselling-programs",
+        "keywordSearch":[],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -90,6 +92,7 @@
         ],
         "isAllDay": false,
         "website": "https://foundrybc.ca/virtual/",
+        "keywordSearch":[],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -104,28 +107,28 @@
         "description": "Young people aged 12-24 and their caregivers can drop-in or schedule a virtual counselling appointment, find peer support, access primary care, get support with employment, access groups & workshops, or browse our library of tools and resources.",
         "hours": {
             "mon": [
-                0
+                
             ],
             "tue": [
-                14,
-                18
+                "14:00",
+                "18:00"
             ],
             "wed": [
-                14,
-                18
+                "14:00",
+                "18:00"
             ],
             "thu": [
-                14,
-                18
+                "14:00",
+                "18:00"
             ],
             "fri": [
-                0
+                
             ],
             "sat": [
-                0
+                
             ],
             "sun": [
-                0
+
             ]
         }
     },
@@ -141,6 +144,12 @@
         ],
         "isAllDay": true,
         "website": "https://hopeforwellness.ca/home.html",
+        "keywordSearch":[
+            "Experiences, challenges & issues",
+            "Feeling distressed",
+            "Finding other resources", 
+            "Multiple language options"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -157,25 +166,25 @@
         "description": "The Hope for Wellness Help Line offers immediate mental health counselling and crisis intervention to all Indigenous peoples across Canada.",
         "hours": {
             "mon": [
-                1
+                "0:00", "23:59"
             ],
             "tue": [
-                1
+                "0:00", "23:59"
             ],
             "wed": [
-                1
+                "0:00", "23:59"
             ],
             "thu": [
-                1
+                "0:00", "23:59"
             ],
             "fri": [
-                1
+                "0:00", "23:59"
             ],
             "sat": [
-                1
+                "0:00", "23:59"
             ],
             "sun": [
-                1
+                "0:00", "23:59"
             ]
         }
     },
@@ -191,6 +200,15 @@
         ],
         "isAllDay": true,
         "website": "https://here2talk.ca/main",
+        "keywordSearch":[
+            "Tensions with family members, friends, or instructors",
+            "Feelings of isolation, loneliness or depression",
+            "General stress and anxiety",
+            "Frustration or uncertainty related to studies or post-grad plans",
+            "Creating balance between personal and academic priorities",
+            "Building better communication and time management skills",
+            "Adapting to a new campus culture, learning style or city"
+        ],
         "specialty": [
             "Isolation",
             "Loneliness",
@@ -206,25 +224,25 @@
         "description": "Here2Talk connects students with mental health support when they need it. Through this program, all students – domestic or international – currently registered in a B.C. post-secondary institution have access to free, confidential counselling and community referral services, conveniently available 24/7 via app, phone and web.",
         "hours": {
             "mon": [
-                1
+                "0:00", "23:59"
             ],
             "tue": [
-                1
+                "0:00", "23:59"
             ],
             "wed": [
-                1
+                "0:00", "23:59"
             ],
             "thu": [
-                1
+                "0:00", "23:59"
             ],
             "fri": [
-                1
+                "0:00", "23:59"
             ],
             "sat": [
-                1
+                "0:00", "23:59"
             ],
             "sun": [
-                1
+                "0:00", "23:59"
             ]
         }
     },
@@ -242,6 +260,19 @@
         ],
         "isAllDay": true,
         "website": "https://www.sfu.ca/students/health/get-support/my-ssp.html",
+        "keywordSearch":[
+            "Loneliness",
+            "Stress and anxiety",
+            "Identity",
+            "Relationship conflicts or challenges",
+            "Managing work/life balance",
+            "Chronic health concerns",
+            "Performance anxiety",
+            "Homesickness",
+            "Cultural adjustment",
+            "Coping mechanisms",
+            "Helping a friend in crisis"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -268,6 +299,7 @@
         ],
         "isAllDay": false,
         "website": "https://www.sfu.ca/students/indigenous/isc-wellness.html",
+        "keywordSearch":[],
         "specialty": [
             "Mental wellness",
             "Physical wellness",
@@ -298,6 +330,7 @@
             "Grief",
             "Trauma"
         ],
+        "keywordSearch":[],
         "delivery": [
             "In Person"
         ],
@@ -317,6 +350,10 @@
         ],
         "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/get-support/hcs-service-navigators.html",
+        "keywordSearch":[
+            "Emotional support",
+            "Distress surrounding international conflicts"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -343,6 +380,15 @@
         ],
         "isAllDay": false,
         "website": "https://www.bcit.ca/counselling/",
+        "keywordSearch":[
+            "Stress reduction",
+            "Anxiety",
+            "Depression",
+            "Trauma",
+            "Relationships",
+            "Academic progress",
+            "Academic pressures"
+        ],
         "specialty": [
             "Stress reduction",
             "Anxiety",
@@ -358,30 +404,30 @@
         "description": "BCIT Counsellors are also here to help you sort through a wide variety of personal concerns, enhance your educational performance and maximize your success as a student, build decision-making and problem-solving skills, work toward your educational, personal, and career goals, and get support and respond to a crisis, trauma, or major life event.",
         "hours": {
             "mon": [
-                8.3,
-                16
+                "8:30",
+                "16:00"
             ],
             "tue": [
-                8.3,
-                16
+                "8:30",
+                "16:00"
             ],
             "wed": [
-                8.3,
-                16
+                "8:30",
+                "16:00"
             ],
             "thu": [
-                8.3,
-                16
+                "8:30",
+                "16:00"
             ],
             "fri": [
-                8.3,
-                16
+                "8:30",
+                "16:00"
             ],
             "sat": [
-                0
+                
             ],
             "sun": [
-                0
+                
             ]
         }
     },
@@ -397,6 +443,14 @@
         ],
         "isAllDay": true,
         "website": "https://www.wellnesstogether.ca/en-CA/service/talk",
+        "keywordSearch":[
+            "Coping with COVID-19",
+            "Managing low mood",
+            "Managing worry",
+            "Coping with stress",
+            "Managing Substance use",
+            "Strengthening relationships"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -410,25 +464,25 @@
         "description": "Our partners provide free support over the phone, to help you through problems big and small. When you call one of the numbers below, you’ll be connected with a professional counsellor who will listen non-judgmentally to whatever’s on your mind. Whatever you’re going through, we’re here to listen.",
         "hours": {
             "mon": [
-                1
+                "0:00", "23:59"
             ],
             "tue": [
-                1
+                "0:00", "23:59"
             ],
             "wed": [
-                1
+                "0:00", "23:59"
             ],
             "thu": [
-                1
+                "0:00", "23:59"
             ],
             "fri": [
-                1
+                "0:00", "23:59"
             ],
             "sat": [
-                1
+                "0:00", "23:59"
             ],
             "sun": [
-                1
+                "0:00", "23:59"
             ]
         }
     },
@@ -445,6 +499,17 @@
         ],
         "isAllDay": false,
         "website": "https://clinic.psych.ubc.ca/services/",
+        "keywordSearch":[
+            "Panic Disorder",
+            "Social Anxiety Disorder",
+            "Specific Phobias",
+            "Generalized Anxiety Disorder",
+            "Depression (except bipolar disorder)",
+            "Obsessive Compulsive Disorder",
+            "Relationship and life transition",
+            "Perfectionism",
+            "Neuropsychological assessment"
+        ],
         "specialty": [
             "Stress",
             "Anxiety",
@@ -457,30 +522,30 @@
         "description": "The UBC Psychology Clinic offers comprehensive psychological services adults. Our clinical services are provided by graduate students from UBC’s doctoral programme in clinical psychology. Student clinicians are closely supervised by Registered Psychologists from our faculty and the community.Our Clinic is not able to provide psychiatric or emergency services or services where there is a risk of frequent or severe crisis or involvement with the law.",
         "hours": {
             "mon": [
-                8.3,
-                16.3
+                "8:30",
+                "16:30"
             ],
             "tue": [
-                8.3,
-                16.3
+                "8:30",
+                "16:30"
             ],
             "wed": [
-                8.3,
-                16.3
+                "8:30",
+                "16:30"
             ],
             "thu": [
-                8.3,
-                16.3
+                "8:30",
+                "16:30"
             ],
             "fri": [
-                8.3,
-                16.3
+                "8:30",
+                "16:30"
             ],
             "sat": [
-                0
+                
             ],
             "sun": [
-                0
+                
             ]
         }
     }

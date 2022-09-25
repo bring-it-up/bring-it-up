@@ -1,5 +1,5 @@
 import { CounsellingService, ICounsellingService } from '../models/counsellingService.model';
-import { getFilter } from "../utils/filter.util";
+import { getFilter, getAggregation } from "../utils/get.util";
 
 async function getCounsellingServices(serviceNameQuery: any,
                                       locationQuery: any,
@@ -31,15 +31,28 @@ async function getCounsellingServices(serviceNameQuery: any,
   const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
                   ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
 
-  const services = await CounsellingService.find({ $and: [filter] })
-                                           .collation({ locale: 'en', strength: 2 })
-                                           .lean();
+  const match = {
+      $match: {
+          $and: [filter],
+      },
+  };
+
+  const services = await CounsellingService.aggregate(getAggregation(match))
+      .collation({ locale: 'en', strength: 2 });
 
   return services;
 }
 
 async function getCounsellingService(id: string): Promise<ICounsellingService> {
-    return await CounsellingService.findOne({secondaryID: id}).lean();
+    const match = {
+        $match: {
+            secondaryID: id,
+        },
+    };
+
+    const service = await CounsellingService.aggregate(getAggregation(match));
+
+    return service[0];
 }
 
 async function createCounsellingService(inputService: ICounsellingService): Promise<ICounsellingService> {
