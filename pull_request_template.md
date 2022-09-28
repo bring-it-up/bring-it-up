@@ -18,4 +18,5 @@
 ## Checklist
 
 - [ ] I performed a self-review of my code
-- [ ] I ran all the tests and they were successful
+- [ ] (Backend only) I ran all the tests using `npm test` and they were successful
+- [ ] (Backend only) I ran the linter using `npm run lint` and there were no errors
