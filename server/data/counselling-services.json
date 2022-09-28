@@ -212,9 +212,14 @@
         "specialty": [
             "Isolation",
             "Loneliness",
+            "Stress",
             "Depression",
             "Academics",
-            "Multiple language options"
+            "Multiple language options",
+            "Relationships",
+            "Uncertainty about future",
+            "Cultural adjustment",
+            "Time management"
         ],
         "delivery": [
             "Online",
@@ -277,6 +282,10 @@
             "Stress",
             "Anxiety",
             "Homesickness",
+            "Loneliness",
+            "Identity",
+            "Relationships",
+            "Chronic health conditions",
             "Cultural Adjustment"
         ],
         "delivery": [
@@ -288,6 +297,7 @@
     },
     {
         "serviceName": "ISC Wellness Program",
+        "location": "Simon Fraser University, AQ 2002, 8888 University Drive, Burnaby, BC V5A 1S6",
         "school": "SFU",
         "organization": "Indigenous Student Centre (ISC)",
         "serviceType": [
@@ -319,7 +329,7 @@
         ],
         "urgency": "Same Month",
         "targetClients": [
-            "SFU students"
+            "Indigenous SFU students"
         ],
         "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
@@ -369,6 +379,7 @@
     },
     {
         "serviceName": "BCIT Telephone and Video Counselling",
+        "location": "3700 Willingdon Ave, Burnaby, BC V5G 3H2",
         "school": "BCIT",
         "organization": "BCIT Counselling & Student Development",
         "serviceType": [
@@ -390,7 +401,7 @@
             "Academic pressures"
         ],
         "specialty": [
-            "Stress reduction",
+            "Stress",
             "Anxiety",
             "Depression",
             "Relationships",
@@ -456,7 +467,8 @@
             "Anxiety",
             "Depression",
             "Grief",
-            "Trauma"
+            "Trauma",
+            "Substance abuse"
         ],
         "delivery": [
             "Phone"
@@ -488,6 +500,7 @@
     },
     {
         "serviceName": "UBC Psychology Clinic",
+        "location": "2136 West Mall, Vancouver, BC  V6T 1Z4, Douglas T. Kenny Building",
         "school": "UBC",
         "organization": "UBC Psychology",
         "serviceType": [
@@ -513,7 +526,11 @@
         "specialty": [
             "Stress",
             "Anxiety",
-            "Depression"
+            "Depression",
+            "Trauma",
+            "Phobia",
+            "Relationships",
+            "Mental health disorders"
         ],
         "isOfferedOnline": false,
         "delivery": [
