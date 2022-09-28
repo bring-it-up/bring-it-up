@@ -40,61 +40,64 @@ Query Params:
 
 ### Response
 
-Example response for GET http://localhost:4000/counselling-services?specialty=trauma&school=SFU:
+Example response for GET http://localhost:4000/counselling-services?specialty=trauma&school=SFU
 
     [
-    {
-        "_id": "62e455344e29966a054f9dda",
-        "serviceName": "SFU Indigenous Counsellors",
-        "school": "SFU",
-        "organization": "SFU Health & Counselling Services (HCS)",
-        "serviceType": [
-        "Counselling"
-        ],
-        "urgency": "Same Month",
-        "targetClients": [
-        "SFU students"
-        ],
-        "isAllDay": false,
-        "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
-        "keywordSearch":[],
-        "specialty": [
-        "Stress",
-        "Anxiety",
-        "Depression",
-        "Grief",
-        "Trauma"
-        ],
-        "delivery": [
-        "In Person"
-        ],
-        "description": "Counselling for Indigenous students is available with Tanu Gamble or Jennifer Reandy. To book an appointment, email isc_well@sfu.ca or learn more about counselling for Indigenous students here.",
-        "hours": {
-            "mon": [
-                "0:00", "23:59
+        {
+            "serviceName": "SFU Indigenous Counsellors",
+            "school": {
+                "uid": "sfu",
+                "name": "Simon Fraser University",
+                "abbreviation": "SFU",
+                "mentalHealthCoverage": "80% of costs, up to $500 per policy year"
+            },
+            "organization": "SFU Health & Counselling Services (HCS)",
+            "serviceType": [
+                "Counselling"
             ],
-            "tue": [
-                "0:00", "23:59
+            "urgency": "Same Month",
+            "targetClients": [
+                "SFU students"
             ],
-            "wed": [
-                "0:00", "23:59
+            "isAllDay": false,
+            "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
+            "keywordSearch": [],
+            "specialty": [
+                "Stress",
+                "Anxiety",
+                "Depression",
+                "Grief",
+                "Trauma"
             ],
-            "thu": [
-                "0:00", "23:59
+            "delivery": [
+                "In Person"
             ],
-            "fri": [
-                "0:00", "23:59
-            ],
-            "sat": [
-                "0:00", "23:59
-            ],
-            "sun": [
-                "0:00", "23:59
-            ]
-        },
-        "secondaryID": "sfu-indigenous-counsellors",
-        "__v": 0
-    }
+            "description": "Counselling for Indigenous students is available with Tanu Gamble or Jennifer Reandy. To book an appointment, email isc_well@sfu.ca or learn more about counselling for Indigenous students here.",
+            "hours": {
+                "mon": [
+                    "0:00", "23:59
+                ],
+                "tue": [
+                    "0:00", "23:59
+                ],
+                "wed": [
+                    "0:00", "23:59
+                ],
+                "thu": [
+                    "0:00", "23:59
+                ],
+                "fri": [
+                    "0:00", "23:59
+                ],
+                "sat": [
+                    "0:00", "23:59
+                ],
+                "sun": [
+                    "0:00", "23:59
+                ]
+            },
+            "secondaryID": "sfu-indigenous-counsellors"
+        }
     ]
 
 ### Examples
