@@ -40,7 +40,7 @@ Query Params:
 
 ### Response
 
-Example response for GET http://localhost:4000/counselling-services?specialty=trauma&school=SFU
+Example response for GET http://localhost:4000/counselling-services?specialty=trauma&school=sfu
 
     [
         {
@@ -105,7 +105,7 @@ Example response for GET http://localhost:4000/counselling-services?specialty=tr
 | Request  | Should Return         | 
 |:-----------|:-------------|
 |GET http://localhost:4000/counselling-services?delivery=app | All services that offer delivery via app (including those that use additional delivery methods) |
-|GET http://localhost:4000/counselling-services?delivery=online&school=UBC | All services that are offered online AND have UBC as their associated school |
+|GET http://localhost:4000/counselling-services?delivery=online&school=ubc | All services that are offered online AND have UBC as their associated school |
 |GET http://localhost:4000/counselling-services?specialty=anxiety&specialty=stress | All services that specialize in at least one of anxiety or stress |
 
 
