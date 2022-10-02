@@ -118,7 +118,7 @@ Returns the counselling service with the specified ID.
 ### Request
 
 Path Params:
-- `id`: the ID of the service
+- `id`: the ID of the service. Note that the human-readable `secondaryID` should be passed for this parameter.
 
 ### Response
 
