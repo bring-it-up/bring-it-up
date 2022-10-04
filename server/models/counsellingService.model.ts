@@ -21,7 +21,7 @@ export interface ICounsellingService {
     description: string;
     logo?: string;
     secondaryID: string;
-    hours: Hours;
+    hours?: Hours;
 }
 
 // when create new doc in db mongoose returns additional info
