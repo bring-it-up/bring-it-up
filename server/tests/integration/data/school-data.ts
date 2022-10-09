@@ -17,4 +17,4 @@ export const schoolData3 = {
     "name": "Capilano University",
     "abbreviation": "CapU",
     "mentalHealthCoverage": "$900 per policy year"
-}
+};

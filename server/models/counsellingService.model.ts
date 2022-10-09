@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { ServiceType } from './counselling-type.enum';
 import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
-import { Hours } from './hours.model'
+import { Hours } from './hours.model';
 
 // interface to reinforce types
 export interface ICounsellingService {
@@ -21,6 +21,7 @@ export interface ICounsellingService {
     logo?: string;
     secondaryID: string;
     hours: Hours;
+    isFree: boolean;
 }
 
 // when create new doc in db mongoose returns additional info
@@ -97,6 +98,12 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
 
     hours: {
         type: Object,
+        required: false,
+        unique: false
+    },
+
+    isFree: {
+        type: Boolean,
         required: false,
         unique: false
     },
