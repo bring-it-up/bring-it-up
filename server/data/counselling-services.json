@@ -52,7 +52,8 @@
             "sun": [
                 "0:00", "23:59"
             ]
-        }
+        },
+        "isFree": true
     },
     {
         "serviceName": "Group Counselling Programs",
@@ -75,7 +76,8 @@
         "delivery": [
             "Online"
         ],
-        "description": "UBC's group counselling services are an excellent way to get plugged into a community of students and receive counselling in a collabortive environment. Students can choose from a variety of different programs depending on their needs and drop into weekly online sessions. These programs are a great way to connect with other students, learn new skills, get 'unstuck', and build social confidence."
+        "description": "UBC's group counselling services are an excellent way to get plugged into a community of students and receive counselling in a collabortive environment. Students can choose from a variety of different programs depending on their needs and drop into weekly online sessions. These programs are a great way to connect with other students, learn new skills, get 'unstuck', and build social confidence.",
+        "isFree": true
     },
     {
         "serviceName": "Foundry",
@@ -127,7 +129,8 @@
             "sun": [
 
             ]
-        }
+        },
+        "isFree": true
     },
     {
         "serviceName": "Hope for Wellness",
@@ -177,7 +180,8 @@
             "sun": [
                 "0:00", "23:59"
             ]
-        }
+        },
+        "isFree": true
     },
     {
         "serviceName": "Here2Talk",
@@ -226,7 +230,8 @@
             "sun": [
                 "0:00", "23:59"
             ]
-        }
+        },
+        "isFree": true
     },
     {
         "serviceName": "My SSP",
@@ -253,7 +258,8 @@
             "Phone",
             "App"
         ],
-        "description": "My SSP (My Student Support Program) is an app dedicated to supporting SFU/FIC students through its 24/7 crisis line, short-term counselling appointments and relevant resources on a range of mental health topics."
+        "description": "My SSP (My Student Support Program) is an app dedicated to supporting SFU/FIC students through its 24/7 crisis line, short-term counselling appointments and relevant resources on a range of mental health topics.",
+        "isFree": true
     },
     {
         "serviceName": "ISC Wellness Program",
@@ -276,7 +282,8 @@
         "delivery": [
             "Online"
         ],
-        "description": "The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!"
+        "description": "The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!",
+        "isFree": true
     },
     {
         "serviceName": "SFU Indigenous Counsellors",
@@ -301,7 +308,8 @@
         "delivery": [
             "In Person"
         ],
-        "description": "Counselling for Indigenous students is available with Tanu Gamble or Jennifer Reandy. To book an appointment, email isc_well@sfu.ca or learn more about counselling for Indigenous students here."
+        "description": "Counselling for Indigenous students is available with Tanu Gamble or Jennifer Reandy. To book an appointment, email isc_well@sfu.ca or learn more about counselling for Indigenous students here.",
+        "isFree": true
     },
     {
         "serviceName": "Access Case Managers",
@@ -328,7 +336,8 @@
             "Phone",
             "In Person"
         ],
-        "description": "HCS (Health & Counselling Services) Drop-in Advising is here so you can speak with an Access Case Manager one-on-one and talk about how Health & Counselling can support you best - whether it's through regular counselling, groups, workshops or referrals."
+        "description": "HCS (Health & Counselling Services) Drop-in Advising is here so you can speak with an Access Case Manager one-on-one and talk about how Health & Counselling can support you best - whether it's through regular counselling, groups, workshops or referrals.",
+        "isFree": true
     },
     {
         "serviceName": "BCIT Telephone and Video Counselling",
@@ -383,7 +392,8 @@
             "sun": [
                 
             ]
-        }
+        },
+        "isFree": true
     },
     {
         "serviceName": "Wellness Together Canada",
@@ -430,7 +440,8 @@
             "sun": [
                 "0:00", "23:59"
             ]
-        }
+        },
+        "isFree": true
     },
     {
         "serviceName": "UBC Psychology Clinic",
@@ -482,6 +493,7 @@
             "sun": [
                 
             ]
-        }
+        },
+        "isFree": false
     }
 ]
