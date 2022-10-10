@@ -98,6 +98,10 @@ export const postRules = [
         .exists({checkNull: true, checkFalsy: true})
         .custom(isValidHour)
         .withMessage("invalid hour data"),
+    body('isFree')
+        .optional()
+        .exists({checkNull: true})
+        .isBoolean(),
 ];
 
 export const patchRules = [
