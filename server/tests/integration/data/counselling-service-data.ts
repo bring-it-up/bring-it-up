@@ -43,4 +43,4 @@ export const service3Data = {
     isOfferedOnline: false,
     delivery: ["In Person"],
     description: "The UBC Psychology Clinic offers comprehensive psychological services adults. Our clinical services are provided by graduate students from UBC’s doctoral programme in clinical psychology. Student clinicians are closely supervised by Registered Psychologists from our faculty and the community.Our Clinic is not able to provide psychiatric or emergency services or services where there is a risk of frequent or severe crisis or involvement with the law."
-}
+};

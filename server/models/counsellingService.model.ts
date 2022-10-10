@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { ServiceType } from './counselling-type.enum';
 import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
-import { Hours } from './hours.model'
+import { Hours } from './hours.model';
 
 // interface to reinforce types
 export interface ICounsellingService {

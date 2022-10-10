@@ -1,9 +1,9 @@
 export interface Hours {
-    mon: [String],
-    tue: [String],
-    wed: [String],
-    thu: [String],
-    fri: [String],
-    sat: [String],
-    sun: [String],
+    mon: [string],
+    tue: [string],
+    wed: [string],
+    thu: [string],
+    fri: [string],
+    sat: [string],
+    sun: [string],
 }

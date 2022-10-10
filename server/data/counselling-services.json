@@ -1,7 +1,7 @@
 [
     {
         "serviceName": "Student Assistance Program (SAP)",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "Aspiria",
         "serviceType": [
             "Counselling"
@@ -57,7 +57,7 @@
     },
     {
         "serviceName": "Group Counselling Programs",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "UBC Counselling Services",
         "serviceType": [
             "Counselling"
@@ -248,7 +248,7 @@
     },
     {
         "serviceName": "My SSP",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "Morneau Shepell (LifeWorks)",
         "serviceType": [
             "Counselling"
@@ -288,7 +288,7 @@
     },
     {
         "serviceName": "ISC Wellness Program",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "Indigenous Student Centre (ISC)",
         "serviceType": [
             "Wellness"
@@ -312,7 +312,7 @@
     },
     {
         "serviceName": "SFU Indigenous Counsellors",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "SFU Health & Counselling Services (HCS)",
         "serviceType": [
             "Counselling"
@@ -338,7 +338,7 @@
     },
     {
         "serviceName": "Access Case Managers",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "SFU Health & Counselling Services (HCS)",
         "serviceType": [
             "Counselling",
@@ -369,7 +369,7 @@
     },
     {
         "serviceName": "BCIT Telephone and Video Counselling",
-        "school": "BCIT",
+        "school": "bcit",
         "organization": "BCIT Counselling & Student Development",
         "serviceType": [
             "Counselling"
@@ -488,7 +488,7 @@
     },
     {
         "serviceName": "UBC Psychology Clinic",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "UBC Psychology",
         "serviceType": [
             "Counselling"

@@ -6,16 +6,16 @@ import {
     invalidNumHours,
     invalidDay,
     invalidNumHourDataValues
-} from './data/invalid-hour-data'
+} from './data/invalid-hour-data';
 import {
     validHourData,
     validSpecialHourData
-} from './data/valid-hour-data'
+} from './data/valid-hour-data';
 
 const expect = chai.expect;
 
 describe('Hours Validator', () => {
-    const runTest = (description: string, input: Object, expectedOutput: boolean) => {
+    const runTest = (description: string, input: object, expectedOutput: boolean) => {
         it(description, () => {
             const result = isValidHour(input);
             expect(result).to.equal(expectedOutput);

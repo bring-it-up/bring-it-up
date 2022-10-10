@@ -1,6 +1,6 @@
 export const isValidHour = (hours: any) => {
-    const days = new Set(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'])
-    const re = /([01]?[0-9]|2[0-3]):[0-5][0-9]/
+    const days = new Set(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']);
+    const re = /([01]?[0-9]|2[0-3]):[0-5][0-9]/;
 
     if (Object.keys(hours).length < 7 || Object.keys(hours).length > 7) {
         return false;
@@ -22,4 +22,4 @@ export const isValidHour = (hours: any) => {
     }
     
     return true; 
-}
+};
