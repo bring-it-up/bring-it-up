@@ -3,7 +3,7 @@ import {ServiceType} from "../models/counselling-type.enum";
 import {UrgencyLevel} from "../models/urgency-level.enum";
 import {DeliveryMethod} from "../models/delivery-method.enum";
 import {BadRequestError} from "./bad-request-error";
-import {isValidHour} from "./hours-request-validator"
+import {isValidHour} from "./hours-request-validator";
 
 /*
     This file contains the logic for validating requests to
@@ -66,9 +66,6 @@ export const postRules = [
         .exists({checkNull: true, checkFalsy:true})
         .isString()
         .withMessage("targetClients is not an array"),
-    body('isAllDay')
-        .exists({checkNull: true})
-        .isBoolean(),
     body('website')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
@@ -98,7 +95,7 @@ export const postRules = [
         .exists({checkNull: true, checkFalsy: true})
         .custom(isValidHour)
         .withMessage("invalid hour data"),
-]
+];
 
 export const patchRules = [
     body('serviceName')
@@ -139,10 +136,6 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
-    body('isAllDay')
-        .optional()
-        .exists({checkNull: true})
-        .isBoolean(),
     body('website')
         .optional()
         .exists({checkNull: true, checkFalsy:true})

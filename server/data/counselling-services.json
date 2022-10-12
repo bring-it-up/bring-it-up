@@ -1,7 +1,7 @@
 [
     {
         "serviceName": "Student Assistance Program (SAP)",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "Aspiria",
         "serviceType": [
             "Counselling"
@@ -10,7 +10,6 @@
         "targetClients": [
             "UBC students"
         ],
-        "isAllDay": true,
         "website": "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
         "keywordSearch":[],
         "specialty": [
@@ -57,7 +56,7 @@
     },
     {
         "serviceName": "Group Counselling Programs",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "UBC Counselling Services",
         "serviceType": [
             "Counselling"
@@ -66,7 +65,6 @@
         "targetClients": [
             "UBC students"
         ],
-        "isAllDay": false,
         "website": "https://students.ubc.ca/health/counselling-services/group-counselling-programs",
         "keywordSearch":[],
         "specialty": [
@@ -90,7 +88,6 @@
         "targetClients": [
             "Youth in BC, aged 12-24"
         ],
-        "isAllDay": false,
         "website": "https://foundrybc.ca/virtual/",
         "keywordSearch":[],
         "specialty": [
@@ -142,7 +139,6 @@
         "targetClients": [
             "Indigenous people, all ages"
         ],
-        "isAllDay": true,
         "website": "https://hopeforwellness.ca/home.html",
         "keywordSearch":[
             "Experiences, challenges & issues",
@@ -198,7 +194,6 @@
         "targetClients": [
             "BC students"
         ],
-        "isAllDay": true,
         "website": "https://here2talk.ca/main",
         "keywordSearch":[
             "Tensions with family members, friends, or instructors",
@@ -212,14 +207,9 @@
         "specialty": [
             "Isolation",
             "Loneliness",
-            "Stress",
             "Depression",
             "Academics",
-            "Multiple language options",
-            "Relationships",
-            "Uncertainty about future",
-            "Cultural adjustment",
-            "Time management"
+            "Multiple language options"
         ],
         "delivery": [
             "Online",
@@ -253,7 +243,7 @@
     },
     {
         "serviceName": "My SSP",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "Morneau Shepell (LifeWorks)",
         "serviceType": [
             "Counselling"
@@ -263,7 +253,6 @@
             "SFU students",
             "FIC students"
         ],
-        "isAllDay": true,
         "website": "https://www.sfu.ca/students/health/get-support/my-ssp.html",
         "keywordSearch":[
             "Loneliness",
@@ -282,10 +271,6 @@
             "Stress",
             "Anxiety",
             "Homesickness",
-            "Loneliness",
-            "Identity",
-            "Relationships",
-            "Chronic health conditions",
             "Cultural Adjustment"
         ],
         "delivery": [
@@ -297,8 +282,7 @@
     },
     {
         "serviceName": "ISC Wellness Program",
-        "location": "Simon Fraser University, AQ 2002, 8888 University Drive, Burnaby, BC V5A 1S6",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "Indigenous Student Centre (ISC)",
         "serviceType": [
             "Wellness"
@@ -307,7 +291,6 @@
         "targetClients": [
             "Indigenous SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/indigenous/isc-wellness.html",
         "keywordSearch":[],
         "specialty": [
@@ -322,16 +305,15 @@
     },
     {
         "serviceName": "SFU Indigenous Counsellors",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "SFU Health & Counselling Services (HCS)",
         "serviceType": [
             "Counselling"
         ],
         "urgency": "Same Month",
         "targetClients": [
-            "Indigenous SFU students"
+            "SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
         "specialty": [
             "Stress",
@@ -348,7 +330,7 @@
     },
     {
         "serviceName": "Access Case Managers",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "SFU Health & Counselling Services (HCS)",
         "serviceType": [
             "Counselling",
@@ -358,7 +340,6 @@
         "targetClients": [
             "SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/get-support/hcs-service-navigators.html",
         "keywordSearch":[
             "Emotional support",
@@ -379,8 +360,7 @@
     },
     {
         "serviceName": "BCIT Telephone and Video Counselling",
-        "location": "3700 Willingdon Ave, Burnaby, BC V5G 3H2",
-        "school": "BCIT",
+        "school": "bcit",
         "organization": "BCIT Counselling & Student Development",
         "serviceType": [
             "Counselling"
@@ -389,7 +369,6 @@
         "targetClients": [
             "BCIT students"
         ],
-        "isAllDay": false,
         "website": "https://www.bcit.ca/counselling/",
         "keywordSearch":[
             "Stress reduction",
@@ -401,7 +380,7 @@
             "Academic pressures"
         ],
         "specialty": [
-            "Stress",
+            "Stress reduction",
             "Anxiety",
             "Depression",
             "Relationships",
@@ -452,7 +431,6 @@
         "targetClients": [
             "Adults (18+)"
         ],
-        "isAllDay": true,
         "website": "https://www.wellnesstogether.ca/en-CA/service/talk",
         "keywordSearch":[
             "Coping with COVID-19",
@@ -467,8 +445,7 @@
             "Anxiety",
             "Depression",
             "Grief",
-            "Trauma",
-            "Substance abuse"
+            "Trauma"
         ],
         "delivery": [
             "Phone"
@@ -500,8 +477,7 @@
     },
     {
         "serviceName": "UBC Psychology Clinic",
-        "location": "2136 West Mall, Vancouver, BC  V6T 1Z4, Douglas T. Kenny Building",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "UBC Psychology",
         "serviceType": [
             "Counselling"
@@ -510,7 +486,6 @@
         "targetClients": [
             "Adults in Greater Vancouver"
         ],
-        "isAllDay": false,
         "website": "https://clinic.psych.ubc.ca/services/",
         "keywordSearch":[
             "Panic Disorder",
@@ -526,11 +501,7 @@
         "specialty": [
             "Stress",
             "Anxiety",
-            "Depression",
-            "Trauma",
-            "Phobia",
-            "Relationships",
-            "Mental health disorders"
+            "Depression"
         ],
         "isOfferedOnline": false,
         "delivery": [

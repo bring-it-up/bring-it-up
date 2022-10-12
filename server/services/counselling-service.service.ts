@@ -8,7 +8,6 @@ async function getCounsellingServices(serviceNameQuery: any,
                                       serviceTypeQuery: any,
                                       urgencyQuery: any, 
                                       targetClientsQuery: any,
-                                      isAllDayQuery: any,
                                       specialtyQuery: any,
                                       deliveryQuery: any,
                                       descriptionQuery: any,
@@ -22,14 +21,13 @@ async function getCounsellingServices(serviceNameQuery: any,
   const specialty = getFilter("specialty", specialtyQuery);
   const urgency = getFilter("urgency", urgencyQuery);
   const targetClients = getFilter("targetClients", targetClientsQuery);
-  const isAllDay = (isAllDayQuery != null) ? { isAllDay: isAllDayQuery } : {};
   const delivery = getFilter("delivery", deliveryQuery);
   const description = getFilter("description", descriptionQuery);
 
   const search = searchString ? { $text: { $search: searchString } } : {};
 
   const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
-                  ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
+                  ...urgency, ...targetClients, ...delivery, ...description, ...search};
 
   const match = {
       $match: {

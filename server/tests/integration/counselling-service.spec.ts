@@ -67,7 +67,7 @@ describe('Counselling Services', () => {
             response.should.have.status(StatusCode.OK);
             response.body.should.be.a('array');
             response.body.length.should.be.eql(1);
-            assertCounsellingService(response.body[0], service1Data, schoolData1)
+            assertCounsellingService(response.body[0], service1Data, schoolData1);
         });
 
         it('should get counselling services with school ubc or sfu', async () => {
@@ -151,10 +151,10 @@ describe('Counselling Services', () => {
 });
 
 function assertCounsellingService(service: any, serviceData: any, schoolData: any) {
-    const keys = ['serviceName', 'organization', 'serviceType', 'urgency', 'targetClients', 'isAllDay',
+    const keys = ['serviceName', 'organization', 'serviceType', 'urgency', 'targetClients',
         'website', 'specialty', 'delivery', 'serviceName', 'secondaryID'];
 
-    for (let key of keys) {
+    for (const key of keys) {
         service[key].should.be.eql(serviceData[key]);
     }
 
