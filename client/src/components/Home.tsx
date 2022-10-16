@@ -6,40 +6,31 @@ import SearchBar from "./SearchBar";
 
 const Home = (): ReactElement => {
     var [services, setServices] = useState<any[]>([]);
-    var filteredServices: Service[] = [];
     var [searchStr, setSearchStr] = useState<String>('');
 
-    useEffect(() => {
-        updateServiceCards();
-    }, [searchStr]); // issue with the useEffect
-
     function getSearchString(searchString: String): void {
+        // console.log("hello");
         setSearchStr(searchString);
+        // console.log(searchString);
     }
 
-    const GetFilteredServices = () => {
+    useEffect(() => {
+        fetch(`/counselling-services?searchString=${searchStr}`)
+            .then(res => res.json())
+            .then(parsedData => setServices(parsedData))
+            .then(() => console.log(services))
+            .catch((e) => console.log(e));
 
-        useEffect(() => {
-            fetch(`/counselling-services?searchString=${searchStr}`)
-                .then(res => res.json())
-                .then(parsedData => setServices(parsedData))
-                .catch((e) => console.log(e));
+    }, [searchStr]);
 
-        }, []);
-        for (let service of services) {
-            filteredServices.push(service);
-        }
-        return filteredServices;
-    }
+    useEffect(() => {
+        renderServiceCards(services);
+    }, [services])
 
     const renderServiceCards = (services: Array<Service>) => {
         services.map((serv) => (
             <ServiceCard service={serv}></ServiceCard>
         ),)
-    }
-
-    const updateServiceCards = () => {
-        renderServiceCards(GetFilteredServices());
     }
 
     return (

@@ -7,8 +7,8 @@ type Props = {
 
 const SearchBar = ({ getSearchStringFn }: Props): ReactElement => {
     function handleClick() {
-        // console.log(document.getElementById("search"));
-        getSearchStringFn(document.getElementById("search"));
+        // console.log((document.getElementById("search") as HTMLInputElement).value); // value is correct 
+        getSearchStringFn((document.getElementById("search") as HTMLInputElement).value);
     }
     return (
         <div className="background">
