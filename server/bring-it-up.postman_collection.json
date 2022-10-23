@@ -10,7 +10,7 @@
 			"name": "schools",
 			"item": [
 				{
-					"name": "/schools",
+					"name": "/schools (PUBLIC)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -28,7 +28,7 @@
 					"response": []
 				},
 				{
-					"name": "/school/:uid",
+					"name": "/school/:uid (PUBLIC)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -110,12 +110,12 @@
 			"name": "counselling-services",
 			"item": [
 				{
-					"name": "/counselling-services",
+					"name": "/counselling-services (PUBLIC)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{local_url}}/counselling-services?specialty=stress&specialty=anxiety",
+							"raw": "http://{{local_url}}/counselling-services",
 							"protocol": "http",
 							"host": [
 								"{{local_url}}"
@@ -136,11 +136,38 @@
 								},
 								{
 									"key": "specialty",
-									"value": "stress"
+									"value": "stress",
+									"disabled": true
 								},
 								{
 									"key": "specialty",
-									"value": "anxiety"
+									"value": "anxiety",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services/:id (PUBLIC)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services/:id",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "my-ssp"
 								}
 							]
 						}
@@ -181,7 +208,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"serviceName\": \"test name\",\n}",
+							"raw": "{\n    \"serviceName\": \"My SSP Service\",\n    \"organization\": \"Morneau Shepell\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -201,7 +228,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "SERVICE_ID"
+									"value": "my-ssp"
 								}
 							]
 						}
@@ -235,6 +262,24 @@
 									"key": "id",
 									"value": "62479eab758112176899295e"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services (INTERNAL)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services"
 							]
 						}
 					},
