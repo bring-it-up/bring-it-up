@@ -10,7 +10,6 @@
         "targetClients": [
             "UBC students"
         ],
-        "isAllDay": true,
         "website": "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
         "keywordSearch":[],
         "specialty": [
@@ -66,7 +65,6 @@
         "targetClients": [
             "UBC students"
         ],
-        "isAllDay": false,
         "website": "https://students.ubc.ca/health/counselling-services/group-counselling-programs",
         "keywordSearch":[],
         "specialty": [
@@ -90,7 +88,6 @@
         "targetClients": [
             "Youth in BC, aged 12-24"
         ],
-        "isAllDay": false,
         "website": "https://foundrybc.ca/virtual/",
         "keywordSearch":[],
         "specialty": [
@@ -142,7 +139,6 @@
         "targetClients": [
             "Indigenous people, all ages"
         ],
-        "isAllDay": true,
         "website": "https://hopeforwellness.ca/home.html",
         "keywordSearch":[
             "Experiences, challenges & issues",
@@ -198,7 +194,6 @@
         "targetClients": [
             "BC students"
         ],
-        "isAllDay": true,
         "website": "https://here2talk.ca/main",
         "keywordSearch":[
             "Tensions with family members, friends, or instructors",
@@ -258,7 +253,6 @@
             "SFU students",
             "FIC students"
         ],
-        "isAllDay": true,
         "website": "https://www.sfu.ca/students/health/get-support/my-ssp.html",
         "keywordSearch":[
             "Loneliness",
@@ -297,7 +291,6 @@
         "targetClients": [
             "Indigenous SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/indigenous/isc-wellness.html",
         "keywordSearch":[],
         "specialty": [
@@ -321,7 +314,6 @@
         "targetClients": [
             "SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
         "specialty": [
             "Stress",
@@ -348,7 +340,6 @@
         "targetClients": [
             "SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/get-support/hcs-service-navigators.html",
         "keywordSearch":[
             "Emotional support",
@@ -378,7 +369,6 @@
         "targetClients": [
             "BCIT students"
         ],
-        "isAllDay": false,
         "website": "https://www.bcit.ca/counselling/",
         "keywordSearch":[
             "Stress reduction",
@@ -441,7 +431,6 @@
         "targetClients": [
             "Adults (18+)"
         ],
-        "isAllDay": true,
         "website": "https://www.wellnesstogether.ca/en-CA/service/talk",
         "keywordSearch":[
             "Coping with COVID-19",
@@ -497,7 +486,6 @@
         "targetClients": [
             "Adults in Greater Vancouver"
         ],
-        "isAllDay": false,
         "website": "https://clinic.psych.ubc.ca/services/",
         "keywordSearch":[
             "Panic Disorder",

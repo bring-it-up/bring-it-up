@@ -25,7 +25,6 @@ Query Params:
 |:-----------|:-------------|:----------------------------------|
 | `school` | `string` | The school that the service belongs to, ex: "UBC" or "SFU" |
 | `location` | `string` | The location of the service, if relevant (e.g. "Vancouver" if a service is available in person) |
-| `isAllDay` | `boolean` | Whether or not the service is available 24/7 |
 | `serviceName` | `string` | The name of the service, e.g. "ISC Wellness Program" |
 | `organization` | `string` | The name of the organization that the service belongs to, e.g. "UBC Counselling Services" |
 | `serviceType` | `ServiceType array` | The type of service offered, one or more of: "Medical", "Counselling", "Crisis", "Wellness", "Workshop" |
@@ -59,7 +58,6 @@ Example response for GET http://localhost:4000/counselling-services?specialty=tr
             "targetClients": [
                 "SFU students"
             ],
-            "isAllDay": false,
             "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
             "keywordSearch": [],
             "specialty": [

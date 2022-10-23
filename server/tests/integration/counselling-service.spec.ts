@@ -151,7 +151,7 @@ describe('Counselling Services', () => {
 });
 
 function assertCounsellingService(service: any, serviceData: any, schoolData: any) {
-    const keys = ['serviceName', 'organization', 'serviceType', 'urgency', 'targetClients', 'isAllDay',
+    const keys = ['serviceName', 'organization', 'serviceType', 'urgency', 'targetClients',
         'website', 'specialty', 'delivery', 'serviceName', 'secondaryID'];
 
     for (const key of keys) {

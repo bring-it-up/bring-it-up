@@ -6,7 +6,6 @@ export default class Service {
 	public readonly type: string = '';
 	public readonly urgency: string = '';
 	public readonly targetClients: string[] = [];
-	public readonly isAllDay: boolean = false;
 	public readonly website: string = '';
 	public readonly specialty: string[] = [];
 	public readonly isOfferedOnline: boolean = false;
@@ -22,7 +21,6 @@ export default class Service {
     type?: string,
     urgency?: string,
     targetClients?: string[],
-    isAllDay?: boolean,
     website?: string,
     specialty?: string[],
     isOfferedOnline?: boolean,
@@ -37,7 +35,6 @@ export default class Service {
 		this.type = type ?? '';
 		this.urgency = urgency ?? '';
 		this.targetClients = targetClients ?? [];
-		this.isAllDay = isAllDay ?? false;
 		this.website = website ?? '';
 		this.specialty = specialty ?? [];
 		this.isOfferedOnline = isOfferedOnline ?? false;
