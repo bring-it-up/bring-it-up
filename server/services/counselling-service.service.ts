@@ -1,5 +1,5 @@
 import { CounsellingService, ICounsellingService } from '../models/counsellingService.model';
-import { getFilter } from "../utils/filter.util";
+import { getFilter, getAggregation } from "../utils/get.util";
 
 async function getCounsellingServices(serviceNameQuery: any,
                                       locationQuery: any,
@@ -8,7 +8,6 @@ async function getCounsellingServices(serviceNameQuery: any,
                                       serviceTypeQuery: any,
                                       urgencyQuery: any, 
                                       targetClientsQuery: any,
-                                      isAllDayQuery: any,
                                       specialtyQuery: any,
                                       deliveryQuery: any,
                                       descriptionQuery: any,
@@ -22,24 +21,36 @@ async function getCounsellingServices(serviceNameQuery: any,
   const specialty = getFilter("specialty", specialtyQuery);
   const urgency = getFilter("urgency", urgencyQuery);
   const targetClients = getFilter("targetClients", targetClientsQuery);
-  const isAllDay = (isAllDayQuery != null) ? { isAllDay: isAllDayQuery } : {};
   const delivery = getFilter("delivery", deliveryQuery);
   const description = getFilter("description", descriptionQuery);
 
   const search = searchString ? { $text: { $search: searchString } } : {};
 
   const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
-                  ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
+                  ...urgency, ...targetClients, ...delivery, ...description, ...search};
 
-  const services = await CounsellingService.find({ $and: [filter] })
-                                           .collation({ locale: 'en', strength: 2 })
-                                           .lean();
+  const match = {
+      $match: {
+          $and: [filter],
+      },
+  };
+
+  const services = await CounsellingService.aggregate(getAggregation(match))
+      .collation({ locale: 'en', strength: 2 });
 
   return services;
 }
 
 async function getCounsellingService(id: string): Promise<ICounsellingService> {
-    return await CounsellingService.findOne({secondaryID: id}).lean();
+    const match = {
+        $match: {
+            secondaryID: id,
+        },
+    };
+
+    const service = await CounsellingService.aggregate(getAggregation(match));
+
+    return service[0];
 }
 
 async function createCounsellingService(inputService: ICounsellingService): Promise<ICounsellingService> {
