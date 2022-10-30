@@ -3,7 +3,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {ReactElement, useEffect, useState} from 'react';
 import {Grid} from '@mui/material';
-import vector from "./vector.png"
+import vector from "../images/vector.png"
 
 export default function ServiceHoursCard({parentToChild}: {parentToChild: string}): ReactElement {
     let id = parentToChild.replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase();
@@ -30,7 +30,7 @@ export default function ServiceHoursCard({parentToChild}: {parentToChild: string
         if (isOpenNow(hours[key][0], hours[key][1])) {
             return <CurrentlyOpenCard hours={hours} />
         }
-        return <DefaultCard hours={hours}/>
+        return <ClosedCard hours={hours}/>
     }
     return  <NoHoursAvailable />
     }
@@ -65,15 +65,18 @@ function CurrentlyOpenCard(props: any) {
     )
 }
 
-function DefaultCard(props: any) {
+function ClosedCard(props: any) {
     const days = Object.keys(props.hours);
     console.log(props.hours);
     return (
         <Card variant="outlined" sx={{maxWidth: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px'}}>
             <CardContent>
                 <Grid container>
-                    <Grid item xs ={11}>
-                        <Typography sx={{fontSize: 24, paddingTop: "5px", paddingBottom:"5px", paddingLeft: "10px"}}>Hours</Typography>
+                    <Grid item xs ={3.5}>
+                        <Typography sx={{fontSize: 24, paddingTop: "5px", paddingBottom:"5px", paddingLeft: "10px"}}>Hours ·</Typography>
+                    </Grid>
+                    <Grid item xs={7.5}>
+                        <Typography sx={{fontSize: 24, paddingTop: "5px", paddingBottom:"5px", paddingLeft:"3px", color:"#D22B2B"}}>Closed</Typography>
                     </Grid>
                     <Grid item xs={1}>
                         <img src={vector} style={{position: "relative", top:"10px"}}></img>
@@ -199,7 +202,6 @@ function getDay(day: any): string {
     }
     return ""; 
 }
-
 
 
 
