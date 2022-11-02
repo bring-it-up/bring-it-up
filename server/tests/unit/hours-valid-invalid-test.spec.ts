@@ -15,7 +15,7 @@ import {
 const expect = chai.expect;
 
 describe('Hours Validator', () => {
-    const runTest = (description: string, input: object, expectedOutput: boolean) => {
+    const runTest = (description: string, input: Record<string, unknown>, expectedOutput: boolean) => {
         it(description, () => {
             const result = isValidHour(input);
             expect(result).to.equal(expectedOutput);

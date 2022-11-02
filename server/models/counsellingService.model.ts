@@ -21,6 +21,7 @@ export interface ICounsellingService {
     logo?: string;
     secondaryID: string;
     hours?: Hours;
+    isFree: boolean;
 }
 
 // when create new doc in db mongoose returns additional info
@@ -98,6 +99,12 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
 
     hours: {
         type: Object,
+        required: false,
+        unique: false
+    },
+
+    isFree: {
+        type: Boolean,
         required: false,
         unique: false
     },
