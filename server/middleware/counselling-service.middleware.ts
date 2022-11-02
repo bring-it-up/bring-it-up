@@ -66,9 +66,6 @@ export const postRules = [
         .exists({checkNull: true, checkFalsy:true})
         .isString()
         .withMessage("targetClients is not an array"),
-    body('isAllDay')
-        .exists({checkNull: true})
-        .isBoolean(),
     body('website')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
@@ -143,10 +140,6 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
-    body('isAllDay')
-        .optional()
-        .exists({checkNull: true})
-        .isBoolean(),
     body('website')
         .optional()
         .exists({checkNull: true, checkFalsy:true})

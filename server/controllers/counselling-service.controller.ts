@@ -14,7 +14,6 @@ async function getCounsellingServices(req: Request, res: Response) {
                                                               req.query.serviceType,
                                                               req.query.urgency, 
                                                               req.query.targetClients,
-                                                              req.query.isAllDay,
                                                               req.query.specialty,
                                                               req.query.delivery,
                                                               req.query.description,

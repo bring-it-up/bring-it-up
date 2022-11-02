@@ -1,7 +1,7 @@
 [
     {
         "serviceName": "Student Assistance Program (SAP)",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "Aspiria",
         "serviceType": [
             "Counselling"
@@ -10,7 +10,6 @@
         "targetClients": [
             "UBC students"
         ],
-        "isAllDay": true,
         "website": "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
         "keywordSearch":[],
         "specialty": [
@@ -58,7 +57,7 @@
     },
     {
         "serviceName": "Group Counselling Programs",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "UBC Counselling Services",
         "serviceType": [
             "Counselling"
@@ -67,7 +66,6 @@
         "targetClients": [
             "UBC students"
         ],
-        "isAllDay": false,
         "website": "https://students.ubc.ca/health/counselling-services/group-counselling-programs",
         "keywordSearch":[],
         "specialty": [
@@ -92,7 +90,6 @@
         "targetClients": [
             "Youth in BC, aged 12-24"
         ],
-        "isAllDay": false,
         "website": "https://foundrybc.ca/virtual/",
         "keywordSearch":[],
         "specialty": [
@@ -145,7 +142,6 @@
         "targetClients": [
             "Indigenous people, all ages"
         ],
-        "isAllDay": true,
         "website": "https://hopeforwellness.ca/home.html",
         "keywordSearch":[
             "Experiences, challenges & issues",
@@ -202,7 +198,6 @@
         "targetClients": [
             "BC students"
         ],
-        "isAllDay": true,
         "website": "https://here2talk.ca/main",
         "keywordSearch":[
             "Tensions with family members, friends, or instructors",
@@ -253,7 +248,7 @@
     },
     {
         "serviceName": "My SSP",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "Morneau Shepell (LifeWorks)",
         "serviceType": [
             "Counselling"
@@ -263,7 +258,6 @@
             "SFU students",
             "FIC students"
         ],
-        "isAllDay": true,
         "website": "https://www.sfu.ca/students/health/get-support/my-ssp.html",
         "keywordSearch":[
             "Loneliness",
@@ -294,7 +288,7 @@
     },
     {
         "serviceName": "ISC Wellness Program",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "Indigenous Student Centre (ISC)",
         "serviceType": [
             "Wellness"
@@ -303,7 +297,6 @@
         "targetClients": [
             "Indigenous SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/indigenous/isc-wellness.html",
         "keywordSearch":[],
         "specialty": [
@@ -319,7 +312,7 @@
     },
     {
         "serviceName": "SFU Indigenous Counsellors",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "SFU Health & Counselling Services (HCS)",
         "serviceType": [
             "Counselling"
@@ -328,7 +321,6 @@
         "targetClients": [
             "SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
         "specialty": [
             "Stress",
@@ -346,7 +338,7 @@
     },
     {
         "serviceName": "Access Case Managers",
-        "school": "SFU",
+        "school": "sfu",
         "organization": "SFU Health & Counselling Services (HCS)",
         "serviceType": [
             "Counselling",
@@ -356,7 +348,6 @@
         "targetClients": [
             "SFU students"
         ],
-        "isAllDay": false,
         "website": "https://www.sfu.ca/students/health/get-support/hcs-service-navigators.html",
         "keywordSearch":[
             "Emotional support",
@@ -378,7 +369,7 @@
     },
     {
         "serviceName": "BCIT Telephone and Video Counselling",
-        "school": "BCIT",
+        "school": "bcit",
         "organization": "BCIT Counselling & Student Development",
         "serviceType": [
             "Counselling"
@@ -387,7 +378,6 @@
         "targetClients": [
             "BCIT students"
         ],
-        "isAllDay": false,
         "website": "https://www.bcit.ca/counselling/",
         "keywordSearch":[
             "Stress reduction",
@@ -451,7 +441,6 @@
         "targetClients": [
             "Adults (18+)"
         ],
-        "isAllDay": true,
         "website": "https://www.wellnesstogether.ca/en-CA/service/talk",
         "keywordSearch":[
             "Coping with COVID-19",
@@ -499,7 +488,7 @@
     },
     {
         "serviceName": "UBC Psychology Clinic",
-        "school": "UBC",
+        "school": "ubc",
         "organization": "UBC Psychology",
         "serviceType": [
             "Counselling"
@@ -508,7 +497,6 @@
         "targetClients": [
             "Adults in Greater Vancouver"
         ],
-        "isAllDay": false,
         "website": "https://clinic.psych.ubc.ca/services/",
         "keywordSearch":[
             "Panic Disorder",

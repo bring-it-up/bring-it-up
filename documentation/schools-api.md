@@ -34,11 +34,10 @@ Example response for GET http://localhost:4000/schools:
 
     [
         {
-            "_id": "630daa9d4600f06162345015",
             "uid": "ubcv",
             "name": "University of British Columbia - Vancouver",
             "abbreviation": "UBC Vancouver",
-            "mentalHealthCoverage": "$1500 per policy year"
+            "mentalHealthCoverage": "$1250 per policy year"
         }
     ]
 

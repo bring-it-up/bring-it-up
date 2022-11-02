@@ -13,7 +13,6 @@ export interface ICounsellingService {
     serviceType: ServiceType[];
     urgency: UrgencyLevel;
     targetClients: string[];
-    isAllDay: boolean;
     website: string;
     keywordSearch: string[],
     specialty: string[];
@@ -21,7 +20,7 @@ export interface ICounsellingService {
     description: string;
     logo?: string;
     secondaryID: string;
-    hours: Hours;
+    hours?: Hours;
     isFree: boolean;
 }
 
@@ -66,10 +65,6 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     targetClients: {
         type: [String],
         default: undefined,
-        required: true
-    },
-    isAllDay: {
-        type: Boolean,
         required: true
     },
     website: {
