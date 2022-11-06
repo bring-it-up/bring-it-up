@@ -1,25 +1,64 @@
+import { AppBar, Typography, Toolbar, Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import { styled } from "@mui/system";
 import { ReactElement } from "react";
-import {Nav, Navbar, NavLink} from 'react-bootstrap';
-import {Link} from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+const CustomizedHeading = styled(Typography)({
+	position: "absolute",
+	left: "3%",
+	top: "25%",
+	color: "#151611",
+	fontFamily: "Noto Sans",
+	fontSize: "28px",
+	fontWeight: "700",
+	fontStyle: "normal",
+	lineHeight: "49px",
+}) as typeof Typography;
+
+const CustomizedButton = styled(Button)({
+	position: "absolute",
+	textTransform: "capitalize",
+	top: "30%",
+	color: "#151611",
+	fontFamily: "Noto Sans",
+	fontStyle: "normal",
+	fontWeight: "400",
+	fontSize: "20px",
+	lineHeight: "27px",
+	"&:hover": {
+		color: "#151611",
+	},
+}) as typeof Button;
 
 const Navigation = (): ReactElement => {
-    return (
-        <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
-            <Navbar.Toggle aria-controls="navbarScroll" data-bs-target="#navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
-                <Nav>
-                    <NavLink eventKey="1" as={Link} to="/">Home</NavLink>
-                    <NavLink eventKey="2" as={Link} to="/about">About</NavLink>
-                    <NavLink eventKey="3" as={Link} to="/services">Services</NavLink>
-                </Nav>
-                <Nav className="ms-auto" >
-                    <NavLink eventKey="4" as={Link} to="/signin">Sign In</NavLink>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
-
-    );
-}
+	return (
+		<AppBar position="static" elevation={0}>
+			<Toolbar disableGutters sx={{ background: "white", height: "105px" }}>
+				<CustomizedHeading variant="h1">Bring It Up</CustomizedHeading>
+				<CustomizedButton component={Link} to={"/"} sx={{ left: "20%" }}>
+					Home
+				</CustomizedButton>
+				<CustomizedButton
+					component={Link}
+					to={"/services"}
+					sx={{ left: "30%" }}
+				>
+					Services
+				</CustomizedButton>
+				<CustomizedButton component={Link} to={"/about"} sx={{ left: "42%" }}>
+					About
+				</CustomizedButton>
+				<CustomizedButton
+					sx={{
+						textDecoration: "underline",
+						right: "3%",
+					}}
+				>
+					Sign in
+				</CustomizedButton>
+			</Toolbar>
+		</AppBar>
+	);
+};
 
 export default Navigation;

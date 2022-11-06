@@ -1,120 +1,291 @@
 {
 	"info": {
-		"_postman_id": "fabaf20e-879a-42e5-879b-e8e006acc080",
+		"_postman_id": "9abab9ca-942d-40f7-8083-c30c7d963704",
 		"name": "bring-it-up",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11974707"
 	},
 	"item": [
 		{
-			"name": "/counselling-services",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{local_url}}/counselling-services",
-					"protocol": "http",
-					"host": [
-						"{{local_url}}"
-					],
-					"path": [
-						"counselling-services"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/counselling-services",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"location\": \"N/A\",\n    \"school\": \"SFU\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"type\": \"Wellness\",\n    \"urgency\": \"Non-urgent\",\n    \"targetClients\": \"Indigenous students at SFU\",\n    \"isAllDay\": false,\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"specialty\": [\"Mental\", \"physical\", \"social wellness\"],\n    \"isOfferedOnline\": true,\n    \"delivery\": [\"online\"],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "schools",
+			"item": [
+				{
+					"name": "/schools (PUBLIC)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/schools",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"schools"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://{{local_url}}/counselling-services",
-					"protocol": "http",
-					"host": [
-						"{{local_url}}"
-					],
-					"path": [
-						"counselling-services"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/counselling-services/:id",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"serviceName\": \"test name\",\n    \"isAllDay\": false\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "/school/:uid (PUBLIC)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/schools/:uid",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"schools",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "sfu"
+								}
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://{{local_url}}/counselling-services/:id",
-					"protocol": "http",
-					"host": [
-						"{{local_url}}"
-					],
-					"path": [
-						"counselling-services",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "SERVICE_ID"
+				{
+					"name": "/schools",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uid\": \"sfu\",\n    \"name\": \"Simon Fraser University\",\n    \"abbreviation\": \"SFU\",\n    \"mentalHealthCoverage\": \"80% of costs, up to $500 per policy year\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{local_url}}/schools",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"schools"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "/schools/:uid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/schools/:uid",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"schools",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "sfu"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "/counselling-services/:id",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://{{local_url}}/counselling-services/:id",
-					"protocol": "http",
-					"host": [
-						"{{local_url}}"
-					],
-					"path": [
-						"counselling-services",
-						":id"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null,
-							"disabled": true
+			"name": "counselling-services",
+			"item": [
+				{
+					"name": "/counselling-services (PUBLIC)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services"
+							],
+							"query": [
+								{
+									"key": "urgency",
+									"value": "Non-urgent",
+									"disabled": true
+								},
+								{
+									"key": "online",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "specialty",
+									"value": "stress",
+									"disabled": true
+								},
+								{
+									"key": "specialty",
+									"value": "anxiety",
+									"disabled": true
+								}
+							]
 						}
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "SERVICE_ID"
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services/:id (PUBLIC)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services/:id",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "my-ssp"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"school\": \"SFU\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"serviceType\": [\n        \"Wellness\"\n    ],\n    \"urgency\": \"Same Month\",\n    \"targetClients\": [\n        \"Indigenous SFU students\"\n    ],\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"keywordSearch\": [],\n    \"specialty\": [\n        \"Mental wellness\",\n        \"Physical wellness\",\n        \"Social wellness\"\n    ],\n    \"delivery\": [\n        \"Online\"\n    ],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services/:id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceName\": \"My SSP Service\",\n    \"organization\": \"Morneau Shepell\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services/:id",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "my-ssp"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services/:id",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services",
+								":id"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62479eab758112176899295e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services (INTERNAL)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [

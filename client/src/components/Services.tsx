@@ -1,41 +1,33 @@
 import { ReactElement, useState, useEffect } from 'react';
-import Service from '../Service';
-import ServiceCard from './ServiceCard';
+import { Link, generatePath } from "react-router-dom";
 
-function GetFirstService(): Service {
+function GetData(): string[] {
     var [data, setData] = useState<any[]>([]);
+    var serviceNames: string[] = [];
   
+    // this returns array of all service objects
     useEffect(() => {
-        const controller = new AbortController();
-        const signal = controller.signal;
-
-        fetch("http://localhost:4000/counselling-services", {signal: signal})
+        fetch("http://localhost:4000/counselling-services")
         .then(res => res.json())
         .then(parsedData => setData(parsedData))
         .catch((e) => console.log(e));
-        
-        // abort fetch request if we're no longer on services page
-        return () => {
-            controller.abort();
-        }
     }, []);
-
-    // we need this conditional render since html render might happen before setData above
-    // more info: https://www.reddit.com/r/learnreactjs/comments/sgim34/fetch_api_works_then_suddenly_stops_working_after/
-    if (data && data.length >= 1) {
-        var stringJson: string = JSON.stringify(data[0]);
-
-        return JSON.parse(stringJson);
+  
+    for (let service of data) {
+      serviceNames.push(service.serviceName);
     }
-
-    return new Service();
-} 
+    
+    return serviceNames;
+  }
+  
 
 const Services = (): ReactElement => {
     return (
         <>
             <h1>Services</h1>
-            <ServiceCard service={GetFirstService()}/>
+            <p>These are the services in database: {GetData().map(
+                x => <p>{x} <Link to={generatePath("services/:id", {id:x})}>Click here</Link> </p>
+                )}</p>
         </>
     );
 }

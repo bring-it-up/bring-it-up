@@ -6,6 +6,25 @@ import SearchBar from "./SearchBar";
 import { parse } from "path";
 import { Input, TextField } from '@mui/material';
 
+var tags: string[] = ["a", "b", "c"];
+var arr: string[] = ["a", "b", "c"];
+
+let serv = new Service(
+    "UBC Student Assistance Program (SAP)",
+    "Vancouver, BC",
+    "UBC",
+    "a",
+    "a",
+    "a",
+    arr,
+    "b",
+    arr,
+    false,
+    arr,
+    "a",
+    "a"
+);
+
 const Home = (): ReactElement => {
     var [services, setServices] = useState<any[]>([]);
     var searchStr: String = '';
@@ -73,6 +92,8 @@ const Home = (): ReactElement => {
             <SearchBar searchStringFn={getSearchString}></SearchBar>
             {/* <ServiceCard service={services[0]}></ServiceCard> */}
             <RenderServiceCards listOfServices={services}></RenderServiceCards>
+            <h1>space</h1>
+            <ServiceCard service={serv}></ServiceCard>
         </>
     );
 }
