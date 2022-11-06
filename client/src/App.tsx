@@ -30,7 +30,6 @@ function App(): ReactElement {
         </Router>
         {/* end navbar */}
       </div>
-      <SearchBar getSearchStringFn={() => { }}></SearchBar>
       <div>space</div>
       <ServiceCard service={serv}></ServiceCard>
     </div>

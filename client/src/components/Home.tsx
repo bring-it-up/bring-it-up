@@ -3,41 +3,76 @@ import FirstDropdown from "./FirstDropdown";
 import ServiceCard from "./ServiceCard";
 import Service from "../Service";
 import SearchBar from "./SearchBar";
+import { parse } from "path";
+import { Input, TextField } from '@mui/material';
 
 const Home = (): ReactElement => {
     var [services, setServices] = useState<any[]>([]);
-    var [searchStr, setSearchStr] = useState<String>('');
+    var searchStr: String = '';
+    // var [searchStr, setSearchStr] = useState<String>('');
 
     function getSearchString(searchString: String): void {
-        // console.log("hello");
-        setSearchStr(searchString);
-        // console.log(searchString);
-    }
 
-    useEffect(() => {
-        fetch(`/counselling-services?searchString=${searchStr}`)
-            .then(res => res.json())
-            .then(parsedData => setServices(parsedData))
+        searchStr = searchString;
+        console.log("search string", searchStr);
+
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        fetch(`/counselling-services?specialty=trauma`, { signal: signal }) // searchString=${searchStr}
+            .then(res => res.json()) // 
+            .then(parsedData => {
+                console.log("parsed data", parsedData)
+                setServices(parsedData)
+            })
             .then(() => console.log(services))
             .catch((e) => console.log(e));
+    }
 
-    }, [searchStr]);
+    // useEffect(() => {
+    //     console.log("fetch");
+    //     fetch(`/counselling-services`) // searchString=${searchStr}
+    //         .then(res => res.json())
+    //         .then(parsedData => {
+    //             console.log("parsed data", parsedData)
+    //             setServices(parsedData)
+    //         })
+    //         .then(() => console.log(services))
+    //         .catch((e) => console.log(e));
 
-    useEffect(() => {
-        renderServiceCards(services);
-    }, [services])
+    // }, [searchStr]);
 
-    const renderServiceCards = (services: Array<Service>) => {
-        services.map((serv) => (
-            <ServiceCard service={serv}></ServiceCard>
-        ),)
+    // function handleTextFieldChange(e: object): void {
+    //     setSearchStr(e.target.value)
+    // }
+
+
+    // useEffect(() => {
+    //     renderServiceCards(services);
+    // }, [services])
+    type Props = {
+        listOfServices: Array<Service>;
+    }
+
+    const RenderServiceCards = ({ listOfServices }: Props): ReactElement => {
+        return (
+            <>
+                {console.log("hello")}
+                {listOfServices.map((serv: Service) => (
+                    <ServiceCard service={serv}></ServiceCard>
+                ))}
+            </>
+        );
     }
 
     return (
         <>
             <h1>Home Page</h1>
             <FirstDropdown str="category 1" options={["1", "2", "3"]}></FirstDropdown>
-            <SearchBar getSearchStringFn={getSearchString}></SearchBar>
+            {console.log(services[0])}
+            <SearchBar searchStringFn={getSearchString}></SearchBar>
+            {/* <ServiceCard service={services[0]}></ServiceCard> */}
+            <RenderServiceCards listOfServices={services}></RenderServiceCards>
         </>
     );
 }
