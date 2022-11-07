@@ -25,16 +25,15 @@ const SearchBar = ({ searchStringFn }: Props): ReactElement => {
     return (
         <div className="background">
             <form>
-                <input id="search" type="text" placeholder="Search"></input>
+                <input id="search" type="text" placeholder="Search" onChange={handleChange}></input>
                 <button onClick={handleClick}>
                     <SearchIcon className="searchIcon"></SearchIcon>
                 </button>
             </form>
-            <div>
+            {/* <div>
                 <TextField value={searchStr} onChange={handleChange} />
-            </div>
+            </div> */}
         </div>
-
     );
 }
 

@@ -11,12 +11,6 @@ import Service from './Service';
 import SearchBar from './components/SearchBar';
 import TestService from "./components/TestService";
 
-// var tags: string[] = ["a", "b", "c"];
-// var arr: string[] = ["a", "b", "c"];
-
-// let serv = new Service("UBC Student Assistance Program (SAP)", "Vancouver, BC", "UBC", "a", "a", "a", arr, true, "a", arr, false, arr, "a", "a");
-
-
 function App(): ReactElement {
   return (
     <div>

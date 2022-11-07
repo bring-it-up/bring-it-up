@@ -38,8 +38,8 @@ const Home = (): ReactElement => {
         const controller = new AbortController();
         const signal = controller.signal;
 
-        fetch(`/counselling-services?specialty=trauma`, { signal: signal }) // searchString=${searchStr}
-            .then(res => res.json()) // 
+        fetch(`http://localhost:4000/counselling-services?searchString=${searchString}`, { signal: signal }) // searchString=${searchStr}
+            .then(res => res.json())
             .then(parsedData => {
                 console.log("parsed data", parsedData)
                 setServices(parsedData)
