@@ -15,8 +15,8 @@ const FirstDropdown = ({ str, options }: Props): ReactElement => {
 				{str}
 			</Dropdown.Toggle>
 			<Dropdown.Menu>
-				{options.map((option) => (
-					<Dropdown.Item href="#/{option}">
+				{options.map((option, index) => (
+					<Dropdown.Item href="#/{option}" key={index}>
 						<Form.Check
 							inline
 							label={option}

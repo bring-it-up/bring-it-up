@@ -19,6 +19,7 @@ code {
   height: 159px;
   width: 570px;
   border-radius: 30px;
+  margin-bottom: 45px;
 }
 
 .cardContent {
@@ -147,6 +148,7 @@ h6.text {
   width: 570px;
   border-radius: 40px;
   background-color: rgba(103, 80, 164, 0.11);
+  margin-bottom: 45px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -174,8 +176,6 @@ form input {
 form input[placeholder="Search"] {
   color: black;
 }
-
-
 
 form button {
   height: 47px;
