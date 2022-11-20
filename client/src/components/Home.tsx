@@ -72,7 +72,6 @@ const Home = (): ReactElement => {
             <h1>Home Page</h1>
             <FirstDropdown str="category 1" options={["1", "2", "3"]}></FirstDropdown>
             <SearchBar searchStringFn={getSearchString}></SearchBar>
-            {/* <ServiceCard service={services[0]}></ServiceCard> */}
             <RenderServiceCards listOfServices={services}></RenderServiceCards>
             <h1>space</h1>
             <ServiceCard service={serv}></ServiceCard>

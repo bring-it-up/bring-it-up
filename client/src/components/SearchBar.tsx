@@ -1,6 +1,5 @@
 import React, { FormEventHandler, MouseEventHandler, ReactElement, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-import { TextField } from '@mui/material';
 
 type Props = {
     searchStringFn: Function;
