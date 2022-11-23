@@ -2,14 +2,140 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.serviceCard {
+  background-color: rgba(103, 80, 164, 0.11);
+  height: 159px;
+  width: 570px;
+  border-radius: 30px;
+}
+
+.cardContent {
+  font-family: "Noto Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 25px 20px 25px;
+}
+
+.tag {
+  background-color: rgba(103, 80, 164, 0.25);
+  border-radius: 10px;
+  font-weight: 400;
+  padding: 4px 15px 4px 15px;
+  font-size: 15px;
+  margin-right: 15px;
+}
+
+div.name {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+
+.reviews a {
+  color: rgba(53, 53, 53, 1);
+}
+
+div.tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+h6.rating {
+  margin-right: 2px;
+  margin-top: -6.5px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+h6.maxRating {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+div.ratingItem {
+  margin-left: 90px;
+  vertical-align: top;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  bottom: 0;
+}
+
+.favourite {
+  margin-top: -4px;
+  margin-right: 8px;
+  font-size: "medium";
+}
+
+.shareIcon {
+  font-size: large;
+  margin-top: -3px;
+  margin-left: 8px;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  width: 450px;
+  justify-content: space-between;
+}
+
+.name {
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+}
+
+.informationList {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: space-between;
+  padding-left: 0%;
+  white-space: nowrap;
+  color: rgba(53, 53, 53, 1);
+}
+
+div.tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  color: rgba(0, 0, 0, 1);
+}
+
+.share {
+  margin-top: 2px;
+  margin-left: 3px;
+}
+
+.information {
+  width: 280px;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+p.info {
+  font-size: 15px;
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+h6.text {
+  font-size: 15px;
 }

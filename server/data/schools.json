@@ -3,7 +3,7 @@
     "uid": "ubcv",
     "name": "University of British Columbia - Vancouver",
     "abbreviation": "UBC Vancouver",
-    "mentalHealthCoverage": "$1500 per policy year"
+    "mentalHealthCoverage": "$1250 per policy year"
   },
   {
     "uid": "sfu",
@@ -16,5 +16,10 @@
     "name": "Capilano University",
     "abbreviation": "CapU",
     "mentalHealthCoverage": "$900 per policy year"
+  },
+  {
+    "uid": "bcit",
+    "name": "British Columbia Institute of Technology",
+    "abbreviation": "BCIT"
   }
 ]

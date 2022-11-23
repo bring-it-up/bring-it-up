@@ -1,6 +1,6 @@
 import {ISchool, School} from "../models/school.model";
 import {BadRequestError} from "../middleware/bad-request-error";
-import {getFilter} from "../utils/filter.util";
+import {getFilter} from "../utils/get.util";
 
 async function getSchools(uidQuery: any,
                           nameQuery: any,
@@ -17,7 +17,7 @@ async function getSchools(uidQuery: any,
 
     const filter = {...uid, ...name, ...abbreviation, ...mentalHealthCoverage, ...search};
 
-    const schools = await School.find({ $and: [filter] })
+    const schools = await School.find({ $and: [filter] }, { _id: 0, __v: 0})
                                 .collation({ locale: 'en', strength: 2 })
                                 .lean();
 
@@ -25,7 +25,7 @@ async function getSchools(uidQuery: any,
 }
 
 async function getSchool(id: string): Promise<ISchool> {
-    const school = await School.findOne({uid: id}).lean();
+    const school = await School.findOne({uid: id}, {_id: 0, __v: 0}).lean();
     if (school == null) {
         throw new BadRequestError();
     }

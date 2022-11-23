@@ -3,7 +3,6 @@ import chaiHttp from 'chai-http';
 import server from '../../index';
 import {
     invalidDeliveryData,
-    invalidIsAllDayData,
     invalidServiceNameData,
     invalidServiceTypeData,
     invalidSpecialtyData,
@@ -61,13 +60,6 @@ describe('Counselling Services Invalid Requests', () => {
             const result = await chai.request(server)
                 .post('/counselling-services')
                 .send(nonArrayTargetClientsData);
-            result.should.have.status(StatusCode.BAD_REQUEST);
-        });
-
-        it('should reject invalid is all day', async () => {
-            const result = await chai.request(server)
-                .post('/counselling-services')
-                .send(invalidIsAllDayData);
             result.should.have.status(StatusCode.BAD_REQUEST);
         });
 

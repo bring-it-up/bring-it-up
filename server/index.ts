@@ -2,10 +2,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import path from 'path';
 
 const envFile = process.env.NODE_ENV === 'test' ? 'test.env' : '.env';
 
-require('dotenv').config({ path: envFile });
+require('dotenv').config({ path: path.resolve(__dirname, envFile) });
 
 // Initialize the express engine
 const app: express.Application = express();

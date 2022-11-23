@@ -10,7 +10,7 @@
 			"name": "schools",
 			"item": [
 				{
-					"name": "/schools",
+					"name": "/schools (PUBLIC)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -28,7 +28,7 @@
 					"response": []
 				},
 				{
-					"name": "/school/:uid",
+					"name": "/school/:uid (PUBLIC)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -110,12 +110,12 @@
 			"name": "counselling-services",
 			"item": [
 				{
-					"name": "/counselling-services",
+					"name": "/counselling-services (PUBLIC)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{local_url}}/counselling-services?specialty=stress&specialty=anxiety",
+							"raw": "http://{{local_url}}/counselling-services",
 							"protocol": "http",
 							"host": [
 								"{{local_url}}"
@@ -136,11 +136,38 @@
 								},
 								{
 									"key": "specialty",
-									"value": "stress"
+									"value": "stress",
+									"disabled": true
 								},
 								{
 									"key": "specialty",
-									"value": "anxiety"
+									"value": "anxiety",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services/:id (PUBLIC)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services/:id",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "my-ssp"
 								}
 							]
 						}
@@ -154,7 +181,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"location\": \"N/A\",\n    \"school\": \"sfu\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"serviceType\": [\"Wellness\"],\n    \"urgency\": \"Same Month\",\n    \"targetClients\": [\"Indigenous students at SFU\"],\n    \"isAllDay\": false,\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"specialty\": [\"Mental\", \"physical\", \"social wellness\"],\n    \"delivery\": [\"Online\"],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
+							"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"school\": \"SFU\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"serviceType\": [\n        \"Wellness\"\n    ],\n    \"urgency\": \"Same Month\",\n    \"targetClients\": [\n        \"Indigenous SFU students\"\n    ],\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"keywordSearch\": [],\n    \"specialty\": [\n        \"Mental wellness\",\n        \"Physical wellness\",\n        \"Social wellness\"\n    ],\n    \"delivery\": [\n        \"Online\"\n    ],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -181,7 +208,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"serviceName\": \"test name\",\n    \"isAllDay\": false\n}",
+							"raw": "{\n    \"serviceName\": \"My SSP Service\",\n    \"organization\": \"Morneau Shepell\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -201,7 +228,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "SERVICE_ID"
+									"value": "my-ssp"
 								}
 							]
 						}
@@ -235,6 +262,24 @@
 									"key": "id",
 									"value": "62479eab758112176899295e"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/counselling-services (INTERNAL)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/counselling-services",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"counselling-services"
 							]
 						}
 					},
