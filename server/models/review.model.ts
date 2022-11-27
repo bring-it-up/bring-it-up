@@ -38,12 +38,10 @@ const ReviewSchema = new mongoose.Schema<ReviewDoc>({
     },
     dateOfUse: {
         type: Date,
-        default: undefined,
         required: true
     },
     dateLastUpdated: {
         type: Date,
-        default: undefined,
         required: true
     },
 });
