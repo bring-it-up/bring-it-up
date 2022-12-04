@@ -1,6 +1,7 @@
 import { ReactElement, useState, useEffect } from 'react';
 import { Link, generatePath } from "react-router-dom";
 
+
 function GetData(): string[] {
     var [data, setData] = useState<any[]>([]);
     var serviceNames: string[] = [];
