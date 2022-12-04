@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { ObjectId } from 'mongoose';
 import { Rating } from './rating.model';
 import { User } from './user.model';
 
@@ -6,7 +6,7 @@ export interface IReview {
     user: User;
     rating: Rating;
     comment?: string;
-    counsellingServiceId: string;
+    counsellingServiceId: ObjectId;
     dateOfUse: Date;
     dateLastUpdated: Date;
 }
@@ -33,7 +33,7 @@ const ReviewSchema = new mongoose.Schema<ReviewDoc>({
         required: false
     },
     counsellingServiceId: {
-        type: String,
+        type: mongoose.Types.ObjectId,
         required: true
     },
     dateOfUse: {
