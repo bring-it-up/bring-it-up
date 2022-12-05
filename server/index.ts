@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
+import specialtiesRouter from './routes/specialties.api';
 
 const envFile = process.env.NODE_ENV === 'test' ? 'test.env' : '.env';
 
@@ -62,5 +63,7 @@ app.use('/counselling-services', counsellingServicesRouter);
 
 const schoolsRouter = require('./routes/school.api.ts');
 app.use('/schools', schoolsRouter);
+
+app.use(specialtiesRouter);
 
 export default app;
