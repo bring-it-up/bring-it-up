@@ -1,5 +1,5 @@
 import { SpecialtyEnum } from "../models/specialty.enum";
-import { SpecialtyMap } from "../models/specialty.model";
+import { Specialty, SpecialtyMap } from "../models/specialty.model";
 
 export const generateSpecialtyMap = (): SpecialtyMap => {
     const result: SpecialtyMap = {};
@@ -12,4 +12,14 @@ export const generateSpecialtyMap = (): SpecialtyMap => {
         };
     });
     return result;
+};
+
+export const SPECIALTY_MAP = generateSpecialtyMap();
+
+export const getSpecialtyFromId = (id: string): Specialty => SPECIALTY_MAP[id];
+
+export const getSpecialtyListFromIds = (ids: string[]): Specialty[] => ids.map(getSpecialtyFromId);
+
+export const getSpecialtyIdsFromSpecialtyList = (specialties: Specialty[]): string[] => {
+    return specialties.map(specialty => specialty.id);
 };

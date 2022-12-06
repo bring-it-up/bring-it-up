@@ -1,5 +1,6 @@
 import { CounsellingService, ICounsellingService } from '../models/counsellingService.model';
 import { getFilter, getAggregation } from "../utils/get.util";
+import { getSpecialtyListFromIds } from '../utils/specialty-list';
 
 async function getCounsellingServices(serviceNameQuery: any,
                                       locationQuery: any,
@@ -35,8 +36,13 @@ async function getCounsellingServices(serviceNameQuery: any,
       },
   };
 
-  const services = await CounsellingService.aggregate(getAggregation(match))
+  let services = await CounsellingService.aggregate(getAggregation(match))
       .collation({ locale: 'en', strength: 2 });
+
+  // Transform specialty IDs for each service into specialty objects
+  services = services.map(service => {
+    return { ...service, specialty: getSpecialtyListFromIds(service.specialty) };
+  });
 
   return services;
 }
@@ -48,9 +54,13 @@ async function getCounsellingService(id: string): Promise<ICounsellingService> {
         },
     };
 
-    const service = await CounsellingService.aggregate(getAggregation(match));
+    const services = await CounsellingService.aggregate(getAggregation(match));
+    const service: ICounsellingService = services[0];
 
-    return service[0];
+    // Transform array of specialty IDs to specialty objects
+    service.specialty = getSpecialtyListFromIds(service.specialty as string[]);
+
+    return service;
 }
 
 async function createCounsellingService(inputService: ICounsellingService): Promise<ICounsellingService> {
