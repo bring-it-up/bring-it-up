@@ -57,8 +57,10 @@ async function getCounsellingService(id: string): Promise<ICounsellingService> {
     const services = await CounsellingService.aggregate(getAggregation(match));
     const service: ICounsellingService = services[0];
 
-    // Transform array of specialty IDs to specialty objects
-    service.specialty = getSpecialtyListFromIds(service.specialty as string[]);
+    if (service) {
+        // Transform array of specialty IDs to specialty objects
+        service.specialty = getSpecialtyListFromIds(service.specialty as string[]);
+    }
 
     return service;
 }

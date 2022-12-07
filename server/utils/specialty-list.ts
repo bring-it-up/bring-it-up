@@ -23,3 +23,5 @@ export const getSpecialtyListFromIds = (ids: string[]): Specialty[] => ids.map(g
 export const getSpecialtyIdsFromSpecialtyList = (specialties: Specialty[]): string[] => {
     return specialties.map(specialty => specialty.id);
 };
+
+export const isValidSpecialtyId = (id: string) => id in SPECIALTY_MAP;
