@@ -30,7 +30,7 @@ Query Params:
 | `serviceType` | `ServiceType array` | The type of service offered, one or more of: "Medical", "Counselling", "Crisis", "Wellness", "Workshop" |
 | `urgency` | `UrgencyLevel array` | The maximum level of urgency the service caters to, one or more of: "Immediate", "Same Day", "Same Week", "Same Month" |
 | `targetClients` | `string array` | The clients the service is targeted towards, e.g. "UBC students" or "Indigenous people, all ages" |
-| `specialty` | `string array` | The areas the service specializes in, e.g. "Trauma" or "Addiction" |
+| `specialty` | `string` | The areas the service specializes in, e.g. "Trauma" or "Addiction". The input must be an ID representing the specialty, as defined in `documentation/specialties-api.md` |
 | `keywordSearch` | `string array` | This is internal keywords that do not get displayed, meant to refine searches |
 | `delivery` | `DeliveryMethod array` | Format(s) in which the service is offered, one or more of: "In person", "Online", "Phone", "App", "Email" |
 | `description` | `string` | A description of the service |
@@ -62,11 +62,18 @@ Example response for GET http://localhost:4000/counselling-services?specialty=tr
             "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
             "keywordSearch": [],
             "specialty": [
-                "Stress",
-                "Anxiety",
-                "Depression",
-                "Grief",
-                "Trauma"
+                {
+                    "id": "STRESS_AXTY",
+                    "label": "Stress/Anxiety"
+                },
+                {
+                    "id": "DEPRESSION",
+                    "label": "Depression"
+                },
+                {
+                    "id": "TRAUMA",
+                    "label": "Trauma"
+                }
             ],
             "delivery": [
                 "In Person"
@@ -106,7 +113,7 @@ Example response for GET http://localhost:4000/counselling-services?specialty=tr
 |:-----------|:-------------|
 |GET http://localhost:4000/counselling-services?delivery=app | All services that offer delivery via app (including those that use additional delivery methods) |
 |GET http://localhost:4000/counselling-services?delivery=online&school=ubc | All services that are offered online AND have UBC as their associated school |
-|GET http://localhost:4000/counselling-services?specialty=anxiety&specialty=stress | All services that specialize in at least one of anxiety or stress |
+|GET http://localhost:4000/counselling-services?specialty=STRESS_AXTY&specialty=ADDICTION | All services that specialize in at least one of stress/anxiety OR addiction |
 
 
 ## Get a Counselling Service
