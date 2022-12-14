@@ -30,7 +30,7 @@ Query Params:
 | `serviceType` | `ServiceType array` | The type of service offered, one or more of: "Medical", "Counselling", "Crisis", "Wellness", "Workshop" |
 | `urgency` | `UrgencyLevel array` | The maximum level of urgency the service caters to, one or more of: "Immediate", "Same Day", "Same Week", "Same Month" |
 | `targetClients` | `string array` | The clients the service is targeted towards, e.g. "UBC students" or "Indigenous people, all ages" |
-| `specialty` | `string` | The areas the service specializes in, e.g. "Trauma" or "Addiction". The input must be an ID representing the specialty, as defined in `documentation/specialties-api.md` |
+| `specialty` | `string` | The areas the service specializes in, e.g. "Trauma" or "Addiction". The input must be an ID representing the specialty, as defined in [documentation/specialties-api.md](https://github.com/bring-it-up/bring-it-up/blob/8fec92c1e5baa0d7e439be4fd09377f1c0716752/documentation/specialties-api.md) |
 | `keywordSearch` | `string array` | This is internal keywords that do not get displayed, meant to refine searches |
 | `delivery` | `DeliveryMethod array` | Format(s) in which the service is offered, one or more of: "In person", "Online", "Phone", "App", "Email" |
 | `description` | `string` | A description of the service |
