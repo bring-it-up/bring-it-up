@@ -4,6 +4,7 @@ import {UrgencyLevel} from "../models/urgency-level.enum";
 import {DeliveryMethod} from "../models/delivery-method.enum";
 import {BadRequestError} from "./bad-request-error";
 import {isValidHour} from "./hours-request-validator";
+import { isValidSpecialtyId } from "../utils/specialty-list";
 
 /*
     This file contains the logic for validating requests to
@@ -32,6 +33,11 @@ const isValidDelivery: CustomValidator = delivery => {
     } else {
         throw new BadRequestError("invalid value");
     }
+};
+
+const isValidSpecialty: CustomValidator = specialty => {
+    if (isValidSpecialtyId(specialty)) return true;
+    else throw new BadRequestError(`'${specialty}' is not a valid specialty`);
 };
 
 export const postRules = [
@@ -75,7 +81,7 @@ export const postRules = [
         .withMessage("specialty is not an array"),
     body('specialty.*')
         .exists({checkNull: true, checkFalsy:true})
-        .isString(),
+        .custom(isValidSpecialty),
     body('delivery')
         .exists({checkNull: true, checkFalsy:true})
         .isArray({min: 1})

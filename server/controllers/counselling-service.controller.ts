@@ -4,6 +4,7 @@ import { generateSecondaryId } from '../utils/id-generator.util';
 import { filterRequest } from "../middleware/utils.middleware";
 import {StatusCode} from "../utils/status-code.enum";
 import DataJson from '../data/counselling-services.json';
+import { SPECIALTY_MAP } from '../utils/specialty-list';
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
@@ -101,7 +102,13 @@ async function addCounsellingServicesJSON(req: Request, res: Response) {
   }
 }
 
-
+function getSpecialties(req: Request, res: Response) {
+  try {
+    res.status(StatusCode.OK).json(SPECIALTY_MAP);
+  } catch (e) {
+    res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: 'There was an error with generating the specialty list' });
+  }
+}
 
 export default {
     getCounsellingServices,
@@ -110,5 +117,6 @@ export default {
     updateCounsellingService,
     deleteCounsellingService,
     deleteAllCounsellingServices,
-    addCounsellingServicesJSON
+    addCounsellingServicesJSON,
+    getSpecialties
 };
