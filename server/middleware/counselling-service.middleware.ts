@@ -107,7 +107,7 @@ export const postRules = [
         .isBoolean(),
 ];
 
-export const postJSONRules = [
+export const putRules = [
     body('*.serviceName')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
