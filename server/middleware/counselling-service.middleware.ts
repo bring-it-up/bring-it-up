@@ -107,6 +107,73 @@ export const postRules = [
         .isBoolean(),
 ];
 
+export const putRules = [
+    body('*.serviceName')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.location')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.school')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.organization')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.serviceType')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1})
+        .withMessage("serviceType is not an array"),
+    body('*.serviceType.*')
+        .exists({checkNull: true, checkFalsy:true})
+        .custom(isValidServiceType),
+    body('*.urgency')
+        .exists({checkNull: true, checkFalsy:true})
+        .custom(isValidUrgency),
+    body('*.targetClients')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
+    body('*.targetClients.*')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString()
+        .withMessage("targetClients is not an array"),
+    body('*.website')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.specialty')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1})
+        .withMessage("specialty is not an array"),
+    body('*.specialty.*')
+        .exists({checkNull: true, checkFalsy:true})
+        .custom(isValidSpecialty),
+    body('*.delivery')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1})
+        .withMessage("delivery is not an array"),
+    body('*.delivery.*')
+        .exists({checkNull: true, checkFalsy:true})
+        .custom(isValidDelivery),
+    body('*.description')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.logo')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.hours')
+        .optional()
+        .exists({checkNull: true, checkFalsy: true})
+        .custom(isValidHour)
+        .withMessage("invalid hour data"),
+    body('*.isFree')
+        .optional()
+        .exists({checkNull: true})
+        .isBoolean(),
+];
+
 export const patchRules = [
     body('serviceName')
         .optional()

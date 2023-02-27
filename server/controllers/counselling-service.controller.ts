@@ -3,7 +3,6 @@ import CSService from '../services/counselling-service.service';
 import { generateSecondaryId } from '../utils/id-generator.util';
 import { filterRequest } from "../middleware/utils.middleware";
 import {StatusCode} from "../utils/status-code.enum";
-import DataJson from '../data/counselling-services.json';
 import { SPECIALTY_MAP } from '../utils/specialty-list';
 
 async function getCounsellingServices(req: Request, res: Response) {  
@@ -86,9 +85,9 @@ async function addCounsellingServicesJSON(req: Request, res: Response) {
     const final_obj:any = {final_push: []};  
     let vis_DataJson:any = {};
 
-    for (let i = 0; i < DataJson.length; ++i) {
-      vis_DataJson = DataJson[i];
-      vis_DataJson.secondaryID = generateSecondaryId(DataJson[i]['serviceName']);
+    for (let i = 0; i < req.body.length; ++i) {
+      vis_DataJson = req.body[i];
+      vis_DataJson.secondaryID = generateSecondaryId(req.body[i]['serviceName']);
       vis_DataJson.__v = 0;
       final_obj.final_push.push(vis_DataJson);
     }

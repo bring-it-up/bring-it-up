@@ -1,6 +1,6 @@
 import express from 'express';
 import CounsellingServiceController from '../controllers/counselling-service.controller';
-import {patchRules, postRules} from "../middleware/counselling-service.middleware";
+import {patchRules, postRules, putRules} from "../middleware/counselling-service.middleware";
 import {validateRequest} from "../middleware/utils.middleware";
 
 const router = express.Router();
@@ -24,7 +24,7 @@ router.delete('/:id', CounsellingServiceController.deleteCounsellingService);
 router.delete('/', CounsellingServiceController.deleteAllCounsellingServices);
 
 // add json to database
-router.put('/', CounsellingServiceController.addCounsellingServicesJSON);
+router.put('/', putRules, validateRequest, CounsellingServiceController.addCounsellingServicesJSON);
 
 
 module.exports = router;
