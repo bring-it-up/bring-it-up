@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
-import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import Service from "../Service";
+import { ReactElement } from 'react';
+import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import Service from '../Service';
 
 type Props = {
 	service: Service;
@@ -18,7 +18,7 @@ const ServiceCard = ({ service }: Props): ReactElement => {
 					<div className="name">{service.serviceName}</div>
 
 					<div className="ratingItem">
-						<StarOutlineRoundedIcon className="favourite" onClick={() => {}} />
+						<StarOutlineRoundedIcon className="favourite" onClick={() => { }} />
 						<h6 className="rating">{"5.0"}</h6>
 						<h6 className="maxRating">/ 5.0</h6>
 						<ShareOutlinedIcon className="shareIcon"></ShareOutlinedIcon>
