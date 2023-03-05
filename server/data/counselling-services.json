@@ -1,7 +1,7 @@
 [
     {
         "serviceName": "Student Assistance Program (SAP)",
-        "school": "ubc",
+        "school": "ubcv",
         "organization": "Aspiria",
         "serviceType": [
             "Counselling"
@@ -13,16 +13,13 @@
         "website": "https://students.ubc.ca/health/ubc-student-assistance-program-sap",
         "keywordSearch":[],
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Depression",
-            "Addiction",
-            "Crisis",
-            "Grief",
-            "Trauma",
-            "Fitness",
-            "Nutrition",
-            "Sleep"
+            "STRESS_AXTY",
+            "DEPRESSION",
+            "ADDICTION",
+            "CRISIS",
+            "TRAUMA",
+            "PHYSICAL",
+            "EATING_DSDR"
         ],
         "delivery": [
             "Online",
@@ -57,7 +54,7 @@
     },
     {
         "serviceName": "Group Counselling Programs",
-        "school": "ubc",
+        "school": "ubcv",
         "organization": "UBC Counselling Services",
         "serviceType": [
             "Counselling"
@@ -69,9 +66,8 @@
         "website": "https://students.ubc.ca/health/counselling-services/group-counselling-programs",
         "keywordSearch":[],
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Academics"
+            "STRESS_AXTY",
+            "ACADEMICS"
         ],
         "delivery": [
             "Online"
@@ -93,11 +89,9 @@
         "website": "https://foundrybc.ca/virtual/",
         "keywordSearch":[],
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Depression",
-            "Grief",
-            "Trauma"
+            "STRESS_AXTY",
+            "DEPRESSION",
+            "TRAUMA"
         ],
         "delivery": [
             "Online",
@@ -150,13 +144,10 @@
             "Multiple language options"
         ],
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Depression",
-            "Crisis",
-            "Grief",
-            "Trauma",
-            "Multiple language options"
+            "STRESS_AXTY",
+            "DEPRESSION",
+            "CRISIS",
+            "TRAUMA"
         ],
         "delivery": [
             "Online",
@@ -209,11 +200,9 @@
             "Adapting to a new campus culture, learning style or city"
         ],
         "specialty": [
-            "Isolation",
-            "Loneliness",
-            "Depression",
-            "Academics",
-            "Multiple language options"
+            "LONELINESS",
+            "DEPRESSION",
+            "ACADEMICS"
         ],
         "delivery": [
             "Online",
@@ -273,10 +262,9 @@
             "Helping a friend in crisis"
         ],
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Homesickness",
-            "Cultural Adjustment"
+            "STRESS_AXTY",
+            "LONELINESS",
+            "CULTURAL_ADJST"
         ],
         "delivery": [
             "Online",
@@ -300,9 +288,7 @@
         "website": "https://www.sfu.ca/students/indigenous/isc-wellness.html",
         "keywordSearch":[],
         "specialty": [
-            "Mental wellness",
-            "Physical wellness",
-            "Social wellness"
+            "PHYSICAL"
         ],
         "delivery": [
             "Online"
@@ -323,11 +309,9 @@
         ],
         "website": "https://www.sfu.ca/students/health/resources/identity/Indigenous-Students.html",
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Depression",
-            "Grief",
-            "Trauma"
+            "STRESS_AXTY",
+            "DEPRESSION",
+            "TRAUMA"
         ],
         "keywordSearch":[],
         "delivery": [
@@ -354,10 +338,8 @@
             "Distress surrounding international conflicts"
         ],
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Depression",
-            "Distress surrounding international conflicts"
+            "STRESS_AXTY",
+            "DEPRESSION"
         ],
         "delivery": [
             "Online",
@@ -389,12 +371,11 @@
             "Academic pressures"
         ],
         "specialty": [
-            "Stress reduction",
-            "Anxiety",
-            "Depression",
-            "Relationships",
-            "Trauma",
-            "Academic success"
+            "STRESS_AXTY",
+            "DEPRESSION",
+            "RELATIONSHIPS",
+            "TRAUMA",
+            "ACADEMICS"
         ],
         "delivery": [
             "Online",
@@ -451,11 +432,9 @@
             "Strengthening relationships"
         ],
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Depression",
-            "Grief",
-            "Trauma"
+            "STRESS_AXTY",
+            "DEPRESSION",
+            "TRAUMA"
         ],
         "delivery": [
             "Phone"
@@ -488,7 +467,7 @@
     },
     {
         "serviceName": "UBC Psychology Clinic",
-        "school": "ubc",
+        "school": "ubcv",
         "organization": "UBC Psychology",
         "serviceType": [
             "Counselling"
@@ -510,9 +489,8 @@
             "Neuropsychological assessment"
         ],
         "specialty": [
-            "Stress",
-            "Anxiety",
-            "Depression"
+            "STRESS_AXTY",
+            "DEPRESSION"
         ],
         "isOfferedOnline": false,
         "delivery": [

@@ -3,6 +3,7 @@ import { ServiceType } from './counselling-type.enum';
 import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
 import { Hours } from './hours.model';
+import { Specialty } from './specialty.model';
 
 // interface to reinforce types
 export interface ICounsellingService {
@@ -15,7 +16,7 @@ export interface ICounsellingService {
     targetClients: string[];
     website: string;
     keywordSearch: string[],
-    specialty: string[];
+    specialty: string[] | Specialty[]; // TODO: We should be using separate types for DB objects and response objects
     delivery: DeliveryMethod[];
     description: string;
     logo?: string;
@@ -64,7 +65,6 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     },
     targetClients: {
         type: [String],
-        default: undefined,
         required: true
     },
     website: {
@@ -73,12 +73,10 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     },
     keywordSearch: {
         type: [String],
-        default: undefined,
         required: false
     },
     specialty: {
         type: [String],
-        default: undefined,
         required: true
     },
     delivery: {

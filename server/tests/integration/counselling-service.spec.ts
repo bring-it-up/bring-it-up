@@ -154,8 +154,13 @@ function assertCounsellingService(service: any, serviceData: any, schoolData: an
     const keys = ['serviceName', 'organization', 'serviceType', 'urgency', 'targetClients',
         'website', 'specialty', 'delivery', 'serviceName', 'secondaryID'];
 
+
     for (const key of keys) {
-        service[key].should.be.eql(serviceData[key]);
+        if (key === 'specialty') {
+            checkSpecialtyField(service[key]);
+        } else {
+            service[key].should.be.eql(serviceData[key]);
+        }
     }
 
     service.should.have.property('school');
@@ -166,3 +171,13 @@ function assertCounsellingService(service: any, serviceData: any, schoolData: an
     service.should.not.have.property('school._id');
     service.should.not.have.property('school.__v');
 }
+
+const checkSpecialtyField = (specialtyField: any) => {
+    specialtyField.should.be.an('array');
+
+    for (const specialty of specialtyField) {
+        specialty.should.be.an('object');
+        specialty.should.have.property('id');
+        specialty.should.have.property('label');
+    }
+};

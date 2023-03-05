@@ -181,7 +181,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"school\": \"SFU\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"serviceType\": [\n        \"Wellness\"\n    ],\n    \"urgency\": \"Same Month\",\n    \"targetClients\": [\n        \"Indigenous SFU students\"\n    ],\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"keywordSearch\": [],\n    \"specialty\": [\n        \"Mental wellness\",\n        \"Physical wellness\",\n        \"Social wellness\"\n    ],\n    \"delivery\": [\n        \"Online\"\n    ],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
+							"raw": "{\n    \"serviceName\": \"ISC Wellness Program\",\n    \"school\": \"SFU\",\n    \"organization\": \"Indigenous Student Centre (ISC)\",\n    \"serviceType\": [\n        \"Wellness\"\n    ],\n    \"urgency\": \"Same Month\",\n    \"targetClients\": [\n        \"Indigenous SFU students\"\n    ],\n    \"isAllDay\": false,\n    \"website\": \"https://www.sfu.ca/students/indigenous/isc-wellness.html\",\n    \"keywordSearch\": [],\n    \"specialty\": [\n        \"STRESS_AXTY\",\n        \"PHYSICAL\",\n        \"IDENTITY\"\n    ],\n    \"delivery\": [\n        \"Online\"\n    ],\n    \"description\": \"The Wellness Program is a virtual community open to currently enrolled Indigenous students. Wherever you are, you can participate in a Run/Walk training program, learn about and share resources, engage with topics of mental, physical, and social wellness, and win prizes!\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -280,6 +280,29 @@
 							],
 							"path": [
 								"counselling-services"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "specialties",
+			"item": [
+				{
+					"name": "/specialties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{local_url}}/specialties",
+							"protocol": "http",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"specialties"
 							]
 						}
 					},

@@ -3,7 +3,7 @@ import CSService from '../services/counselling-service.service';
 import { generateSecondaryId } from '../utils/id-generator.util';
 import { filterRequest } from "../middleware/utils.middleware";
 import {StatusCode} from "../utils/status-code.enum";
-import DataJson from '../data/counselling-services.json';
+import { SPECIALTY_MAP } from '../utils/specialty-list';
 
 async function getCounsellingServices(req: Request, res: Response) {  
     try {
@@ -85,9 +85,9 @@ async function addCounsellingServicesJSON(req: Request, res: Response) {
     const final_obj:any = {final_push: []};  
     let vis_DataJson:any = {};
 
-    for (let i = 0; i < DataJson.length; ++i) {
-      vis_DataJson = DataJson[i];
-      vis_DataJson.secondaryID = generateSecondaryId(DataJson[i]['serviceName']);
+    for (let i = 0; i < req.body.length; ++i) {
+      vis_DataJson = req.body[i];
+      vis_DataJson.secondaryID = generateSecondaryId(req.body[i]['serviceName']);
       vis_DataJson.__v = 0;
       final_obj.final_push.push(vis_DataJson);
     }
@@ -101,7 +101,13 @@ async function addCounsellingServicesJSON(req: Request, res: Response) {
   }
 }
 
-
+function getSpecialties(req: Request, res: Response) {
+  try {
+    res.status(StatusCode.OK).json(SPECIALTY_MAP);
+  } catch (e) {
+    res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: 'There was an error with generating the specialty list' });
+  }
+}
 
 export default {
     getCounsellingServices,
@@ -110,5 +116,6 @@ export default {
     updateCounsellingService,
     deleteCounsellingService,
     deleteAllCounsellingServices,
-    addCounsellingServicesJSON
+    addCounsellingServicesJSON,
+    getSpecialties
 };
