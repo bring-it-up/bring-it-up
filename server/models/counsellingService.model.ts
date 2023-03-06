@@ -2,24 +2,27 @@ import mongoose from 'mongoose';
 import { ServiceType } from './counselling-type.enum';
 import { DeliveryMethod } from './delivery-method.enum';
 import { UrgencyLevel } from './urgency-level.enum';
+import { Hours } from './hours.model';
+import { Specialty } from './specialty.model';
 
 // interface to reinforce types
 export interface ICounsellingService {
     serviceName: string;
     location?: string;
-    school?: string;
+    school?: string | object;
     organization: string;
     serviceType: ServiceType[];
     urgency: UrgencyLevel;
     targetClients: string[];
-    isAllDay: boolean;
     website: string;
-    specialty: string[];
+    keywordSearch: string[],
+    specialty: string[] | Specialty[]; // TODO: We should be using separate types for DB objects and response objects
     delivery: DeliveryMethod[];
     description: string;
     logo?: string;
     secondaryID: string;
-    hours: object;
+    hours?: Hours;
+    isFree: boolean;
 }
 
 // when create new doc in db mongoose returns additional info
@@ -62,20 +65,18 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
     },
     targetClients: {
         type: [String],
-        default: undefined,
-        required: true
-    },
-    isAllDay: {
-        type: Boolean,
         required: true
     },
     website: {
         type: String,
         required: true
     },
+    keywordSearch: {
+        type: [String],
+        required: false
+    },
     specialty: {
         type: [String],
-        default: undefined,
         required: true
     },
     delivery: {
@@ -96,6 +97,12 @@ const CounsellingServiceSchema = new mongoose.Schema<CounsellingServiceDoc>({
 
     hours: {
         type: Object,
+        required: false,
+        unique: false
+    },
+
+    isFree: {
+        type: Boolean,
         required: false,
         unique: false
     },

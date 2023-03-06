@@ -1,5 +1,6 @@
 export const isValidHour = (hours: any) => {
-    const days = new Set(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'])
+    const days = new Set(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']);
+    const re = /([01]?[0-9]|2[0-3]):[0-5][0-9]/;
 
     if (Object.keys(hours).length < 7 || Object.keys(hours).length > 7) {
         return false;
@@ -7,24 +8,18 @@ export const isValidHour = (hours: any) => {
 
     for (const day in hours) {
         if (!(days.has(day))) {
+            console.log('failed day');
             return false;
-        } else if (hours[day].length === 1) {
-            if (hours[day][0] !== 0 && hours[day][0] !== 1) {
-                return false;
-            }
-        } else if (hours[day].length === 2) {
-            if (hours[day][0] >= hours[day][1]) {
-                return false;
-            } else if (hours[day][0] < 0 || hours[day][1] >= 24) {
-                return false;
-            } else if (floatToMinutes(hours[day][0]) > 0.59 || floatToMinutes(hours[day][1]) > 0.59) {
-                return false;
-            }
+        } else if (hours[day].length == 0) {
+            continue;
+        } else if (hours[day].length == 1 || hours[day].length > 2) {
+            return false;
+        } else if (typeof(hours[day][0]) != 'string' || typeof(hours[day][1]) != 'string') {
+            return false;
+        } else if (!re.test(hours[day][0]) || !re.test(hours[day][1])) {
+            return false;
         }
     }
-    return true;
-}
-
-const floatToMinutes = (hour: any) => {
-    return Number((hour % 1).toFixed(2));
-}
+    
+    return true; 
+};

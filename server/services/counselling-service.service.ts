@@ -1,5 +1,6 @@
 import { CounsellingService, ICounsellingService } from '../models/counsellingService.model';
-import { getFilter } from "../utils/filter.util";
+import { getFilter, getAggregation } from "../utils/get.util";
+import { getSpecialtyListFromIds } from '../utils/specialty-list';
 
 async function getCounsellingServices(serviceNameQuery: any,
                                       locationQuery: any,
@@ -8,7 +9,6 @@ async function getCounsellingServices(serviceNameQuery: any,
                                       serviceTypeQuery: any,
                                       urgencyQuery: any, 
                                       targetClientsQuery: any,
-                                      isAllDayQuery: any,
                                       specialtyQuery: any,
                                       deliveryQuery: any,
                                       descriptionQuery: any,
@@ -22,24 +22,47 @@ async function getCounsellingServices(serviceNameQuery: any,
   const specialty = getFilter("specialty", specialtyQuery);
   const urgency = getFilter("urgency", urgencyQuery);
   const targetClients = getFilter("targetClients", targetClientsQuery);
-  const isAllDay = (isAllDayQuery != null) ? { isAllDay: isAllDayQuery } : {};
   const delivery = getFilter("delivery", deliveryQuery);
   const description = getFilter("description", descriptionQuery);
 
   const search = searchString ? { $text: { $search: searchString } } : {};
 
   const filter = {...serviceName, ...location, ...school, ...organization, ...serviceType, ...specialty,
-                  ...urgency, ...targetClients, ...isAllDay, ...delivery, ...description, ...search};
+                  ...urgency, ...targetClients, ...delivery, ...description, ...search};
 
-  const services = await CounsellingService.find({ $and: [filter] })
-                                           .collation({ locale: 'en', strength: 2 })
-                                           .lean();
+  const match = {
+      $match: {
+          $and: [filter],
+      },
+  };
+
+  let services = await CounsellingService.aggregate(getAggregation(match))
+      .collation({ locale: 'en', strength: 2 });
+
+  // Transform specialty IDs for each service into specialty objects
+  services = services.map(service => {
+    return { ...service, specialty: getSpecialtyListFromIds(service.specialty) };
+  });
 
   return services;
 }
 
 async function getCounsellingService(id: string): Promise<ICounsellingService> {
-    return await CounsellingService.findOne({secondaryID: id}).lean();
+    const match = {
+        $match: {
+            secondaryID: id,
+        },
+    };
+
+    const services = await CounsellingService.aggregate(getAggregation(match));
+    const service: ICounsellingService = services[0];
+
+    if (service) {
+        // Transform array of specialty IDs to specialty objects
+        service.specialty = getSpecialtyListFromIds(service.specialty as string[]);
+    }
+
+    return service;
 }
 
 async function createCounsellingService(inputService: ICounsellingService): Promise<ICounsellingService> {

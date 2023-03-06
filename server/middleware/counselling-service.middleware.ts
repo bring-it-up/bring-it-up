@@ -3,7 +3,8 @@ import {ServiceType} from "../models/counselling-type.enum";
 import {UrgencyLevel} from "../models/urgency-level.enum";
 import {DeliveryMethod} from "../models/delivery-method.enum";
 import {BadRequestError} from "./bad-request-error";
-import {isValidHour} from "./hours-request-validator"
+import {isValidHour} from "./hours-request-validator";
+import { isValidSpecialtyId } from "../utils/specialty-list";
 
 /*
     This file contains the logic for validating requests to
@@ -32,6 +33,11 @@ const isValidDelivery: CustomValidator = delivery => {
     } else {
         throw new BadRequestError("invalid value");
     }
+};
+
+const isValidSpecialty: CustomValidator = specialty => {
+    if (isValidSpecialtyId(specialty)) return true;
+    else throw new BadRequestError(`'${specialty}' is not a valid specialty`);
 };
 
 export const postRules = [
@@ -66,9 +72,6 @@ export const postRules = [
         .exists({checkNull: true, checkFalsy:true})
         .isString()
         .withMessage("targetClients is not an array"),
-    body('isAllDay')
-        .exists({checkNull: true})
-        .isBoolean(),
     body('website')
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
@@ -78,7 +81,7 @@ export const postRules = [
         .withMessage("specialty is not an array"),
     body('specialty.*')
         .exists({checkNull: true, checkFalsy:true})
-        .isString(),
+        .custom(isValidSpecialty),
     body('delivery')
         .exists({checkNull: true, checkFalsy:true})
         .isArray({min: 1})
@@ -98,7 +101,78 @@ export const postRules = [
         .exists({checkNull: true, checkFalsy: true})
         .custom(isValidHour)
         .withMessage("invalid hour data"),
-]
+    body('isFree')
+        .optional()
+        .exists({checkNull: true})
+        .isBoolean(),
+];
+
+export const putRules = [
+    body('*.serviceName')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.location')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.school')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.organization')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.serviceType')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1})
+        .withMessage("serviceType is not an array"),
+    body('*.serviceType.*')
+        .exists({checkNull: true, checkFalsy:true})
+        .custom(isValidServiceType),
+    body('*.urgency')
+        .exists({checkNull: true, checkFalsy:true})
+        .custom(isValidUrgency),
+    body('*.targetClients')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1}),
+    body('*.targetClients.*')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString()
+        .withMessage("targetClients is not an array"),
+    body('*.website')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.specialty')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1})
+        .withMessage("specialty is not an array"),
+    body('*.specialty.*')
+        .exists({checkNull: true, checkFalsy:true})
+        .custom(isValidSpecialty),
+    body('*.delivery')
+        .exists({checkNull: true, checkFalsy:true})
+        .isArray({min: 1})
+        .withMessage("delivery is not an array"),
+    body('*.delivery.*')
+        .exists({checkNull: true, checkFalsy:true})
+        .custom(isValidDelivery),
+    body('*.description')
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.logo')
+        .optional()
+        .exists({checkNull: true, checkFalsy:true})
+        .isString(),
+    body('*.hours')
+        .optional()
+        .exists({checkNull: true, checkFalsy: true})
+        .custom(isValidHour)
+        .withMessage("invalid hour data"),
+    body('*.isFree')
+        .optional()
+        .exists({checkNull: true})
+        .isBoolean(),
+];
 
 export const patchRules = [
     body('serviceName')
@@ -139,10 +213,6 @@ export const patchRules = [
         .optional()
         .exists({checkNull: true, checkFalsy:true})
         .isString(),
-    body('isAllDay')
-        .optional()
-        .exists({checkNull: true})
-        .isBoolean(),
     body('website')
         .optional()
         .exists({checkNull: true, checkFalsy:true})
@@ -178,4 +248,8 @@ export const patchRules = [
         .exists({checkNull: true, checkFalsy: true})
         .custom(isValidHour)
         .withMessage("invalid hour data"),
+    body('isFree')
+        .optional()
+        .exists({checkNull: true})
+        .isBoolean(),
 ];
