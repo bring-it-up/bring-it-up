@@ -10,7 +10,22 @@
         "semi": "off",
         "@typescript-eslint/semi": ["error"],
         "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "camelcase": "error",
+        "prefer-const": "error",
+        "keyword-spacing": "error",
+        "indent": "error",
+        "quotes": [
+          "error",
+          "single",
+          {
+            "allowTemplateLiterals": true
+          }
+        ],
+        "object-curly-spacing": [
+          "error",
+          "always"
+        ]
     },
     "extends": [
       "eslint:recommended",
