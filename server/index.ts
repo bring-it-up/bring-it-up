@@ -17,30 +17,30 @@ const port = 4000;
 
 // setup cors to allow client http access
 app.use(cors({
-  origin: '*'
+	origin: '*'
 }));
 
 // Routes
 
 // Handling '/' Request
 app.get('/', (_req, _res) => {
-  // test data to serve
-  const groceries = [
-    {
-      "id": "1",
-      "item": "Cauliflower"
-    },
-    {
-      "id": "2",
-      "item": "Eggs"
-    }
-  ];
-  _res.send(groceries);
+	// test data to serve
+	const groceries = [
+		{
+			'id': '1',
+			'item': 'Cauliflower'
+		},
+		{
+			'id': '2',
+			'item': 'Eggs'
+		}
+	];
+	_res.send(groceries);
 });
 
 // Server setup
 app.listen(port, () => {
-  console.log(`TypeScript with Express http://localhost:${port}/`);
+	console.log(`TypeScript with Express http://localhost:${port}/`);
 });
 
 // connect to mdb
