@@ -17,7 +17,7 @@
         "camelcase": "error",
         "prefer-const": "error",
         "keyword-spacing": "error",
-        "indent": ["error", "tab"],
+        "indent": "off",
         "quotes": [
           "error",
           "single",
@@ -30,10 +30,13 @@
           "always"
         ],
         "no-unused-vars": "off",
+        "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-unused-vars": "warn",
         "unused-imports/no-unused-imports": "warn",
         "react/jsx-uses-react": "error",
-        "react/jsx-uses-vars": "error"
+        "react/jsx-uses-vars": "error",
+        "react/jsx-indent": ["warn", "tab"],
+        "no-console": "warn"
     },
     "extends": [
       "eslint:recommended",

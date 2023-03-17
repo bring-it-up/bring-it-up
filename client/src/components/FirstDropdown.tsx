@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Form from "react-bootstrap/Form";
+import { ReactElement } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
 
 type Props = {
 	str: string;

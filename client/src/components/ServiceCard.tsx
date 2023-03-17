@@ -8,7 +8,7 @@ type Props = {
 };
 
 // logic for defining tags is not determined yet
-var tags: string[] = ["Peer", "24/7", "Professional", "Phone", "Online"];
+const tags: string[] = ['Peer', '24/7', 'Professional', 'Phone', 'Online'];
 
 const ServiceCard = ({ service }: Props): ReactElement => {
 	return (
@@ -19,7 +19,7 @@ const ServiceCard = ({ service }: Props): ReactElement => {
 
 					<div className="ratingItem">
 						<StarOutlineRoundedIcon className="favourite" onClick={() => { }} />
-						<h6 className="rating">{"5.0"}</h6>
+						<h6 className="rating">{'5.0'}</h6>
 						<h6 className="maxRating">/ 5.0</h6>
 						<ShareOutlinedIcon className="shareIcon"></ShareOutlinedIcon>
 					</div>
@@ -29,10 +29,10 @@ const ServiceCard = ({ service }: Props): ReactElement => {
 						<li>{service.location}</li>
 						<li>|</li>
 						<li className="reviews">
-							<a href="https://www.w3schools.com/">{"5"} reviews</a>
+							<a href="https://www.w3schools.com/">{'5'} reviews</a>
 						</li>
 						<li>|</li>
-						<li>{"245"} likes</li>
+						<li>{'245'} likes</li>
 					</ul>
 				</div>
 
