@@ -1,8 +1,8 @@
 export default class Service {
 	public readonly serviceName: string = '';
-  public readonly location: string = '';
-  public readonly school: string = '';
-  public readonly organization: string = '';
+	public readonly location: string = '';
+	public readonly school: string = '';
+	public readonly organization: string = '';
 	public readonly type: string = '';
 	public readonly urgency: string = '';
 	public readonly targetClients: string[] = [];
@@ -14,19 +14,19 @@ export default class Service {
 	public readonly secondaryID: string = '';
 
 	constructor(
-	serviceName?: string,
-    location?: string,
-    school?: string,
-    organization?: string,
-    type?: string,
-    urgency?: string,
-    targetClients?: string[],
-    website?: string,
-    specialty?: string[],
-    isOfferedOnline?: boolean,
-    delivery?: string[],
-    description?: string,
-    secondaryID?: string,
+		serviceName?: string,
+		location?: string,
+		school?: string,
+		organization?: string,
+		type?: string,
+		urgency?: string,
+		targetClients?: string[],
+		website?: string,
+		specialty?: string[],
+		isOfferedOnline?: boolean,
+		delivery?: string[],
+		description?: string,
+		secondaryID?: string,
 	) {
 		this.serviceName = serviceName ?? '';
 		this.location = location ?? '';

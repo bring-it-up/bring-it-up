@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 export interface ISchool {
     uid: string;
@@ -15,33 +15,33 @@ interface ISchoolModel extends mongoose.Model<SchoolDoc> {
 }
 
 const SchoolSchema = new mongoose.Schema<SchoolDoc>({
-    uid: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    abbreviation: {
-        type: String,
-        required: true
-    },
-    mentalHealthCoverage: {
-        type: String,
-        required: true
-    }
+	uid: {
+		type: String,
+		required: true,
+		unique: true
+	},
+	name: {
+		type: String,
+		required: true
+	},
+	abbreviation: {
+		type: String,
+		required: true
+	},
+	mentalHealthCoverage: {
+		type: String,
+		required: true
+	}
 });
 
-SchoolSchema.index({ '$**': 'text' }, {name: 'search_index'});
+SchoolSchema.index({ '$**': 'text' }, { name: 'search_index' });
 
 SchoolSchema.statics.build = (attr: ISchool) => {
-    return new School(attr);
+	return new School(attr);
 };
 
 export const School: ISchoolModel = mongoose.model<SchoolDoc,ISchoolModel>('School', SchoolSchema);
 
 School.on('index', error => {
-    if (error) console.log(error);
+	if (error) console.log(error);
 });

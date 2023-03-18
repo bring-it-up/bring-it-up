@@ -1,7 +1,7 @@
 import express from 'express';
 import CounsellingServiceController from '../controllers/counselling-service.controller';
-import {patchRules, postRules, putRules} from "../middleware/counselling-service.middleware";
-import {validateRequest} from "../middleware/utils.middleware";
+import { patchRules, postRules, putRules } from '../middleware/counselling-service.middleware';
+import { validateRequest } from '../middleware/utils.middleware';
 
 const router = express.Router();
 

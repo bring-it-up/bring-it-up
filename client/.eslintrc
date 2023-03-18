@@ -3,7 +3,8 @@
     "parser": "@typescript-eslint/parser",
     "plugins": [
       "@typescript-eslint",
-      "unused-imports"
+      "unused-imports",
+      "react"
     ],
     "rules": {
         "space-before-blocks": "off",
@@ -16,7 +17,7 @@
         "camelcase": "error",
         "prefer-const": "error",
         "keyword-spacing": "error",
-        "indent": ["warn", "tab"],
+        "indent": "off",
         "quotes": [
           "error",
           "single",
@@ -31,7 +32,11 @@
         "no-unused-vars": "off",
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-unused-vars": "warn",
-        "unused-imports/no-unused-imports": "warn"
+        "unused-imports/no-unused-imports": "warn",
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "react/jsx-indent": ["warn", "tab"],
+        "no-console": "warn"
     },
     "extends": [
       "eslint:recommended",

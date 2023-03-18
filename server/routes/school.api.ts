@@ -1,7 +1,7 @@
 import express from 'express';
 import SchoolController from '../controllers/school.controller';
-import {postRules} from "../middleware/schools.middleware";
-import {validateRequest} from "../middleware/utils.middleware";
+import { postRules } from '../middleware/schools.middleware';
+import { validateRequest } from '../middleware/utils.middleware';
 
 const router = express.Router();
 
