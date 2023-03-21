@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/system';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Specialties from './Specialties';
 
 const CustomizedTab = styled(Tab)({
 	padding: '0 100px',
@@ -34,43 +35,45 @@ interface TabPanelProps {
 }
 
 function TabPanel(props: TabPanelProps) {
-	const { children, value, index, ...other } = props;
+    const { children, value, index, ...other } = props;
   
-	return (
-		<div>
-			{value === index && (
-				<Box sx={{ p: 3 }}>
-					<Typography>{children}</Typography>
-				</Box>
-			)}
-		</div>
-	);
-}
+    return (
+      <div>
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography component={'span'} >{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
 
 function TestService(): ReactElement {
-	const params = useParams<SERVICE>();
-	const [value, setValue] = React.useState(0);
+    const params = useParams<SERVICE>();
+    const [value, setValue] = React.useState(0);
+    const serviceId = params.ServiceID;
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
 	};
 
-	return (
-		<div>
-			<Box>
-				<Tabs TabIndicatorProps={{ style: { width: '0px' } }} value={value} onChange={handleChange}>
-					<CustomizedTab sx={{ left: '5%', width: 'max-content' }} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px' }}/>} iconPosition = "start" label={params.ServiceID} />
-					<CustomizedTab sx={{ left: '80%', position: 'absolute' }} icon={<ArrowForwardIcon sx={{ position: 'relative', right:'50px' }}/>} iconPosition = "start" label="Reviews"/>
-				</Tabs>
-			</Box>
-			<TabPanel value={value} index={0}>
-				<div>
-					<ServiceHoursCard parentToChild={params.ServiceID}></ServiceHoursCard>
-				</div>
-			</TabPanel>
-			<TabPanel value={value} index={1}>Reviews</TabPanel>
-		</div>
-	);
+    return (
+        <div>
+        <Box>
+            <Tabs TabIndicatorProps={{style: {width: "0px"}}} value={value} onChange={handleChange}>
+                <CustomizedTab sx={{left: '5%', width: "max-content"}} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px'}}/>} iconPosition = "start" label={params.ServiceID} />
+                <CustomizedTab sx={{left: '80%', position: 'absolute'}} icon={<ArrowForwardIcon sx={{position: 'relative', right:'50px'}}/>} iconPosition = "start" label="Reviews"/>
+            </Tabs>
+        </Box>
+        <TabPanel value={value} index={0}>
+          <div>
+            <ServiceHoursCard parentToChild={serviceId}></ServiceHoursCard>
+            <Specialties serviceId={serviceId}></Specialties>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={1}>Reviews</TabPanel>
+        </div>
+    );
 }
 
 export default TestService;
