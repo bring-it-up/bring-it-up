@@ -3,6 +3,7 @@ import FirstDropdown from './FirstDropdown';
 import ServiceCard from './ServiceCard';
 import Service from '../Service';
 import SearchBar from './SearchBar';
+import { BASE_URL } from '../constants';
 
 const tags: string[] = ['a', 'b', 'c'];
 const arr: string[] = ['a', 'b', 'c'];
@@ -28,7 +29,7 @@ const Home = (): ReactElement => {
 	let searchStr = '';
 
 	useEffect(() => {
-		fetch('http://localhost:4000/counselling-services')
+		fetch(`${BASE_URL}/counselling-services`)
 			.then(res => res.json())
 			.then(parsedData => {
 				setServices(parsedData);
@@ -44,7 +45,7 @@ const Home = (): ReactElement => {
 		const controller = new AbortController();
 		const signal = controller.signal;
 
-		fetch(`http://localhost:4000/counselling-services?searchString=${searchString}`, { signal: signal }) // searchString=${searchStr}
+		fetch(`${BASE_URL}/counselling-services?searchString=${searchString}`, { signal: signal }) // searchString=${searchStr}
 			.then(res => res.json())
 			.then(parsedData => {
 				setServices(parsedData);
