@@ -1,5 +1,6 @@
 import { ReactElement, useState, useEffect } from 'react';
 import { Link, generatePath } from 'react-router-dom';
+import { BASE_URL } from '../constants';
 
 
 function GetData(): string[] {
@@ -8,7 +9,7 @@ function GetData(): string[] {
   
 	// this returns array of all service objects
 	useEffect(() => {
-		fetch('http://localhost:4000/counselling-services')
+		fetch(`${BASE_URL}/counselling-services`)
 			.then(res => res.json())
 			.then(parsedData => setData(parsedData))
 			.catch((e) => console.log(e));
