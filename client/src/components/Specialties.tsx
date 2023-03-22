@@ -17,7 +17,7 @@ const CustomizedChip = styled(Chip) ({
  
 function Specialties({ serviceId }: {serviceId: string}): ReactElement {
         const [specialities, setSpecialities] = useState<any[]>([]);
-        const id = serviceId.replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase();
+        const id = serviceId.replace(/\W+/g, '-').replace(/-$/, '').toLowerCase();
 
         useEffect(() => {
             fetch(`http://localhost:4000/counselling-services/${id}`)
