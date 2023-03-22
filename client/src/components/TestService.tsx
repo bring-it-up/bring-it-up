@@ -35,16 +35,16 @@ interface TabPanelProps {
 }
 
 function TabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
+    const { children, value, index } = props;
   
     return (
-      <div>
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography component={'span'} >{children}</Typography>
-          </Box>
+	<div>
+		{value === index && (
+		<Box sx={{ p: 3 }}>
+			<Typography component={'span'} >{children}</Typography>
+		</Box>
         )}
-      </div>
+	</div>
     );
   }
 
@@ -58,21 +58,21 @@ function TestService(): ReactElement {
 	};
 
     return (
-        <div>
-        <Box>
-            <Tabs TabIndicatorProps={{style: {width: "0px"}}} value={value} onChange={handleChange}>
-                <CustomizedTab sx={{left: '5%', width: "max-content"}} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px'}}/>} iconPosition = "start" label={params.ServiceID} />
-                <CustomizedTab sx={{left: '80%', position: 'absolute'}} icon={<ArrowForwardIcon sx={{position: 'relative', right:'50px'}}/>} iconPosition = "start" label="Reviews"/>
-            </Tabs>
-        </Box>
-        <TabPanel value={value} index={0}>
-          <div>
-            <ServiceHoursCard parentToChild={serviceId}></ServiceHoursCard>
-            <Specialties serviceId={serviceId}></Specialties>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={1}>Reviews</TabPanel>
-        </div>
+	<div>
+		<Box>
+			<Tabs TabIndicatorProps={{ style: { width: '0px' } }} value={value} onChange={handleChange}>
+				<CustomizedTab sx={{ left: '5%', width:'max-content' }} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px' }}/>} iconPosition = "start" label={params.ServiceID} />
+				<CustomizedTab sx={{ left: '80%', position: 'absolute' }} icon={<ArrowForwardIcon sx={{ position: 'relative', right:'50px' }}/>} iconPosition = "start" label="Reviews"/>
+			</Tabs>
+		</Box>
+		<TabPanel value={value} index={0}>
+			<div>
+				<ServiceHoursCard parentToChild={serviceId}></ServiceHoursCard>
+				<Specialties serviceId={serviceId}></Specialties>
+			</div>
+		</TabPanel>
+		<TabPanel value={value} index={1}>Reviews</TabPanel>
+	</div>
     );
 }
 
