@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { ReactElement, useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import vector from '../images/vector.png';
+import { BASE_URL } from '../constants';
 
 export default function ServiceHoursCard({ parentToChild }: {parentToChild: string}): ReactElement {
 	const id = parentToChild.replace(/\W+/g, '-').replace(/-$/, '').toLowerCase();
@@ -12,7 +13,7 @@ export default function ServiceHoursCard({ parentToChild }: {parentToChild: stri
 	const [hours, setHours] = useState<any[]>([]);
 
 	useEffect(() => {
-		fetch(`http://localhost:4000/counselling-services/${id}`)
+		fetch(`${BASE_URL}/counselling-services/${id}`)
 			.then(res => res.json())
 			.then(function(myJson) {
 				setHours(myJson.hours);
