@@ -1,9 +1,11 @@
 import { ReactElement, useEffect, useState } from 'react';
-import FirstDropdown from './FirstDropdown';
 import ServiceCard from './ServiceCard';
 import Service from '../Service';
 import SearchBar from './SearchBar';
 import { BASE_URL } from '../constants';
+import { Grid } from '@mui/material';
+import FilterBar from './FilterBar';
+import { Filters } from '../types/filters.types';
 
 const tags: string[] = ['a', 'b', 'c'];
 const arr: string[] = ['a', 'b', 'c'];
@@ -24,8 +26,18 @@ const serv = new Service(
 	'a'
 );
 
+const defaultFilters: Filters = {
+    'Support Type': [
+        { label: '1 on 1 Counselling', value: '1on1', selected: false },
+        { label: 'Medical', value: 'medical', selected: false },
+        { label: 'Crisis Line', value: 'crisis', selected: false },
+    ],
+};
+
 const Home = (): ReactElement => {
 	const [services, setServices] = useState<any[]>([]);
+	const [filters, setFilters] = useState<Filters>(defaultFilters);
+
 	let searchStr = '';
 
 	useEffect(() => {
@@ -71,11 +83,20 @@ const Home = (): ReactElement => {
 	return (
 		<>
 			<h1>Home Page</h1>
-			<FirstDropdown str="category 1" options={['1', '2', '3']}></FirstDropdown>
-			<SearchBar searchStringFn={getSearchString}></SearchBar>
-			<RenderServiceCards listOfServices={services}></RenderServiceCards>
-			<h1>space</h1>
-			<ServiceCard service={serv}></ServiceCard>
+			<Grid container sx={{ px: 10, py: 5 }} spacing={5}>
+				<Grid item xs={3}>
+					<FilterBar
+						filters={filters}
+						setFilters={setFilters}
+					/>
+				</Grid>
+				<Grid item xs={9}>
+					<SearchBar searchStringFn={getSearchString}></SearchBar>
+					<RenderServiceCards listOfServices={services}></RenderServiceCards>
+					<br />
+					<ServiceCard service={serv}></ServiceCard>
+				</Grid>
+			</Grid>
 		</>
 	);
 };
