@@ -9,20 +9,20 @@ type FilterBarProps = {
 };
 
 const FilterBar = ({ filters, setFilters }: FilterBarProps): ReactElement => {
-    const dropdowns = Object.entries(filters).map(([categoryName, options]) => {
+    const dropdowns = Object.entries(filters).map(([category, options]) => {
         return (
             <FilterDropdown
-                key={categoryName}
-                categoryName={categoryName}
+                key={category}
+                category={category}
                 options={options}
                 onOptionChange={(option, newVal) => {
                     const optionIndex = options.findIndex(o => o.value === option.value);
                     setFilters({
                         ...filters,
-                        [categoryName]: [
-                            ...filters[categoryName].slice(0, optionIndex),
+                        [category]: [
+                            ...filters[category].slice(0, optionIndex),
                             { ...option, selected: newVal },
-                            ...filters[categoryName].slice(optionIndex + 1),
+                            ...filters[category].slice(optionIndex + 1),
                         ]
                     });
                 }}

@@ -5,50 +5,44 @@ import SearchBar from './SearchBar';
 import { BASE_URL } from '../constants';
 import { Grid } from '@mui/material';
 import FilterBar from './FilterBar';
-import { Filters } from '../types/filters.types';
-
-const tags: string[] = ['a', 'b', 'c'];
-const arr: string[] = ['a', 'b', 'c'];
-
-const serv = new Service(
-	'UBC Student Assistance Program (SAP)',
-	'Vancouver, BC',
-	'UBC',
-	'a',
-	'a',
-	'a',
-	arr,
-	'b',
-	arr,
-	false,
-	arr,
-	'a',
-	'a'
-);
+import { FILTER_CATEGORIES, FilterCategory, Filters } from '../types/filters.types';
+import { convertEnumToFilterOptions, convertSpecialtiesToFilterOptions } from '../utils/filters.utils';
+import { ServiceType } from '../types/service-type.enum';
+import { DeliveryMethod } from '../types/delivery-method.enum';
+import { Specialties } from '../types/specialty.type';
 
 const defaultFilters: Filters = {
-    'Support Type': [
-        { label: '1 on 1 Counselling', value: '1on1', selected: false },
-        { label: 'Medical', value: 'medical', selected: false },
-        { label: 'Crisis Line', value: 'crisis', selected: false },
-    ],
+    ServiceType: convertEnumToFilterOptions(ServiceType),
+	DeliveryMethod: convertEnumToFilterOptions(DeliveryMethod),
 };
 
 const Home = (): ReactElement => {
 	const [services, setServices] = useState<any[]>([]);
 	const [filters, setFilters] = useState<Filters>(defaultFilters);
+	const [specialties, setSpecialties] = useState<Specialties | undefined>(undefined);
 
 	let searchStr = '';
 
 	useEffect(() => {
-		fetch(`${BASE_URL}/counselling-services`)
+		const queryStr = convertFiltersToQueryStr(filters);
+		fetch(`${BASE_URL}/counselling-services?${queryStr}`)
 			.then(res => res.json())
 			.then(parsedData => {
 				setServices(parsedData);
 			})
-			.then()
 			.catch((e) => console.log(e));
-	}, []);
+	}, [JSON.stringify(filters)]);
+
+	useEffect(() => {
+		if (!filters.Specialty) {
+			fetch(`${BASE_URL}/specialties?`)
+				.then(res => res.json())
+				.then(res => {
+					setSpecialties(res);
+					setFilters({ ...filters, Specialty: convertSpecialtiesToFilterOptions(res) });
+				});
+		}
+	}, [specialties]);
 
 	function getSearchString(searchString: string): void {
 
@@ -65,6 +59,19 @@ const Home = (): ReactElement => {
 			.then(() => console.log(services))
 			.catch((e) => console.log(e));
 	}
+
+	const convertFiltersToQueryStr = (filters: Filters): string => {
+		const queryStr: string[] = [];
+
+		Object.entries(filters).forEach(([category, options]) => {
+			const categoryParam = FILTER_CATEGORIES[category as FilterCategory].queryParam;
+			options.forEach(option => {
+				if (option.selected) queryStr.push(`${categoryParam}=${option.value}`);
+			});
+		});
+
+		return queryStr.join('&');
+	};
 
     type Props = {
         listOfServices: Array<Service>;
@@ -93,8 +100,6 @@ const Home = (): ReactElement => {
 				<Grid item xs={9}>
 					<SearchBar searchStringFn={getSearchString}></SearchBar>
 					<RenderServiceCards listOfServices={services}></RenderServiceCards>
-					<br />
-					<ServiceCard service={serv}></ServiceCard>
 				</Grid>
 			</Grid>
 		</>

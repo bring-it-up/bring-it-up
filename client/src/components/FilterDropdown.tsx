@@ -2,15 +2,16 @@ import { ReactElement } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { FilterOption } from '../types/filters.types';
+import { FILTER_CATEGORIES, FilterCategory, FilterOption } from '../types/filters.types';
 
 type Props = {
-	categoryName: string;
+	category: string;
 	options: FilterOption[];
 	onOptionChange: (filterOption: FilterOption, value: boolean) => void;
 };
 
-const FilterDropdown = ({ categoryName, options, onOptionChange }: Props): ReactElement => {
+const FilterDropdown = ({ category, options, onOptionChange }: Props): ReactElement => {
+	const categoryName = FILTER_CATEGORIES[category as FilterCategory].label;
 	const formControls = options.map((option: FilterOption) => {
 		return (
 			<FormControlLabel
