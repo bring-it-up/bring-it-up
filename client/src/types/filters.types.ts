@@ -20,6 +20,7 @@ export enum FilterCategory {
     DeliveryMethod = 'DeliveryMethod',
     Specialty = 'Specialty',
     Urgency = 'Urgency',
+    School = 'School',
 }
 
 export const FILTER_CATEGORIES = {
@@ -38,5 +39,9 @@ export const FILTER_CATEGORIES = {
     [FilterCategory.Specialty]: {
         queryParam: 'specialty',
         label: 'Specialty',
+    },
+    [FilterCategory.School]: {
+        queryParam: 'school',
+        label: 'School',
     }
 };
