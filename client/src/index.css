@@ -4,6 +4,7 @@
 :root {
   --searchBarBackgroundHeight: 77px;
   --searchBarBackgroundWidth: 570px;
+  --theme-purple: rgba(103, 80, 164, 1);
   --backgroundPurple: rgba(103, 80, 164, 0.11);
 }
 
@@ -168,13 +169,13 @@ h6.text {
   border-radius: 40px;
   border-style: none;
   outline-style: solid;
-  outline-color: rgba(103, 80, 164, 1);
+  outline-color: var(--theme-purple);
   background-color: white;
 }
 
 .searchInput input {
   padding: 0px 20px;
-  height: 47px;
+  height: 40px;
   width: 100%;
   background: inherit;
   border: none;
@@ -183,5 +184,40 @@ h6.text {
 }
 
 .searchIcon {
-  color: rgba(103, 80, 164, 1);
+  color: var(--theme-purple);
+}
+
+/* FilterBar Styling */
+
+.filterBarContainer {
+  padding: 0;
+}
+
+.filterBarStack {
+  border-radius: 30px;
+  outline-style: solid;
+  outline-color: var(--theme-purple);
+  padding: 20px;
+}
+
+.clearFiltersButton {
+  padding: 15px 20px;
+  height: 70px;
+  border-radius: 30px;
+  background-color: var(--backgroundPurple);
+  margin-bottom: 45px;
+  font-weight: 700;
+  border: none;
+}
+
+.filterAccordion {
+  border-radius: 30px !important;
+  background-color: var(--backgroundPurple) !important;
+  box-shadow: none !important;
+}
+
+.filterLabel {
+  margin-left: 0 !important;
+  justify-content: space-between !important;
+  font-family: "Noto Sans", sans-serif !important;
 }

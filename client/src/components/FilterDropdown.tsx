@@ -15,6 +15,8 @@ const FilterDropdown = ({ filter, onOptionChange, onRadioSelect }: Props): React
 	const formControls = filter.options.map((option: FilterOption) => {
 		return (
 			<FormControlLabel
+				labelPlacement="start"
+				classes={{ root: 'filterLabel' }}
 				control={filter.multiSelect ?
 					<Checkbox
 						disabled={option.disabled}
@@ -33,28 +35,33 @@ const FilterDropdown = ({ filter, onOptionChange, onRadioSelect }: Props): React
 	});
 
 	return (
-		<Accordion defaultExpanded>
-			<AccordionSummary
-				expandIcon={<ExpandMoreIcon />}
+		<div>
+			<Accordion
+				defaultExpanded
+				classes={{ root: 'filterAccordion' }}
 			>
-				<Typography>{ categoryName }</Typography>
-			</AccordionSummary>
-			<AccordionDetails>
-				{ filter.multiSelect && (
-					<FormGroup>
-						{ formControls }
-					</FormGroup>
-				) }
-				{ !filter.multiSelect && (
-					<RadioGroup
-						value={filter.options[filter.options.findIndex(o => o.selected)]?.value}
-						onChange={(e) => onRadioSelect((e.target as HTMLInputElement).value)}
-					>
-						{ formControls }
-					</RadioGroup>
-				) }
-			</AccordionDetails>
-		</Accordion>
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon />}
+				>
+					<Typography fontWeight={700}>{ categoryName }</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					{ filter.multiSelect && (
+						<FormGroup>
+							{ formControls }
+						</FormGroup>
+					) }
+					{ !filter.multiSelect && (
+						<RadioGroup
+							value={filter.options[filter.options.findIndex(o => o.selected)]?.value}
+							onChange={(e) => onRadioSelect((e.target as HTMLInputElement).value)}
+						>
+							{ formControls }
+						</RadioGroup>
+					) }
+				</AccordionDetails>
+			</Accordion>
+		</div>
 	);
 };
 

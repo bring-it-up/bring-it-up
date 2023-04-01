@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-indent */ // TODO: Remove after fixing lint issue
 import { Stack } from '@mui/system';
 import FilterDropdown from './FilterDropdown';
 import { ReactElement } from 'react';
 import { FilterOption, Filters } from '../types/filters.types';
-import { Button } from '@mui/material';
 import { ANY_FILTER_OPTION } from '../utils/filters.utils';
+import ButtonUnstyled from '@mui/base/ButtonUnstyled';
 
 type FilterBarProps = {
     filters: Filters;
@@ -72,15 +73,21 @@ const FilterBar = ({ filters, setFilters }: FilterBarProps): ReactElement => {
     };
 
     return (
-        <Stack>
-            <Button
-                sx={{ mb: 3 }}
-                variant="contained"
+        <Stack
+            className="filterBarContainer"
+        >
+            <ButtonUnstyled
+                className="clearFiltersButton"
                 onClick={clearFilters}
             >
                 Clear All Filters
-            </Button>
-            { dropdowns }
+            </ButtonUnstyled>
+            <Stack
+                className="filterBarStack"
+                spacing={3}
+            >
+                { dropdowns }
+            </Stack>
         </Stack>
     );
 };
