@@ -2,6 +2,8 @@ import { Stack } from '@mui/system';
 import FilterDropdown from './FilterDropdown';
 import { ReactElement } from 'react';
 import { FilterOption, Filters } from '../types/filters.types';
+import { Button } from '@mui/material';
+import { ANY_FILTER_OPTION } from '../utils/filters.utils';
 
 type FilterBarProps = {
     filters: Filters;
@@ -52,8 +54,32 @@ const FilterBar = ({ filters, setFilters }: FilterBarProps): ReactElement => {
         );
     });
 
+    const clearFilters = () => {
+        const newFilterObj: Filters = {};
+        Object.values(filters).forEach(filter => {
+            const resetOptions: FilterOption[] = filter.options.map(option => {
+                return {
+                    ...option,
+                    selected: !filter.multiSelect && option.value === ANY_FILTER_OPTION.value
+                };
+            });
+            newFilterObj[filter.category] = {
+                ...filter,
+                options: resetOptions,
+            };
+        });
+        setFilters(newFilterObj);
+    };
+
     return (
         <Stack>
+            <Button
+                sx={{ mb: 3 }}
+                variant="contained"
+                onClick={clearFilters}
+            >
+                Clear All Filters
+            </Button>
             { dropdowns }
         </Stack>
     );

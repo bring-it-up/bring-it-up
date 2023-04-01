@@ -7,15 +7,15 @@ import { UrgencyLevel } from '../types/urgency-level.enum';
 
 export type FilterEnum = typeof ServiceType | typeof DeliveryMethod | typeof UrgencyLevel;
 
-export const ALL_FILTER_OPTION: FilterOption = { // Coresponds to 'All' in single-select filters
-	label: 'All',
+export const ANY_FILTER_OPTION: FilterOption = { // Coresponds to 'Any' in single-select filters
+	label: 'Any',
 	value: '*',
 	selected: true,
 };
 
 export const convertEnumToFilterOptions = (filterEnum: FilterEnum, singleSelect?: boolean): FilterOption[] => {
     const options: FilterOption[] = [];
-    if (singleSelect) options.push(ALL_FILTER_OPTION);
+    if (singleSelect) options.push(ANY_FILTER_OPTION);
 
     return options.concat(Object.values(filterEnum).map(value => {
         return {
@@ -38,7 +38,7 @@ export const convertSpecialtiesToFilterOptions = (specialties: Specialties): Fil
 
 export const convertSchoolsToFilterOptions = (schools: School[]): FilterOption[] => {
     // const options: FilterOption[] = [];
-    const options = [ALL_FILTER_OPTION];
+    const options = [ANY_FILTER_OPTION];
     return options.concat(Object.values(schools).map(school => {
         return {
             label: school.abbreviation,
