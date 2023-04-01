@@ -10,10 +10,28 @@ import { convertEnumToFilterOptions, convertSpecialtiesToFilterOptions } from '.
 import { ServiceType } from '../types/service-type.enum';
 import { DeliveryMethod } from '../types/delivery-method.enum';
 import { Specialties } from '../types/specialty.type';
+import { UrgencyLevel } from '../types/urgency-level.enum';
 
 const defaultFilters: Filters = {
-    ServiceType: convertEnumToFilterOptions(ServiceType),
-	DeliveryMethod: convertEnumToFilterOptions(DeliveryMethod),
+    [FilterCategory.ServiceType]: {
+		category: FilterCategory.ServiceType,
+		multiSelect: true,
+		options: convertEnumToFilterOptions(ServiceType),
+	},
+	[FilterCategory.DeliveryMethod]: {
+		category: FilterCategory.DeliveryMethod,
+		multiSelect: true,
+		options: convertEnumToFilterOptions(DeliveryMethod),
+	},
+	[FilterCategory.Urgency]: {
+		category: FilterCategory.Urgency,
+		options: convertEnumToFilterOptions(UrgencyLevel),
+	},
+	[FilterCategory.Specialty]: {
+		category: FilterCategory.Specialty,
+		multiSelect: true,
+		options: [],
+	}
 };
 
 const Home = (): ReactElement => {
@@ -34,12 +52,18 @@ const Home = (): ReactElement => {
 	}, [JSON.stringify(filters)]);
 
 	useEffect(() => {
-		if (!filters.Specialty) {
+		if (filters.Specialty.options.length === 0) {
 			fetch(`${BASE_URL}/specialties?`)
 				.then(res => res.json())
 				.then(res => {
 					setSpecialties(res);
-					setFilters({ ...filters, Specialty: convertSpecialtiesToFilterOptions(res) });
+					setFilters({
+						...filters,
+						Specialty: {
+							...filters.Specialty,
+							options: convertSpecialtiesToFilterOptions(res),
+						},
+					});
 				});
 		}
 	}, [specialties]);
@@ -63,9 +87,9 @@ const Home = (): ReactElement => {
 	const convertFiltersToQueryStr = (filters: Filters): string => {
 		const queryStr: string[] = [];
 
-		Object.entries(filters).forEach(([category, options]) => {
-			const categoryParam = FILTER_CATEGORIES[category as FilterCategory].queryParam;
-			options.forEach(option => {
+		Object.values(filters).forEach((filter) => {
+			const categoryParam = FILTER_CATEGORIES[filter.category].queryParam;
+			filter.options.forEach(option => {
 				if (option.selected) queryStr.push(`${categoryParam}=${option.value}`);
 			});
 		});

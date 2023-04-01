@@ -1,7 +1,7 @@
 import { Stack } from '@mui/system';
 import FilterDropdown from './FilterDropdown';
 import { ReactElement } from 'react';
-import { Filters } from '../types/filters.types';
+import { FilterOption, Filters } from '../types/filters.types';
 
 type FilterBarProps = {
     filters: Filters;
@@ -9,23 +9,45 @@ type FilterBarProps = {
 };
 
 const FilterBar = ({ filters, setFilters }: FilterBarProps): ReactElement => {
-    const dropdowns = Object.entries(filters).map(([category, options]) => {
+    const dropdowns = Object.values(filters).map((filter) => {
+        const onMultiSelectOptionChange = (option: FilterOption, newVal: boolean) => {
+            const optionIndex = options.findIndex(o => o.value === option.value);
+            setFilters({
+                ...filters,
+                [filter.category]: {
+                    ...filter,
+                    options: [
+                        ...options.slice(0, optionIndex),
+                        { ...option, selected: newVal },
+                        ...options.slice(optionIndex + 1),
+                    ]
+                }
+            });
+        };
+
+        const onSingleSelectOptionChange = (value: string) => {
+            const newOptionsState = options.map(option => {
+                return {
+                    ...option,
+                    selected: option.value === value,
+                };
+            });
+            setFilters({
+                ...filters,
+                [filter.category]: {
+                    ...filter,
+                    options: newOptionsState,
+                }
+            });
+        };
+
+        const options = filter.options;
         return (
             <FilterDropdown
-                key={category}
-                category={category}
-                options={options}
-                onOptionChange={(option, newVal) => {
-                    const optionIndex = options.findIndex(o => o.value === option.value);
-                    setFilters({
-                        ...filters,
-                        [category]: [
-                            ...filters[category].slice(0, optionIndex),
-                            { ...option, selected: newVal },
-                            ...filters[category].slice(optionIndex + 1),
-                        ]
-                    });
-                }}
+                key={filter.category}
+                filter={filter}
+                onOptionChange={onMultiSelectOptionChange}
+                onRadioSelect={onSingleSelectOptionChange}
             />
         );
     });

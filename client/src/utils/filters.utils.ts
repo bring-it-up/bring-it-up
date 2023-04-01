@@ -2,8 +2,9 @@ import { DeliveryMethod } from '../types/delivery-method.enum';
 import { FilterOption } from '../types/filters.types';
 import { ServiceType } from '../types/service-type.enum';
 import { Specialties } from '../types/specialty.type';
+import { UrgencyLevel } from '../types/urgency-level.enum';
 
-export type FilterEnum = typeof ServiceType | typeof DeliveryMethod;
+export type FilterEnum = typeof ServiceType | typeof DeliveryMethod | typeof UrgencyLevel;
 
 export const convertEnumToFilterOptions = (filterEnum: FilterEnum): FilterOption[] => {
     return Object.values(filterEnum).map(value => {

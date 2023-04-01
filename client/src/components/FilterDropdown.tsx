@@ -1,25 +1,29 @@
 import { ReactElement } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, FormGroup, Radio, RadioGroup, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { FILTER_CATEGORIES, FilterCategory, FilterOption } from '../types/filters.types';
+import { FILTER_CATEGORIES, Filter, FilterOption } from '../types/filters.types';
 
 type Props = {
-	category: string;
-	options: FilterOption[];
+	filter: Filter;
 	onOptionChange: (filterOption: FilterOption, value: boolean) => void;
+	onRadioSelect: (value: string) => void;
 };
 
-const FilterDropdown = ({ category, options, onOptionChange }: Props): ReactElement => {
-	const categoryName = FILTER_CATEGORIES[category as FilterCategory].label;
-	const formControls = options.map((option: FilterOption) => {
+const FilterDropdown = ({ filter, onOptionChange, onRadioSelect }: Props): ReactElement => {
+	const categoryName = FILTER_CATEGORIES[filter.category].label;
+	const formControls = filter.options.map((option: FilterOption) => {
 		return (
 			<FormControlLabel
-				control={
+				control={filter.multiSelect ?
 					<Checkbox
 						disabled={option.disabled}
 						checked={option.selected}
 						onChange={() => onOptionChange(option, !option.selected)}
+					/> :
+					<Radio
+						disabled={option.disabled}
+						value={option.value}
 					/>
 				}
 				key={option.value}
@@ -36,9 +40,19 @@ const FilterDropdown = ({ category, options, onOptionChange }: Props): ReactElem
 				<Typography>{ categoryName }</Typography>
 			</AccordionSummary>
 			<AccordionDetails>
-				<FormGroup>
-					{ formControls }
-				</FormGroup>
+				{ filter.multiSelect && (
+					<FormGroup>
+						{ formControls }
+					</FormGroup>
+				) }
+				{ !filter.multiSelect && (
+					<RadioGroup
+						value={filter.options[filter.options.findIndex(o => o.selected)]?.value}
+						onChange={(e) => onRadioSelect((e.target as HTMLInputElement).value)}
+					>
+						{ formControls }
+					</RadioGroup>
+				) }
 			</AccordionDetails>
 		</Accordion>
 	);

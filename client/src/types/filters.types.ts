@@ -6,13 +6,20 @@ export type FilterOption = {
 };
 
 export type Filters = {
-    [categoryName: string]: FilterOption[];
+    [categoryName: string]: Filter;
+};
+
+export type Filter = {
+    category: FilterCategory;
+    options: FilterOption[];
+    multiSelect?: boolean;
 };
 
 export enum FilterCategory {
     ServiceType = 'ServiceType',
     DeliveryMethod = 'DeliveryMethod',
     Specialty = 'Specialty',
+    Urgency = 'Urgency',
 }
 
 export const FILTER_CATEGORIES = {
@@ -23,6 +30,10 @@ export const FILTER_CATEGORIES = {
     [FilterCategory.DeliveryMethod]: {
         queryParam: 'delivery',
         label: 'Delivery Method',
+    },
+    [FilterCategory.Urgency]: {
+        queryParam: 'urgency',
+        label: 'Urgency',
     },
     [FilterCategory.Specialty]: {
         queryParam: 'specialty',
