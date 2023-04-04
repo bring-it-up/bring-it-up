@@ -4,23 +4,24 @@ import { BASE_URL } from '../constants';
 
 
 function GetData(): string[] {
-	const [data, setData] = useState<any[]>([]);
-	const serviceNames: string[] = [];
+    const [data, setData] = useState<any[]>([]);
+    const serviceIds: string[] = [];
   
-	// this returns array of all service objects
-	useEffect(() => {
-		fetch(`${BASE_URL}/counselling-services`)
-			.then(res => res.json())
-			.then(parsedData => setData(parsedData))
-			.catch((e) => console.log(e));
-	}, []);
-  
-	for (const service of data) {
-		serviceNames.push(service.serviceName);
-	}
-    
-	return serviceNames;
-}
+    // this returns array of all service objects
+    useEffect(() => {
+        fetch(`${BASE_URL}/counselling-services`)
+        .then(res => res.json())
+        .then(parsedData => setData(parsedData))
+        .catch((e) => console.log(e));
+    }, []);
+
+    for (let i = 0; i < data.length; i++) {
+        serviceIds.push(data[i].secondaryID);
+    }
+
+    return serviceIds;
+  }
+
   
 
 const Services = (): ReactElement => {

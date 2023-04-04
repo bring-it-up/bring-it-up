@@ -7,12 +7,13 @@ import vector from '../images/vector.png';
 import { BASE_URL } from '../constants';
 
 export default function ServiceHoursCard({ parentToChild }: {parentToChild: string}): ReactElement {
-	const id = parentToChild.replace(/\W+/g, '-').replace(/-$/, '').toLowerCase();
+	const id = parentToChild;
 	const weekday = ['sun','mon','tue','wed','thu','fri','sat'];
 	const key: any = weekday[new Date().getDay()];
 	const [hours, setHours] = useState<any[]>([]);
 
 	useEffect(() => {
+		console.log(BASE_URL);
 		fetch(`${BASE_URL}/counselling-services/${id}`)
 			.then(res => res.json())
 			.then(function(myJson) {
@@ -22,12 +23,10 @@ export default function ServiceHoursCard({ parentToChild }: {parentToChild: stri
 	}, []);
 
 	if (hours === undefined) {
-		console.log('UNDEFINED!');
 		return <NoHoursAvailable />;
 	} else {
 		const days = Object.keys(hours);
 		if (days.length > 0) {
-			console.log(days);
 			if (isOpenNow(hours[key][0], hours[key][1])) {
 				return <CurrentlyOpenCard hours={hours} />;
 			}
@@ -41,9 +40,7 @@ function NoHoursAvailable() {
 	return <h3>Hours not available!</h3>;
 }
 function CurrentlyOpenCard(props: any) {
-	console.log(props.hours);
 	const days = Object.keys(props.hours);
-	console.log(props.hours);
 	return (
 		<Card variant="outlined" sx={{ maxWidth: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
 			<CardContent>
@@ -68,7 +65,6 @@ function CurrentlyOpenCard(props: any) {
 
 function ClosedCard(props: any) {
 	const days = Object.keys(props.hours);
-	console.log(props.hours);
 	return (
 		<Card variant="outlined" sx={{ maxWidth: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
 			<CardContent>
@@ -110,13 +106,11 @@ function printHoursForDay(day: string, opens: string, closes: string) {
 
 function isOpenNow(opens: string, closes: string): boolean {
 	let now = new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles', hourCycle: 'h23',hour:'numeric',minute:'numeric' });
-	console.log('opens: ' + opens);
-	console.log('closes: ' + closes);
 
 	if (now.charAt(0)==='0') {
 		now = now.substring(1);
 	}
-	console.log('time now: ' + now);
+
 	if (now > opens && now < closes) {
 		return true;
 	}

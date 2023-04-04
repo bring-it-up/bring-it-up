@@ -1,8 +1,8 @@
-import * as React from 'react';
 import Chip from '@mui/material/Chip';
 import { Box, styled } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import { ReactElement, useEffect, useState } from 'react';
+import { BASE_URL } from '../constants';
 
 const CustomizedChip = styled(Chip) ({
     background: 'linear-gradient(0, rgba(103, 80, 164, 0.05), rgba(103, 80, 164, 0.05))',
@@ -17,10 +17,9 @@ const CustomizedChip = styled(Chip) ({
  
 function Specialties({ serviceId }: {serviceId: string}): ReactElement {
         const [specialities, setSpecialities] = useState<any[]>([]);
-        const id = serviceId.replace(/\W+/g, '-').replace(/-$/, '').toLowerCase();
 
         useEffect(() => {
-            fetch(`http://localhost:4000/counselling-services/${id}`)
+            fetch(`${BASE_URL}/counselling-services/${serviceId}`)
             .then(res => res.json())
             .then(function(myJson) {
                 setSpecialities(myJson.specialty);
