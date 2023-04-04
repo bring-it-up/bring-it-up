@@ -45,9 +45,21 @@ async function deleteSchool(id: string) {
 	await school.remove();
 }
 
-export default {
+async function deleteAllSchools() {
+	await School.deleteMany();
+}
+
+async function addSchools(input: ISchool[]) {
+	await School.insertMany(input);
+}
+
+const SchoolService = {
 	getSchools,
 	getSchool,
 	createSchool,
-	deleteSchool
+	deleteSchool,
+	deleteAllSchools,
+	addSchools,
 };
+
+export default SchoolService;
