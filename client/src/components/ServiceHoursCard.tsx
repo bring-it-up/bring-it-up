@@ -13,7 +13,6 @@ export default function ServiceHoursCard({ parentToChild }: {parentToChild: stri
 	const [hours, setHours] = useState<any[]>([]);
 
 	useEffect(() => {
-		console.log(BASE_URL);
 		fetch(`${BASE_URL}/counselling-services/${id}`)
 			.then(res => res.json())
 			.then(function(myJson) {

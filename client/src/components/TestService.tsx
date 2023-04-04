@@ -56,16 +56,13 @@ function TestService(): ReactElement {
 
 	const [serviceName, setServiceName] = React.useState<any[]>([]);
   
-    // this returns array of all service objects
     React.useEffect(() => {
         fetch(`${BASE_URL}/counselling-services/${serviceId}`)
         .then(res => res.json())
         .then(parsedData => setServiceName(parsedData.serviceName))
         .catch((e) => console.log(e));
     }, []);
-
-	//todo maybe set data: hours, etc. in service.ts object than pass around as needed
-
+	
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
 	};
