@@ -3,7 +3,7 @@ import ServiceCard from './ServiceCard';
 import Service from '../Service';
 import SearchBar from './SearchBar';
 import { BASE_URL } from '../constants';
-import { Grid } from '@mui/material';
+import { Grid, Stack, Typography } from '@mui/material';
 import FilterBar from './FilterBar';
 import { FILTER_CATEGORIES, FilterCategory, Filters } from '../types/filters.types';
 import { ANY_FILTER_OPTION, convertEnumToFilterOptions, convertSchoolsToFilterOptions, convertSpecialtiesToFilterOptions } from '../utils/filters.utils';
@@ -127,17 +127,26 @@ const Home = (): ReactElement => {
 
     const RenderServiceCards = ({ listOfServices }: Props): ReactElement => {
 		return (
-			<>
-				{listOfServices.map((serv: Service, index) => (
-					<ServiceCard service={serv} key={index}></ServiceCard>
-				))}
-			</>
+			listOfServices.length > 0 ?
+				<>
+					{listOfServices.map((serv: Service, index) => (
+						<ServiceCard service={serv} key={index}></ServiceCard>
+					))}
+				</> : (
+					<Stack
+						textAlign="center"
+						py={10}
+						spacing={1}
+					>
+						<Typography variant="h5">No services found.</Typography>
+						<Typography variant="subtitle1">Try selecting different filters or typing in a different search.</Typography>
+					</Stack>
+				)
 		);
     };
 
 	return (
 		<>
-			<h1>Home Page</h1>
 			<Grid container sx={{ px: 10, py: 5 }} spacing={5}>
 				<Grid item xs={3}>
 					<FilterBar

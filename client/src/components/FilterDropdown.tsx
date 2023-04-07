@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Accordion, AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, FormGroup, Radio, RadioGroup, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FILTER_CATEGORIES, Filter, FilterOption } from '../types/filters.types';
+import { purple } from '@mui/material/colors';
 
 type Props = {
 	filter: Filter;
@@ -22,10 +23,12 @@ const FilterDropdown = ({ filter, onOptionChange, onRadioSelect }: Props): React
 						disabled={option.disabled}
 						checked={option.selected}
 						onChange={() => onOptionChange(option, !option.selected)}
+						sx={{ ...inputColorSxProps }}
 					/> :
 					<Radio
 						disabled={option.disabled}
 						value={option.value}
+						sx={{ ...inputColorSxProps }}
 					/>
 				}
 				key={option.value}
@@ -63,6 +66,12 @@ const FilterDropdown = ({ filter, onOptionChange, onRadioSelect }: Props): React
 			</Accordion>
 		</div>
 	);
+};
+
+const inputColorSxProps = {
+	'&.Mui-checked': {
+		color: purple[800],
+	},
 };
 
 export default FilterDropdown;
