@@ -22,7 +22,7 @@
   "homepage": "https://github.com/bring-it-up/bring-it-up#readme",
   "dependencies": {
     "@types/express": "^4.17.13",
-    "@types/node": "^17.0.14",
+    "@types/node": "^18.7.16",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
