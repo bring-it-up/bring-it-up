@@ -4,6 +4,8 @@
 :root {
   --searchBarBackgroundHeight: 77px;
   --searchBarBackgroundWidth: 570px;
+  --theme-purple: rgba(103, 80, 164, 1);
+  --backgroundPurple: rgba(103, 80, 164, 0.11);
 }
 
 body {
@@ -21,7 +23,7 @@ code {
 }
 
 .serviceCard {
-  background-color: rgba(103, 80, 164, 0.11);
+  background-color: var(--backgroundPurple);
   height: 159px;
   width: 570px;
   border-radius: 30px;
@@ -149,58 +151,73 @@ h6.text {
 
 /* SearchBar Styling */
 
-.background {
-  height: var(--searchBarBackgroundHeight);
-  width: var(--searchBarBackgroundWidth);
+.searchBarContainer {
+  padding: 15px 20px;
   border-radius: 40px;
-  background-color: rgba(103, 80, 164, 0.11);
+  background-color: var(--backgroundPurple);
   margin-bottom: 45px;
+}
+
+.searchBarForm {
+  width: 100%;
+}
+
+.searchInput {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-
-form input {
-  position: absolute;
-  left: 32px;
-  /* THIS IS HARD CODED AND NEEDS TO BE CHANGED if search bar moves*/
-  top: 215px;
-  /* THIS IS HARD CODED AND NEEDS TO BE CHANGED if search bar moves*/
-  padding-left: 20px;
-  height: 47px;
-  width: 468px;
-  border-radius: 40px 0px 0px 40px;
+  border-radius: 40px;
   border-style: none;
   outline-style: solid;
-  outline-color: rgba(103, 80, 164, 1);
+  outline-color: var(--theme-purple);
   background-color: white;
 }
 
-form input[placeholder="Search"] {
-  color: black;
-}
-
-form button {
-  position: absolute;
-  left: 500px;
-  top: 215px;
-  height: 47px;
-  width: 50px;
-  border-radius: 0px 40px 40px 0px;
-  border-style: none;
-  outline-style: solid;
-  outline-color: rgba(103, 80, 164, 1);
-  position: absolute;
-  background-color: white;
-}
-
-form button:active {
-  outline-style: solid;
-  outline-color: rgba(103, 80, 164, 1);
-  border-style: none;
+.searchInput input {
+  padding: 0px 20px;
+  height: 40px;
+  width: 100%;
+  background: inherit;
+  border: none;
+  border-radius: inherit;
+  outline: 0;
 }
 
 .searchIcon {
-  color: rgba(103, 80, 164, 1);
+  color: var(--theme-purple);
+}
+
+/* FilterBar Styling */
+
+.filterBarContainer {
+  padding: 0;
+}
+
+.filterBarStack {
+  border-radius: 30px;
+  outline-style: solid;
+  outline-color: var(--theme-purple);
+  padding: 20px;
+}
+
+.clearFiltersButton {
+  padding: 15px 20px;
+  height: 70px;
+  border-radius: 30px;
+  background-color: var(--backgroundPurple);
+  margin-bottom: 45px;
+  font-weight: 700;
+  border: none;
+}
+
+.filterAccordion {
+  border-radius: 30px !important;
+  background-color: var(--backgroundPurple) !important;
+  box-shadow: none !important;
+}
+
+.filterLabel {
+  margin-left: 0 !important;
+  justify-content: space-between !important;
+  font-family: "Noto Sans", sans-serif !important;
 }
