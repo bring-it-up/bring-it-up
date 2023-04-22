@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
-import School from '../schools/school';
+import School from '../services/school.service';
 import { StatusCode } from '../utils/status-code.enum';
 import { filterRequest } from '../middleware/utils.middleware';
 import { BadRequestError } from '../middleware/bad-request-error';
+import SchoolService from '../services/school.service';
 
 async function getSchools(req: Request, res: Response) {
 	try {
@@ -53,9 +54,20 @@ async function deleteSchool(req: Request, res: Response) {
 	}
 }
 
+async function addSchools(req: Request, res: Response) {
+	try {
+		await SchoolService.deleteAllSchools();
+		await SchoolService.addSchools(req.body);
+		res.json({ message: `Successfully added schools to the database` });
+	} catch (e: any) {
+		res.status(400).json({ message: e.message });
+	}
+}
+
 export default {
 	getSchools,
 	getSchool,
 	createSchool,
-	deleteSchool
+	deleteSchool,
+	addSchools
 };

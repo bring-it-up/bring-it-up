@@ -88,12 +88,11 @@ async function addCounsellingServicesJSON(req: Request, res: Response) {
 		for (let i = 0; i < req.body.length; ++i) {
 			visDataJson = req.body[i];
 			visDataJson.secondaryID = generateSecondaryId(req.body[i]['serviceName']);
-			visDataJson.__v = 0;
-			finalObj.final_push.push(visDataJson);
+			finalObj.finalPush.push(visDataJson);
 		}
 
-		await CSService.createCounsellingServicesJSON(finalObj.final_push);
-		res.json({ message: 'Added the following to the database:', 'Added:' : finalObj.final_push, });
+		await CSService.createCounsellingServicesJSON(finalObj.finalPush);
+		res.json({ message: 'Added the following to the database:', 'Added:' : finalObj.finalPush, });
 
 	} catch (error: any) {
 		// 400 means something wrong with input
