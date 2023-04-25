@@ -6,14 +6,13 @@ import { Grid } from '@mui/material';
 import vector from '../images/vector.png';
 import { BASE_URL } from '../constants';
 
-export default function ServiceHoursCard({ parentToChild }: {parentToChild: string}): ReactElement {
-	const id = parentToChild;
+export default function ServiceHoursCard( { serviceId }: { serviceId: string }): ReactElement {
 	const weekday = ['sun','mon','tue','wed','thu','fri','sat'];
 	const key: any = weekday[new Date().getDay()];
 	const [hours, setHours] = useState<any[]>([]);
 
 	useEffect(() => {
-		fetch(`${BASE_URL}/counselling-services/${id}`)
+		fetch(`${BASE_URL}/counselling-services/${serviceId}`)
 			.then(res => res.json())
 			.then(function(myJson) {
 				setHours(myJson.hours);

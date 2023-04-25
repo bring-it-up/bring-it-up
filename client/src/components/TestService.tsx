@@ -77,7 +77,7 @@ function TestService(): ReactElement {
 		</Box>
 		<TabPanel value={value} index={0}>
 			<div>
-				<ServiceHoursCard parentToChild={serviceId} />
+				<ServiceHoursCard serviceId={serviceId} />
 				<Specialties serviceId={serviceId} />
 			</div>
 		</TabPanel>

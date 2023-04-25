@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import Service from '../Service';
+import { useHistory } from 'react-router-dom';
 
 type Props = {
 	service: Service;
@@ -11,8 +12,15 @@ type Props = {
 const tags: string[] = ['Peer', '24/7', 'Professional', 'Phone', 'Online'];
 
 const ServiceCard = ({ service }: Props): ReactElement => {
+	const history = useHistory();
+
+	const handleClick = () => {
+		console.log('redirecting');
+		history.push(`services/${service.secondaryID}`);
+	};
+
 	return (
-		<div className="serviceCard">
+		<div className="serviceCard" onClick={handleClick}>
 			<div className="cardContent">
 				<div className="title">
 					<div className="name">{service.serviceName}</div>
