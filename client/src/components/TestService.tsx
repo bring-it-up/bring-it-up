@@ -9,6 +9,7 @@ import { styled } from '@mui/system';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Specialties from './Specialties';
+import { BASE_URL } from '../constants';
 
 const CustomizedTab = styled(Tab)({
 	padding: '0 100px',
@@ -53,6 +54,15 @@ function TestService(): ReactElement {
     const [value, setValue] = React.useState(0);
     const serviceId = params.ServiceID;
 
+	const [serviceName, setServiceName] = React.useState<any[]>([]);
+  
+    React.useEffect(() => {
+        fetch(`${BASE_URL}/counselling-services/${serviceId}`)
+        .then(res => res.json())
+        .then(parsedData => setServiceName(parsedData.serviceName))
+        .catch((e) => console.log(e));
+    }, []);
+	
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
 	};
@@ -61,14 +71,14 @@ function TestService(): ReactElement {
 	<div>
 		<Box>
 			<Tabs TabIndicatorProps={{ style: { width: '0px' } }} value={value} onChange={handleChange}>
-				<CustomizedTab sx={{ left: '5%', width:'max-content' }} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px' }}/>} iconPosition = "start" label={params.ServiceID} />
+				<CustomizedTab sx={{ left: '5%', width:'max-content' }} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px' }}/>} iconPosition = "start" label={serviceName} />
 				<CustomizedTab sx={{ left: '80%', position: 'absolute' }} icon={<ArrowForwardIcon sx={{ position: 'relative', right:'50px' }}/>} iconPosition = "start" label="Reviews"/>
 			</Tabs>
 		</Box>
 		<TabPanel value={value} index={0}>
 			<div>
-				<ServiceHoursCard parentToChild={serviceId}></ServiceHoursCard>
-				<Specialties serviceId={serviceId}></Specialties>
+				<ServiceHoursCard serviceId={serviceId} />
+				<Specialties serviceId={serviceId} />
 			</div>
 		</TabPanel>
 		<TabPanel value={value} index={1}>Reviews</TabPanel>

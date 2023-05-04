@@ -30,6 +30,10 @@ code {
   margin-bottom: 45px;
 }
 
+.serviceCard:hover {
+  cursor: pointer;
+}
+
 .cardContent {
   font-family: "Noto Sans", sans-serif;
   display: flex;
