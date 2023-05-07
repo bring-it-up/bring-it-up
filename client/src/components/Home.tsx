@@ -1,6 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react';
 import ServiceCard from './ServiceCard';
-import Service from '../Service';
 import SearchBar from './SearchBar';
 import { Grid, Stack, Typography } from '@mui/material';
 import FilterBar from './FilterBar';
@@ -14,6 +13,7 @@ import { School } from '../types/school.types';
 import { getCounsellingServices } from '../api/counselling-service/counselling-service.api';
 import { getSchools } from '../api/school/school.api';
 import { getSpecialties } from '../api/specialty/specialty.api';
+import { CounsellingService } from '../types/counselling-service.types';
 
 const defaultFilters: Filters = {
     [FilterCategory.ServiceType]: {
@@ -42,7 +42,7 @@ const defaultFilters: Filters = {
 };
 
 const Home = (): ReactElement => {
-	const [services, setServices] = useState<any[]>([]);
+	const [services, setServices] = useState<CounsellingService[]>([]);
 	const [filters, setFilters] = useState<Filters>(defaultFilters);
 	const [specialties, setSpecialties] = useState<Specialties | undefined>(undefined);
 	const [schools, setSchools] = useState<School[]>([]);
@@ -94,15 +94,15 @@ const Home = (): ReactElement => {
 	}
 
     type Props = {
-        listOfServices: Array<Service>;
+        listOfServices: Array<CounsellingService>;
     };
 
     const RenderServiceCards = ({ listOfServices }: Props): ReactElement => {
 		return (
 			listOfServices.length > 0 ?
 				<>
-					{listOfServices.map((serv: Service, index) => (
-						<ServiceCard service={serv} key={index}></ServiceCard>
+					{listOfServices.map((service: CounsellingService, index) => (
+						<ServiceCard service={service} key={index}></ServiceCard>
 					))}
 				</> : (
 					<Stack

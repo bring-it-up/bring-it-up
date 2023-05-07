@@ -1,9 +1,8 @@
 import Chip from '@mui/material/Chip';
 import { Box, styled } from '@mui/system';
 import Typography from '@mui/material/Typography';
-import { ReactElement, useEffect, useState } from 'react';
-import { BASE_URL } from '../constants';
-import { getCounsellingServiceById } from '../api/counselling-service/counselling-service.api';
+import { ReactElement } from 'react';
+import { Specialty } from '../types/specialty.type';
 
 const CustomizedChip = styled(Chip) ({
     background: 'linear-gradient(0, rgba(103, 80, 164, 0.05), rgba(103, 80, 164, 0.05))',
@@ -15,24 +14,18 @@ const CustomizedChip = styled(Chip) ({
         font:'500 14px/20px Roboto',
      } 
 }) as typeof Chip;
- 
-function Specialties({ serviceId }: {serviceId: string}): ReactElement {
-        const [specialities, setSpecialities] = useState<any[]>([]);
 
-        useEffect(() => {
-            getCounsellingServiceById(serviceId)
-            .then(function(myJson) {
-                setSpecialities(myJson.specialty);
-            })
-            .catch((e) => console.log(e));
-        }, []);
+type Props = {
+    specialties: Specialty[];
+};
 
-        return (
+function Specialties({ specialties }: Props): ReactElement {
+    return (
 	<Box sx={{ maxWidth:'350px' }}>
 		<Typography sx={{ font: 'bold 16px/32px Roboto' }}>Specialities</Typography>
-		{specialities.map(x => {return <CustomizedChip key={x.label} label={x.label} />;})}
+		{specialties.map(x => {return <CustomizedChip key={x.label} label={x.label} />;})}
 	</Box>
-        );
+    );
     
 }
  

@@ -1,24 +1,20 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement } from 'react';
 import { Grid } from '@mui/material';
 import vector from '../images/vector.png';
-import { BASE_URL } from '../constants';
-import { getCounsellingServiceById } from '../api/counselling-service/counselling-service.api';
+import { CounsellingServiceHours } from '../types/counselling-service.types';
 
-export default function ServiceHoursCard( { serviceId }: { serviceId: string }): ReactElement {
-	const weekday = ['sun','mon','tue','wed','thu','fri','sat'];
-	const key: any = weekday[new Date().getDay()];
-	const [hours, setHours] = useState<any[]>([]);
+type Props = {
+	hours?: CounsellingServiceHours;
+};
 
-	useEffect(() => {
-		getCounsellingServiceById(serviceId)
-			.then(function(myJson) {
-				setHours(myJson.hours);
-			})
-			.catch((e) => console.log(e));
-	}, []);
+type DayKey = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat';
+
+export default function ServiceHoursCard({ hours }: Props): ReactElement {
+	const weekday: DayKey[]  = ['sun','mon','tue','wed','thu','fri','sat'];
+	const key: DayKey = weekday[new Date().getDay()];
 
 	if (hours === undefined) {
 		return <NoHoursAvailable />;
@@ -86,20 +82,20 @@ function ClosedCard(props: any) {
 }
 
 function printHoursForDay(day: string, opens: string, closes: string) {
-	const weekday = ['sun','mon','tue','wed','thu','fri','sat'];
-	const today: any = weekday[new Date().getDay()];
+	const weekday: DayKey[] = ['sun','mon','tue','wed','thu','fri','sat'];
+	const today: DayKey = weekday[new Date().getDay()];
 	const dayString = getDay(day);
 	const openingTime = convertTo12HourTime(opens);
 	if (today === day) {
 		if (openingTime === 'Closed') {
-			return <HighlightedClosed day={dayString}/>;
+			return <HighlightedClosed key={day} day={dayString}/>;
 		} else {
-			return <HighlightedHours day={dayString} opens={opens} closes={closes}/>;
+			return <HighlightedHours key={day} day={dayString} opens={opens} closes={closes}/>;
 		}
 	} else if (openingTime === 'Closed') {
-		return <Closed day={dayString} />;
+		return <Closed key={day} day={dayString} />;
 	}
-	return <Hours day={dayString} opens={opens} closes={closes}/>;
+	return <Hours key={day} day={dayString} opens={opens} closes={closes}/>;
 }
 
 function isOpenNow(opens: string, closes: string): boolean {

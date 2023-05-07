@@ -9,7 +9,8 @@ import { styled } from '@mui/system';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Specialties from './Specialties';
-import { BASE_URL } from '../constants';
+import { getCounsellingServiceById } from '../api/counselling-service/counselling-service.api';
+import { CounsellingService } from '../types/counselling-service.types';
 
 const CustomizedTab = styled(Tab)({
 	padding: '0 100px',
@@ -53,13 +54,11 @@ function FullServicePage(): ReactElement {
     const params = useParams<SERVICE>();
     const [value, setValue] = React.useState(0);
     const serviceId = params.ServiceID;
-
-	const [serviceName, setServiceName] = React.useState<any[]>([]);
+	const [service, setService] = React.useState<CounsellingService>();
   
     React.useEffect(() => {
-        fetch(`${BASE_URL}/counselling-services/${serviceId}`)
-        .then(res => res.json())
-        .then(parsedData => setServiceName(parsedData.serviceName))
+        getCounsellingServiceById(serviceId)
+        .then(parsedData => setService(parsedData))
         .catch((e) => console.log(e));
     }, []);
 	
@@ -71,14 +70,16 @@ function FullServicePage(): ReactElement {
 	<div>
 		<Box>
 			<Tabs TabIndicatorProps={{ style: { width: '0px' } }} value={value} onChange={handleChange}>
-				<CustomizedTab sx={{ left: '5%', width:'max-content' }} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px' }}/>} iconPosition = "start" label={serviceName} />
+				<CustomizedTab sx={{ left: '5%', width:'max-content' }} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px' }}/>} iconPosition = "start" label={service?.serviceName} />
 				<CustomizedTab sx={{ left: '80%', position: 'absolute' }} icon={<ArrowForwardIcon sx={{ position: 'relative', right:'50px' }}/>} iconPosition = "start" label="Reviews"/>
 			</Tabs>
 		</Box>
 		<TabPanel value={value} index={0}>
 			<div>
-				<ServiceHoursCard serviceId={serviceId} />
-				<Specialties serviceId={serviceId} />
+				<ServiceHoursCard hours={service?.hours} />
+				{service?.specialty && (
+					<Specialties specialties={service.specialty} />
+				)}
 			</div>
 		</TabPanel>
 		<TabPanel value={value} index={1}>Reviews</TabPanel>

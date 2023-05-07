@@ -1,4 +1,5 @@
 import { BASE_URL } from '../../constants';
+import { CounsellingService } from '../../types/counselling-service.types';
 import { FILTER_CATEGORIES, Filters } from '../../types/filters.types';
 import { ANY_FILTER_OPTION } from '../../utils/filters.utils';
 
@@ -7,7 +8,7 @@ type GetCounsellingServicesOptions = {
     filters?: Filters;
 };
 
-export const getCounsellingServices = async (options?: GetCounsellingServicesOptions) => {
+export const getCounsellingServices = async (options?: GetCounsellingServicesOptions): Promise<CounsellingService[]> => {
     let queryStr = '';
     if (options?.searchString) queryStr = `searchString=${options.searchString}`;
     else if (options?.filters) queryStr = convertFiltersToQueryStr(options.filters);
@@ -16,7 +17,7 @@ export const getCounsellingServices = async (options?: GetCounsellingServicesOpt
     return await res.json();
 };
 
-export const getCounsellingServiceById = async (serviceId: string) => {
+export const getCounsellingServiceById = async (serviceId: string): Promise<CounsellingService> => {
     const res = await fetch(`${BASE_URL}/counselling-services/${serviceId}`);
     return await res.json();
 };

@@ -1,6 +1,5 @@
 import { ReactElement, useState, useEffect } from 'react';
 import { Link, generatePath } from 'react-router-dom';
-import { BASE_URL } from '../constants';
 import { getCounsellingServices } from '../api/counselling-service/counselling-service.api';
 
 
