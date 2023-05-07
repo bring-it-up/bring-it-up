@@ -49,7 +49,7 @@ function TabPanel(props: TabPanelProps) {
     );
   }
 
-function TestService(): ReactElement {
+function FullServicePage(): ReactElement {
     const params = useParams<SERVICE>();
     const [value, setValue] = React.useState(0);
     const serviceId = params.ServiceID;
@@ -86,4 +86,4 @@ function TestService(): ReactElement {
     );
 }
 
-export default TestService;
+export default FullServicePage;

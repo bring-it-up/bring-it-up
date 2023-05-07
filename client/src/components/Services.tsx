@@ -1,6 +1,7 @@
 import { ReactElement, useState, useEffect } from 'react';
 import { Link, generatePath } from 'react-router-dom';
 import { BASE_URL } from '../constants';
+import { getCounsellingServices } from '../api/counselling-service/counselling-service.api';
 
 
 function GetData(): string[] {
@@ -9,8 +10,7 @@ function GetData(): string[] {
   
     // this returns array of all service objects
     useEffect(() => {
-        fetch(`${BASE_URL}/counselling-services`)
-        .then(res => res.json())
+        getCounsellingServices()
         .then(parsedData => setData(parsedData))
         .catch((e) => console.log(e));
     }, []);

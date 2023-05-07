@@ -5,6 +5,7 @@ import { ReactElement, useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import vector from '../images/vector.png';
 import { BASE_URL } from '../constants';
+import { getCounsellingServiceById } from '../api/counselling-service/counselling-service.api';
 
 export default function ServiceHoursCard( { serviceId }: { serviceId: string }): ReactElement {
 	const weekday = ['sun','mon','tue','wed','thu','fri','sat'];
@@ -12,8 +13,7 @@ export default function ServiceHoursCard( { serviceId }: { serviceId: string }):
 	const [hours, setHours] = useState<any[]>([]);
 
 	useEffect(() => {
-		fetch(`${BASE_URL}/counselling-services/${serviceId}`)
-			.then(res => res.json())
+		getCounsellingServiceById(serviceId)
 			.then(function(myJson) {
 				setHours(myJson.hours);
 			})
