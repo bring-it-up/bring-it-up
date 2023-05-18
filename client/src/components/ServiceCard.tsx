@@ -1,17 +1,27 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import Service from '../Service';
 import { useHistory } from 'react-router-dom';
+import { Specialty } from '../types/specialty.type';
 
 type Props = {
 	service: Service;
 };
 
 // logic for defining tags is not determined yet
-const tags: string[] = ['Peer', '24/7', 'Professional', 'Phone', 'Online'];
+// const tags: string[] = ['Peer', '24/7', 'Professional', 'Phone', 'Online'];
 
 const ServiceCard = ({ service }: Props): ReactElement => {
+  let tags: string[] = [];
+
+  // let tags: string[] = [];
+  // const specialties: string[] = service.specialty;
+  // for (const specialty of specialties) tags.push(specialty);
+
+  // tags = tags.concat(service.delivery, service.targetClients, service.type);
+  tags = tags.concat(service.delivery, service.targetClients);
+
 	const history = useHistory();
 
 	const handleClick = () => {

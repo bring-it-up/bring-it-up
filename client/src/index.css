@@ -25,7 +25,8 @@ code {
 .serviceCard {
   background-color: var(--backgroundPurple);
   height: 159px;
-  width: 570px;
+  /* width: 570px; */
+  width: 100%;
   border-radius: 30px;
   margin-bottom: 45px;
 }
@@ -40,6 +41,7 @@ code {
   flex-direction: column;
   justify-content: space-between;
   padding: 30px 25px 20px 25px;
+  width: 100%;
 }
 
 .tag {
@@ -49,6 +51,8 @@ code {
   padding: 4px 15px 4px 15px;
   font-size: 15px;
   margin-right: 15px;
+  display: flex;
+  align-items: center;
 }
 
 div.name {
@@ -59,12 +63,6 @@ div.name {
 
 .reviews a {
   color: rgba(53, 53, 53, 1);
-}
-
-div.tags {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
 }
 
 h6.rating {
@@ -104,7 +102,8 @@ div.ratingItem {
 .title {
   display: flex;
   flex-direction: row;
-  width: 450px;
+  /* width: 450px; */
+  width: 100%;
   justify-content: space-between;
 }
 
