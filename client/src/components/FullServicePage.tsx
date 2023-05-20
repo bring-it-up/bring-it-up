@@ -12,6 +12,8 @@ import Specialties from './Specialties';
 import { getCounsellingServiceById } from '../api/counselling-service/counselling-service.api';
 import { CounsellingService } from '../types/counselling-service.types';
 import { useHistory } from 'react-router-dom';
+import BasicServiceDetails from './BasicServiceDetails';
+import DeliveryMethods from './DeliveryMethods';
 
 const disableReviewsTab = true;
 
@@ -84,12 +86,18 @@ function FullServicePage(): ReactElement {
 			</Tabs>
 		</Box>
 		<TabPanel value={value} index={0}>
-			<div>
-				<ServiceHoursCard hours={service?.hours} />
-				{service?.specialty && (
-					<Specialties specialties={service.specialty} />
-				)}
-			</div>
+			{service && <div className="servicePageContainer">
+				<div className="detailsContainer">
+					<BasicServiceDetails school={service?.school?.name} provider={service.organization} description={service.description}/>
+					<DeliveryMethods deliveryMethods={service.delivery}/>
+					{service.specialty && (
+						<Specialties specialties={service.specialty} />
+					)}
+				</div>
+				<div>
+					<ServiceHoursCard hours={service.hours} />
+				</div>
+			</div>}
 		</TabPanel>
 		{!disableReviewsTab && <TabPanel value={value} index={1}>Reviews</TabPanel>}
 	</div>
