@@ -1,19 +1,9 @@
-import Chip from '@mui/material/Chip';
-import { Box, styled } from '@mui/system';
+import { Box } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import { ReactElement } from 'react';
 import { Specialty } from '../types/specialty.type';
+import { CustomizedChip } from '../utils/customized.components';
 
-const CustomizedChip = styled(Chip) ({
-    background: 'linear-gradient(0, rgba(103, 80, 164, 0.05), rgba(103, 80, 164, 0.05))',
-    boxShadow: '0px 1px 3px 1px rgba(0, 0, 0, 0.15)',
-    borderRadius: '8px',
-    margin: '7px',
-    '& .MuiChip-label': {
-        color: '#1c1b1f',
-        font:'500 14px/20px Roboto',
-     } 
-}) as typeof Chip;
 
 type Props = {
     specialties: Specialty[];
@@ -23,7 +13,7 @@ function Specialties({ specialties }: Props): ReactElement {
     return (
 	<Box sx={{ maxWidth:'350px' }}>
 		<Typography sx={{ font: 'bold 16px/32px Roboto' }}>Specialities</Typography>
-		{specialties.map(x => {return <CustomizedChip key={x.label} label={x.label} />;})}
+		{specialties.map(x => {return <CustomizedChip key={x.id} label={x.label} />;})}
 	</Box>
     );
     
