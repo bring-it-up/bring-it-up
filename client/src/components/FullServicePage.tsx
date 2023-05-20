@@ -78,16 +78,16 @@ function FullServicePage(): ReactElement {
 		</Box>
 		<TabPanel value={value} index={0}>
 			{service && <div className="servicePageContainer">
-			<div className="detailsContainer">
-				<BasicServiceDetails school={service?.school?.name} provider={service.organization} description={service.description}/>
-				<DeliveryMethods deliveryMethods={service.delivery}/>
-				{service?.specialty && (
-					<Specialties specialties={service.specialty} />
-				)}
-			</div>
-			<div>
-				<ServiceHoursCard hours={service?.hours} />
-			</div>
+				<div className="detailsContainer">
+					<BasicServiceDetails school={service?.school?.name} provider={service.organization} description={service.description}/>
+					<DeliveryMethods deliveryMethods={service.delivery}/>
+					{service.specialty && (
+						<Specialties specialties={service.specialty} />
+					)}
+				</div>
+				<div>
+					<ServiceHoursCard hours={service.hours} />
+				</div>
 			</div>}
 		</TabPanel>
 		<TabPanel value={value} index={1}>Reviews</TabPanel>

@@ -34,10 +34,6 @@ code {
   gap: 20px;
 }
 
-.MuiChip-icon {
-  color: 'red' !important;
-}
-
 .serviceCard {
   background-color: var(--backgroundPurple);
   height: 159px;
