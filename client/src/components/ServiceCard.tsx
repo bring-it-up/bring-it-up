@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import Service from '../Service';
 import { useHistory } from 'react-router-dom';
+import { CounsellingService } from '../types/counselling-service.types';
 
 type Props = {
-	service: Service;
+	service: CounsellingService;
 };
 
 // logic for defining tags is not determined yet
@@ -15,7 +15,6 @@ const ServiceCard = ({ service }: Props): ReactElement => {
 	const history = useHistory();
 
 	const handleClick = () => {
-		console.log('redirecting');
 		history.push(`services/${service.secondaryID}`);
 	};
 
