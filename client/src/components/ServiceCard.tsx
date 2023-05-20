@@ -4,6 +4,10 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useHistory } from 'react-router-dom';
 import { CounsellingService } from '../types/counselling-service.types';
 
+// disable ratings and extra info (location, likes, etc.) for phase 1
+const disableRatings = true;
+const disableExtraInfo = true;
+
 type Props = {
 	service: CounsellingService;
 };
@@ -24,14 +28,14 @@ const ServiceCard = ({ service }: Props): ReactElement => {
 				<div className="title">
 					<div className="name">{service.serviceName}</div>
 
-					<div className="ratingItem">
+					{!disableRatings && <div className="ratingItem">
 						<StarOutlineRoundedIcon className="favourite" onClick={() => { }} />
 						<h6 className="rating">{'5.0'}</h6>
 						<h6 className="maxRating">/ 5.0</h6>
 						<ShareOutlinedIcon className="shareIcon"></ShareOutlinedIcon>
-					</div>
+					</div>}
 				</div>
-				<div className="information">
+				{!disableExtraInfo && <div className="information">
 					<ul className="informationList">
 						<li>{service.location}</li>
 						<li>|</li>
@@ -41,7 +45,7 @@ const ServiceCard = ({ service }: Props): ReactElement => {
 						<li>|</li>
 						<li>{'245'} likes</li>
 					</ul>
-				</div>
+				</div>}
 
 				<div className="tags">
 					{tags.map((tag, index) => (

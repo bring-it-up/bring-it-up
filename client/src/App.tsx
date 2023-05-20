@@ -7,6 +7,16 @@ import Home from './components/Home';
 import { ReactElement } from 'react';
 import FullServicePage from './components/FullServicePage';
 
+// unused app routes for phase 1
+const AppRoutes = (): ReactElement => {
+	return (
+		<>
+		<Route exact path='/about' component={About} />
+		<Route exact path='/services' component={Services} />
+		</>
+	);
+};
+
 function App(): ReactElement {
 	return (
 		<div>
@@ -14,8 +24,6 @@ function App(): ReactElement {
 				<Navigation />
 				<Switch>
 					<Route exact path='/' component={Home} />
-					<Route exact path='/about' component={About} />
-					<Route exact path='/services' component={Services} />
 					<Route path='/services/:ServiceID' component={FullServicePage} />
 				</Switch>
 			</Router>
