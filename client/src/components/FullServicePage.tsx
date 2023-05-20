@@ -11,6 +11,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Specialties from './Specialties';
 import { getCounsellingServiceById } from '../api/counselling-service/counselling-service.api';
 import { CounsellingService } from '../types/counselling-service.types';
+import BasicServiceDetails from './BasicServiceDetails';
+import DeliveryMethods from './DeliveryMethods';
 
 const CustomizedTab = styled(Tab)({
 	padding: '0 100px',
@@ -75,12 +77,18 @@ function FullServicePage(): ReactElement {
 			</Tabs>
 		</Box>
 		<TabPanel value={value} index={0}>
-			<div>
-				<ServiceHoursCard hours={service?.hours} />
+			{service && <div className="servicePageContainer">
+			<div className="detailsContainer">
+				<BasicServiceDetails school={service?.school?.name} provider={service.organization} description={service.description}/>
+				<DeliveryMethods deliveryMethods={service.delivery}/>
 				{service?.specialty && (
 					<Specialties specialties={service.specialty} />
 				)}
 			</div>
+			<div>
+				<ServiceHoursCard hours={service?.hours} />
+			</div>
+			</div>}
 		</TabPanel>
 		<TabPanel value={value} index={1}>Reviews</TabPanel>
 	</div>

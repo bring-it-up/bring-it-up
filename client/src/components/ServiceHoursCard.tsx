@@ -31,12 +31,13 @@ export default function ServiceHoursCard({ hours }: Props): ReactElement {
 }
 
 function NoHoursAvailable() {
-	return <h3>Hours not available!</h3>;
+	return <></>;
 }
+
 function CurrentlyOpenCard(props: any) {
 	const days = Object.keys(props.hours);
 	return (
-		<Card variant="outlined" sx={{ maxWidth: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
+		<Card variant="outlined" sx={{ width: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
 			<CardContent>
 				<Grid container>
 					<Grid item xs ={3.5}>
@@ -60,7 +61,7 @@ function CurrentlyOpenCard(props: any) {
 function ClosedCard(props: any) {
 	const days = Object.keys(props.hours);
 	return (
-		<Card variant="outlined" sx={{ maxWidth: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
+		<Card variant="outlined" sx={{ width: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
 			<CardContent>
 				<Grid container>
 					<Grid item xs ={3.5}>
