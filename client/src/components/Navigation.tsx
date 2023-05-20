@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { styled } from '@mui/system';
 import { ReactElement } from 'react';
 
-const CustomTitleButton = styled(Button)({
+const CustomizedHeading = styled(Typography)({
 	position: 'absolute',
 	left: '3%',
 	top: '25%',
@@ -13,11 +13,7 @@ const CustomTitleButton = styled(Button)({
 	fontWeight: '700',
 	fontStyle: 'normal',
 	lineHeight: '49px',
-	textTransform: 'capitalize',
-	'&:hover': {
-		color: '#151611',
-	},
-}) as typeof Button;
+}) as typeof Typography;
 
 const CustomizedButton = styled(Button)({
 	position: 'absolute',
@@ -67,7 +63,7 @@ const Navigation = (): ReactElement => {
 	return (
 		<AppBar position="static" elevation={0}>
 			<Toolbar disableGutters sx={{ background: 'white', height: '105px' }}>
-				<CustomTitleButton component={Link} to={'/'} >Bring It Up</ CustomTitleButton>
+				<CustomizedHeading variant="h1">Bring It Up</CustomizedHeading>
 			</Toolbar>
 		</AppBar>
 	);
