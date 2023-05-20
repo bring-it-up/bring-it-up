@@ -4,7 +4,7 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useHistory } from 'react-router-dom';
 import { CounsellingService } from '../types/counselling-service.types';
 
-// disable ratings and extra info (location, likes, etc.) for phase 1
+// TODO: disabled hardcoded ratings and extra info (location, likes, etc.) for phase 1
 const disableRatings = true;
 const disableExtraInfo = true;
 

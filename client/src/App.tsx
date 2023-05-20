@@ -7,7 +7,7 @@ import Home from './components/Home';
 import { ReactElement } from 'react';
 import FullServicePage from './components/FullServicePage';
 
-// unused app routes for phase 1
+// TODO: unimplemented app routes for phase 1
 const AppRoutes = (): ReactElement => {
 	return (
 		<>

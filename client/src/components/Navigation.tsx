@@ -30,7 +30,7 @@ const CustomizedButton = styled(Button)({
 	},
 }) as typeof Button;
 
-// hidden navbar items for phase 1
+// TODO: hidden navbar items for phase 1
 const NavbarItems = (): ReactElement => {
 	return (
 	<>

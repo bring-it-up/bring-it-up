@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom';
 import BasicServiceDetails from './BasicServiceDetails';
 import DeliveryMethods from './DeliveryMethods';
 
+// TODO: disabled reviews tab for phase 1
 const disableReviewsTab = true;
 
 const CustomizedTab = styled(Tab)({
