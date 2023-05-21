@@ -5,7 +5,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Home from './components/Home';
 import { ReactElement } from 'react';
-import TestService from './components/TestService';
+import FullServicePage from './components/FullServicePage';
 
 function App(): ReactElement {
 	return (
@@ -16,7 +16,7 @@ function App(): ReactElement {
 					<Route exact path='/' component={Home} />
 					<Route exact path='/about' component={About} />
 					<Route exact path='/services' component={Services} />
-					<Route path='/services/:ServiceID' component={TestService} />
+					<Route path='/services/:ServiceID' component={FullServicePage} />
 				</Switch>
 			</Router>
 		</div>

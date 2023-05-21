@@ -1,24 +1,20 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement } from 'react';
 import { Grid } from '@mui/material';
 import vector from '../images/vector.png';
-import { BASE_URL } from '../constants';
+import { CounsellingServiceHours } from '../types/counselling-service.types';
 
-export default function ServiceHoursCard( { serviceId }: { serviceId: string }): ReactElement {
-	const weekday = ['sun','mon','tue','wed','thu','fri','sat'];
-	const key: any = weekday[new Date().getDay()];
-	const [hours, setHours] = useState<any[]>([]);
+type Props = {
+	hours?: CounsellingServiceHours;
+};
 
-	useEffect(() => {
-		fetch(`${BASE_URL}/counselling-services/${serviceId}`)
-			.then(res => res.json())
-			.then(function(myJson) {
-				setHours(myJson.hours);
-			})
-			.catch((e) => console.log(e));
-	}, []);
+type DayKey = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat';
+
+export default function ServiceHoursCard({ hours }: Props): ReactElement {
+	const weekday: DayKey[]  = ['sun','mon','tue','wed','thu','fri','sat'];
+	const key: DayKey = weekday[new Date().getDay()];
 
 	if (hours === undefined) {
 		return <NoHoursAvailable />;
@@ -35,12 +31,13 @@ export default function ServiceHoursCard( { serviceId }: { serviceId: string }):
 }
 
 function NoHoursAvailable() {
-	return <h3>Hours not available!</h3>;
+	return <></>;
 }
+
 function CurrentlyOpenCard(props: any) {
 	const days = Object.keys(props.hours);
 	return (
-		<Card variant="outlined" sx={{ maxWidth: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
+		<Card variant="outlined" sx={{ width: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
 			<CardContent>
 				<Grid container>
 					<Grid item xs ={3.5}>
@@ -64,7 +61,7 @@ function CurrentlyOpenCard(props: any) {
 function ClosedCard(props: any) {
 	const days = Object.keys(props.hours);
 	return (
-		<Card variant="outlined" sx={{ maxWidth: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
+		<Card variant="outlined" sx={{ width: 350, background:'#FFFBFE', borderRadius:'28px', height:'276px' }}>
 			<CardContent>
 				<Grid container>
 					<Grid item xs ={3.5}>
@@ -86,20 +83,20 @@ function ClosedCard(props: any) {
 }
 
 function printHoursForDay(day: string, opens: string, closes: string) {
-	const weekday = ['sun','mon','tue','wed','thu','fri','sat'];
-	const today: any = weekday[new Date().getDay()];
+	const weekday: DayKey[] = ['sun','mon','tue','wed','thu','fri','sat'];
+	const today: DayKey = weekday[new Date().getDay()];
 	const dayString = getDay(day);
 	const openingTime = convertTo12HourTime(opens);
 	if (today === day) {
 		if (openingTime === 'Closed') {
-			return <HighlightedClosed day={dayString}/>;
+			return <HighlightedClosed key={day} day={dayString}/>;
 		} else {
-			return <HighlightedHours day={dayString} opens={opens} closes={closes}/>;
+			return <HighlightedHours key={day} day={dayString} opens={opens} closes={closes}/>;
 		}
 	} else if (openingTime === 'Closed') {
-		return <Closed day={dayString} />;
+		return <Closed key={day} day={dayString} />;
 	}
-	return <Hours day={dayString} opens={opens} closes={closes}/>;
+	return <Hours key={day} day={dayString} opens={opens} closes={closes}/>;
 }
 
 function isOpenNow(opens: string, closes: string): boolean {

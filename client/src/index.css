@@ -22,6 +22,18 @@ code {
     monospace;
 }
 
+.servicePageContainer {
+  display: flex;
+  gap: 50px;
+  margin-left: 10%;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .serviceCard {
   background-color: var(--backgroundPurple);
   height: 159px;

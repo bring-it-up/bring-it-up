@@ -1,12 +1,12 @@
 import { ReactElement, useEffect } from 'react';
 import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import Service from '../Service';
 import { useHistory } from 'react-router-dom';
+import { CounsellingService } from '../types/counselling-service.types';
 import { Specialty } from '../types/specialty.type';
 
 type Props = {
-	service: Service;
+	service: CounsellingService;
 };
 
 // logic for defining tags is not determined yet
@@ -15,17 +15,15 @@ type Props = {
 const ServiceCard = ({ service }: Props): ReactElement => {
   let tags: string[] = [];
 
-  // let tags: string[] = [];
-  // const specialties: string[] = service.specialty;
-  // for (const specialty of specialties) tags.push(specialty);
+  const specialties: Specialty[] = service.specialty;
+  for (const specialty of specialties) tags.push(specialty.label);
 
-  // tags = tags.concat(service.delivery, service.targetClients, service.type);
-  tags = tags.concat(service.delivery, service.targetClients);
+  tags = tags.concat(service.delivery, service.targetClients, service.serviceType);
+  // tags = tags.concat(service.delivery, service.targetClients);
 
 	const history = useHistory();
 
 	const handleClick = () => {
-		console.log('redirecting');
 		history.push(`services/${service.secondaryID}`);
 	};
 
