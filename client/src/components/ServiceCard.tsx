@@ -11,11 +11,8 @@ type Props = {
 
 const ServiceCard = ({ service }: Props): ReactElement => {
   let tags: string[] = [];
-
-  const specialties: Specialty[] = service.specialty;
-  for (const specialty of specialties) tags.push(specialty.label);
-
-  tags = tags.concat(service.delivery, service.targetClients, service.serviceType);
+  const specialties: string[] = service.specialty.map(specialty => specialty.label);
+  tags = tags.concat(service.delivery, service.targetClients, service.serviceType, specialties);
 
 	const history = useHistory();
 
