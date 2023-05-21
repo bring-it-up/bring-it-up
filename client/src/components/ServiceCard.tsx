@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useHistory } from 'react-router-dom';
@@ -19,7 +19,6 @@ const ServiceCard = ({ service }: Props): ReactElement => {
   for (const specialty of specialties) tags.push(specialty.label);
 
   tags = tags.concat(service.delivery, service.targetClients, service.serviceType);
-  // tags = tags.concat(service.delivery, service.targetClients);
 
 	const history = useHistory();
 
