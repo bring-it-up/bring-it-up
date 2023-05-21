@@ -3,7 +3,6 @@ import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useHistory } from 'react-router-dom';
 import { CounsellingService } from '../types/counselling-service.types';
-import { Specialty } from '../types/specialty.type';
 
 type Props = {
 	service: CounsellingService;
