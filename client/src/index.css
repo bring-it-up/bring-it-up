@@ -237,3 +237,11 @@ h6.text {
   justify-content: space-between !important;
   font-family: "Noto Sans", sans-serif !important;
 }
+
+.homeBanner {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-weight: 400;
+}
