@@ -77,6 +77,7 @@ div.tags {
   display: flex;
   flex-direction: row;
   justify-content: left;
+  margin-top: 20px;
 }
 
 h6.rating {

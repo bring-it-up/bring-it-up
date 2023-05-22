@@ -11,8 +11,12 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Specialties from './Specialties';
 import { getCounsellingServiceById } from '../api/counselling-service/counselling-service.api';
 import { CounsellingService } from '../types/counselling-service.types';
+import { useHistory } from 'react-router-dom';
 import BasicServiceDetails from './BasicServiceDetails';
 import DeliveryMethods from './DeliveryMethods';
+
+// TODO: disabled reviews tab for phase 1
+const disableReviewsTab = true;
 
 const CustomizedTab = styled(Tab)({
 	padding: '0 100px',
@@ -50,7 +54,7 @@ function TabPanel(props: TabPanelProps) {
         )}
 	</div>
     );
-  }
+}
 
 function FullServicePage(): ReactElement {
     const params = useParams<SERVICE>();
@@ -68,12 +72,18 @@ function FullServicePage(): ReactElement {
 		setValue(newValue);
 	};
 
+	const history = useHistory();
+
+	const handleClick = () => {
+		history.push(`/`);
+	};
+
     return (
 	<div>
 		<Box>
 			<Tabs TabIndicatorProps={{ style: { width: '0px' } }} value={value} onChange={handleChange}>
-				<CustomizedTab sx={{ left: '5%', width:'max-content' }} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px' }}/>} iconPosition = "start" label={service?.serviceName} />
-				<CustomizedTab sx={{ left: '80%', position: 'absolute' }} icon={<ArrowForwardIcon sx={{ position: 'relative', right:'50px' }}/>} iconPosition = "start" label="Reviews"/>
+				<CustomizedTab onClick={handleClick} sx={{ left: '5%', width:'max-content' }} icon={<ArrowBackIcon sx={{ position: 'relative', right:'90px' }}/>} iconPosition = "start" label={service?.serviceName} />
+				{!disableReviewsTab && <CustomizedTab sx={{ left: '80%', position: 'absolute' }} icon={<ArrowForwardIcon sx={{ position: 'relative', right:'50px' }}/>} iconPosition = "start" label="Reviews"/>}
 			</Tabs>
 		</Box>
 		<TabPanel value={value} index={0}>
@@ -90,7 +100,7 @@ function FullServicePage(): ReactElement {
 				</div>
 			</div>}
 		</TabPanel>
-		<TabPanel value={value} index={1}>Reviews</TabPanel>
+		{!disableReviewsTab && <TabPanel value={value} index={1}>Reviews</TabPanel>}
 	</div>
     );
 }
