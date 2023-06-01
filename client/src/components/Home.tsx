@@ -119,6 +119,7 @@ const Home = (): ReactElement => {
 
 	return (
 		<>
+      <h3 className="homeBanner">Find the best counselling service for you.</h3>
 			<Grid container sx={{ px: 10, py: 5 }} spacing={5}>
 				<Grid item xs={3}>
 					<FilterBar

@@ -12,10 +12,11 @@ type Props = {
 	service: CounsellingService;
 };
 
-// logic for defining tags is not determined yet
-const tags: string[] = ['Peer', '24/7', 'Professional', 'Phone', 'Online'];
-
 const ServiceCard = ({ service }: Props): ReactElement => {
+  let tags: string[] = [];
+  const specialties: string[] = service.specialty.map(specialty => specialty.label);
+  tags = tags.concat(service.delivery, service.targetClients, service.serviceType, specialties);
+
 	const history = useHistory();
 
 	const handleClick = () => {
